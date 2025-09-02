@@ -15,3 +15,20 @@ C:\Users\710\Desktop\TPFinalNivel2_Herrera\app\bin\Debug\Negocio.pdb
 C:\Users\710\Desktop\TPFinalNivel2_Herrera\app\obj\Debug\app.csproj.CopyComplete
 C:\Users\710\Desktop\TPFinalNivel2_Herrera\app\obj\Debug\app.frmDatos.resources
 C:\Users\710\Desktop\TPFinalNivel2_Herrera\app\obj\Debug\app.frmDetalles.resources
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\bin\Debug\app.exe.config
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\bin\Debug\app.exe
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\bin\Debug\app.pdb
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\bin\Debug\Dominio.dll
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\bin\Debug\Negocio.dll
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\bin\Debug\Dominio.pdb
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\bin\Debug\Negocio.pdb
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.csproj.AssemblyReference.cache
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmDatos.resources
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmArticulos.resources
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmDetalles.resources
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.Properties.Resources.resources
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.csproj.GenerateResource.cache
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.csproj.CoreCompileInputs.cache
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.csproj.CopyComplete
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.exe
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.pdb

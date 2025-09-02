@@ -4,3 +4,9 @@ C:\Users\710\Desktop\TPFinalNivel2_Herrera\Dominio\obj\Debug\Dominio.csproj.Asse
 C:\Users\710\Desktop\TPFinalNivel2_Herrera\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\710\Desktop\TPFinalNivel2_Herrera\Dominio\obj\Debug\Dominio.dll
 C:\Users\710\Desktop\TPFinalNivel2_Herrera\Dominio\obj\Debug\Dominio.pdb
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Dominio\bin\Debug\Dominio.dll
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Dominio\bin\Debug\Dominio.pdb
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Dominio\obj\Debug\Dominio.dll
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Dominio\obj\Debug\Dominio.pdb

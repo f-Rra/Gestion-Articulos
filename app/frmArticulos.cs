@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -75,7 +75,7 @@ namespace app
             if (dgvArticulos.CurrentRow != null) 
             {
                 Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                realizarBajaFisica(seleccionado);
+                realizarBajaLogica(seleccionado);
             }
             else
             {
@@ -112,8 +112,7 @@ namespace app
                 if (resultados == null || !resultados.Any())
                 {
                     MessageBox.Show("No se encontraron articulos","Error en la busqueda");
-                    cargarArticulos();
-                    txtFiltro.Clear();
+                    dgvArticulos.DataSource = new List<Articulo>(); // Mostrar lista vacía
                 }
                 else
                 {
@@ -165,14 +164,14 @@ namespace app
             }
         }
 
-        private void realizarBajaFisica(Articulo aux)
+        private void realizarBajaLogica(Articulo aux)
         {
             try
             {
                 DialogResult res = MessageBox.Show("¿Realizar eliminacion fisica?", "Eliminando", MessageBoxButtons.YesNo);
                 if (res == DialogResult.Yes)
                 {
-                   neg.bajaFisica(aux.id);
+                   neg.bajaLogica(aux.id);
                    cargarArticulos();
                 }
             }

@@ -30,6 +30,10 @@ namespace Negocio
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
         }
+        public void setearTipoComando(System.Data.CommandType tipo)
+        {
+            comando.CommandType = tipo;
+        }
 
         public void ejecutarLectura()
         {
