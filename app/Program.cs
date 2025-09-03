@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,15 +8,29 @@ namespace app
 {
     static class Program
     {
-        /// <summary>
-        /// Punto de entrada principal para la aplicación.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmArticulos());
+
+            // Mostrar login primero
+            frmLogin login = new frmLogin();
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                // Si el login es exitoso, abrir formulario según rol
+                if (login.UsuarioLogueado.EsAdministrador)
+                {
+                    // Admin: Panel administrativo
+                    Application.Run(new frmAdmin(login.UsuarioLogueado));
+                }
+                else
+                {
+                    // Vendedor: Solo artículos
+                    Application.Run(new frmArticulos());
+                }
+            }
+            // Si cancela login, la aplicación se cierra
         }
     }
 }

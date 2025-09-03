@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +15,8 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("SELECT Id, Descripcion FROM Marcas");
+                datos.setearConsulta("SP_ListarMarcas");
+                datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -36,5 +37,67 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void agregar(Marca nueva)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            datos.setearConsulta("SP_AltaMarca");
+            datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
+            try
+            {
+                datos.setearParametro("@Descripcion", nueva.descripcion);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void modificar(Marca existente)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            datos.setearConsulta("SP_ModificarMarca");
+            datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
+            try
+            {
+                datos.setearParametro("@Id", existente.id);
+                datos.setearParametro("@Descripcion", existente.descripcion);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void eliminar(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            datos.setearConsulta("SP_BajaMarca");
+            datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
+            try
+            {
+                datos.setearParametro("@Id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

@@ -32,3 +32,5 @@ C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.csproj
 C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.csproj.CopyComplete
 C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.exe
 C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.pdb
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmLogin.resources
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmAdmin.resources
