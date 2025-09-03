@@ -55,14 +55,16 @@ namespace app
 
         private void btnCategorias_Click(object sender, EventArgs e)
         {
-            // Por ahora mostrar mensaje, luego crear frmCategorias
-            MessageBox.Show("Gestión de Categorías - Próximamente", "En desarrollo");
+            frmCategorias ventana = new frmCategorias();
+            ventana.ShowDialog();
+            cargarEstadisticas(); // Actualizar estadísticas al volver
         }
 
         private void btnMarcas_Click(object sender, EventArgs e)
         {
-            // Por ahora mostrar mensaje, luego crear frmMarcas
-            MessageBox.Show("Gestión de Marcas - Próximamente", "En desarrollo");
+            frmMarcas ventana = new frmMarcas();
+            ventana.ShowDialog();
+            cargarEstadisticas(); // Actualizar estadísticas al volver
         }
 
         private void btnReportes_Click(object sender, EventArgs e)

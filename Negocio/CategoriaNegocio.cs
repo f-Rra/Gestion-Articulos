@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +18,7 @@ namespace Negocio
             {
                 datos.setearConsulta("SP_ListarCategorias");
                 datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
+                datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
                     Categoria aux = new Categoria();

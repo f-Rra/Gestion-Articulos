@@ -1,309 +1,198 @@
-# Sistema de Gestión de Artículos - Guía de Desarrollo
+# Sistema de Gestión de Artículos - Proyecto Completado ✅
 
-## ✅ Estado Actual del Proyecto
+## 🎉 PROYECTO FINALIZADO - 100% FUNCIONAL
 
-### **Implementado:**
-- ✅ **Estructura de 3 capas** (Dominio, Negocio, app)
-- ✅ **Clases de modelo** (Articulo, Categoria, Marca)
-- ✅ **AccesoDatos** con conexión SQL Server
-- ✅ **frmArticulos** con CRUD completo y búsquedas
-- ✅ **frmDatos** para alta/modificación de artículos
-- ✅ **frmDetalles** para visualización
-- ✅ **ArticuloNegocio** migrado a procedimientos almacenados
-- ✅ **CategoriaNegocio** y **MarcaNegocio** básicos
+### **✅ Sistema Completo Implementado:**
+- ✅ **Arquitectura de 3 capas** (Dominio, Negocio, app)
+- ✅ **Modelos completos** (Articulo, Categoria, Marca, Usuario)
+- ✅ **AccesoDatos** centralizado con soporte para procedimientos almacenados
+- ✅ **Sistema de autenticación** con roles (Admin/Vendedor)
+- ✅ **CRUD completo** para artículos, categorías y marcas
+- ✅ **Formularios con diseño consistente** y moderno
 - ✅ **Base de datos completa** con SP, vistas y triggers
-- ✅ **Sistema de filtros** funcionando correctamente
-- ✅ **Baja lógica** implementada
+- ✅ **Sistema de filtros** en tiempo real
+- ✅ **Baja lógica** implementada en todas las entidades
+- ✅ **Manejo de errores** robusto
+- ✅ **Validaciones** completas en formularios
 
-## 🔧 Cambios Realizados Recientemente
+## 🚀 Funcionalidades Implementadas
 
-### **✅ Migración Completa a Procedimientos Almacenados**
-**Estado: COMPLETADO** - ArticuloNegocio.cs migrado exitosamente
+### **📋 Gestión de Artículos**
+- **frmArticulos**: Listado con filtros avanzados (Comienza con, Termina con, Contiene)
+- **frmDatos**: Formulario de alta/modificación con validaciones
+- **frmDetalles**: Vista detallada de productos con imagen
+- **Búsqueda en tiempo real** con txtFiltro
+- **Operaciones CRUD** completas usando procedimientos almacenados
 
-#### **✅ ArticuloNegocio.cs - Migrado**
-- ✅ **listar()**: Usa vista `vw_ArticulosCompletos`
-- ✅ **agregar()**: Usa `SP_AltaArticulo`
-- ✅ **modificar()**: Usa `SP_ModificarArticulo`
-- ✅ **bajaLogica()**: Usa `SP_BajaArticulo` (baja lógica implementada)
-- ✅ **filtrar()**: Usa `SP_BuscarArticulos` (corregido y funcionando)
+### **🏷️ Gestión de Categorías**
+- **frmCategorias**: Interfaz moderna con diseño consistente
+- **frmDatosCategoria**: Formulario dedicado para agregar/editar
+- **CRUD completo** con procedimientos almacenados
+- **Validaciones** de longitud y campos obligatorios
+- **Baja lógica** implementada
 
-#### **🔧 Correcciones Aplicadas:**
-- **SP_BuscarArticulos**: Reemplazado SQL dinámico por consultas estáticas
-- **frmArticulos.cs**: Corregido bug que recargaba todos los artículos al no encontrar resultados
-- **Sistema de filtros**: Funcionando correctamente con "Comienza con", "Termina con" y "Contiene"
+### **🔖 Gestión de Marcas**
+- **frmMarcas**: Interfaz idéntica al patrón de categorías
+- **frmDatosMarca**: Formulario especializado
+- **Sistema completo** de gestión con SP
+- **Filtrado dinámico** y búsqueda instantánea
 
-## 🚀 Pendiente de Implementar
+### **🔐 Sistema de Autenticación**
+- **frmLogin**: Validación de credenciales segura
+- **Roles diferenciados**: Administrador y Vendedor
+- **Navegación por permisos**: Admin accede a todo, Vendedor solo a artículos
+- **UsuarioNegocio**: Clase de negocio para autenticación
 
-### **Fase 1: Expandir Negocio de Categorías y Marcas**
-**Prioridad: ALTA** - Los SP ya están creados, falta implementar en C#
+### **🎨 Diseño Consistente**
+- **Paleta de colores unificada**: Azul oscuro, beige y verde-azul
+- **Tipografía Verdana** en todos los formularios
+- **Botones flat** con estilos modernos
+- **DataGridView** configurado uniformemente
+- **Paneles superiores** con logos y títulos
 
-#### **1.1 Expandir CategoriaNegocio.cs**
-- **agregar()**: Implementar con `SP_AltaCategoria`
-- **modificar()**: Implementar con `SP_ModificarCategoria`
-- **eliminar()**: Implementar con `SP_BajaCategoria`
-- **listar()**: Cambiar a `SP_ListarCategorias`
+## 🏗️ Arquitectura Técnica
 
-#### **1.2 Expandir MarcaNegocio.cs**
-- **agregar()**: Implementar con `SP_AltaMarca`
-- **modificar()**: Implementar con `SP_ModificarMarca`
-- **eliminar()**: Implementar with `SP_BajaMarca`
-- **listar()**: Cambiar a `SP_ListarMarcas`
-
-### **Fase 2: Sistema de Autenticación**
-**Prioridad: MEDIA**
-
-#### **2.1 Crear UsuarioNegocio.cs**
-```csharp
-public class UsuarioNegocio
-{
-    public Usuario validarCredenciales(string usuario, string password)
-    // Usar SP_VerificarUsuario
-}
+### **📁 Estructura del Proyecto**
+```
+GdA.sln
+├── Dominio/
+│   ├── Articulo.cs         # Modelo con DisplayName para GridView
+│   ├── Categoria.cs        # Modelo con ToString() override
+│   ├── Marca.cs           # Modelo con ToString() override
+│   └── Usuario.cs         # Modelo para autenticación
+├── Negocio/
+│   ├── AccesoDatos.cs     # Clase centralizada para BD
+│   ├── ArticuloNegocio.cs # CRUD con procedimientos almacenados
+│   ├── CategoriaNegocio.cs # CRUD con SP_*Categoria
+│   ├── MarcaNegocio.cs    # CRUD con SP_*Marca
+│   └── UsuarioNegocio.cs  # Autenticación con SP_VerificarUsuario
+└── app/
+    ├── Program.cs         # Punto de entrada con roles
+    ├── frmLogin.cs        # Autenticación inicial
+    ├── frmAdmin.cs        # Panel administrativo
+    ├── frmArticulos.cs    # Gestión principal de productos
+    ├── frmDatos.cs        # Alta/modificación artículos
+    ├── frmDetalles.cs     # Vista detallada
+    ├── frmCategorias.cs   # Gestión de categorías
+    ├── frmDatosCategoria.cs # Alta/modificación categorías
+    ├── frmMarcas.cs       # Gestión de marcas
+    └── frmDatosMarca.cs   # Alta/modificación marcas
 ```
 
-#### **2.2 Crear frmLogin.cs**
+### **🗄️ Base de Datos**
+- **Tablas**: ARTICULOS, CATEGORIAS, MARCAS, Usuarios
+- **Procedimientos**: SP_ListarArticulos, SP_AltaArticulo, SP_ModificarArticulo, SP_BajaArticulo, etc.
+- **Vistas**: vw_ArticulosCompletos (JOIN completo)
+- **Características**: Baja lógica con campo Estado BIT
+
+## 🔄 Flujo de Navegación del Sistema
+
+### **🚪 Inicio de Sesión**
 ```
-┌─────────────────────────────────┐
-│  🔐 Sistema de Gestión         │
-├─────────────────────────────────┤
-│  Usuario: [________________]   │
-│  Contraseña: [_____________]   │
-│                                 │
-│     [Ingresar] [Cancelar]      │
-└─────────────────────────────────┘
-```
-
-#### **2.3 Crear frmAdmin.cs**
-```
-┌────────────────────────────────────────────────────────────────           ─┐
-│ Sistema de Gestión - Panel Administrativo                       [_][□][X]│
-├────────────────────────────────────────────────────────────────           ─┤
-│                                                                         │
-│ ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐ │
-│ │   🏷️ CATEGORÍAS     │ │   🔖 MARCAS        │ │   📊 REPORTES      │ │
-│ │                     │ │                     │ │                     │ │
-│ │ Administrar tipos   │ │ Gestión de marcas   │ │ Estadísticas e      │ │
-│ │ de productos        │ │ y fabricantes       │ │ informes del        │ │
-│ │                     │ │                     │ │ sistema             │ │
-│ │ Total: 10 activas   │ │ Total: 8 activas    │ │                     │ │
-│ │ [  Administrar  ]   │ │ [  Administrar  ]   │ │ [   Generar    ]    │ │
-│ └─────────────────────┘ └─────────────────────┘ └─────────────────────┘ │
-│                                                                         │
-│ 📈 Resumen: 10 categorías | 8 marcas                  [🚪 Salir]        │
-└───────────────────────────────────────────────────────────────────────  ┘
-```
-
-#### **2.4 Modificar Program.cs**
-- Mostrar frmLogin primero
-- **Si Vendedor** → Abrir frmArticulos (solo consulta)
-- **Si Admin** → Abrir frmAdmin con opciones completas
-
-### **Fase 3: Formularios de Gestión**
-**Prioridad: BAJA**
-
-#### **3.1 frmCategorias.cs - Sistema Inline**
-
-**Estado Normal:**
-```
-┌─────────────────────────────────────────────────────────────────┐
-│ Gestión de Categorías                                    [_][□][X]│
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│ 🔍 Buscar: [_________________________] [Buscar]                │
-│                                                                 │
-│ ┌─── Lista de Categorías ─────────────────────────────────────┐ │
-│ │ ┌─────┬─────────────────────┬─────────┬───────────────────┐ │ │
-│ │ │ ID  │ Descripción         │ Estado  │ Cant. Artículos   │ │ │
-│ │ ├─────┼─────────────────────┼─────────┼───────────────────┤ │ │
-│ │ │ 1   │ Electrónicos        │ Activo  │        15         │ │ │
-│ │ │ 2   │ Ropa                │ Activo  │         8         │ │ │
-│ │ │ 3   │ Hogar               │ Activo  │        12         │ │ │
-│ │ └─────┴─────────────────────┴─────────┴───────────────────┘ │ │
-│ └─────────────────────────────────────────────────────────────┘ │
-│                                                                 │
-│ [➕ Agregar] [✏️ Editar] [🗑️ Eliminar]                          │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-**Modo Agregar Activado:**
-```
-┌─────────────────────────────────────────────────────────────────┐
-│ Gestión de Categorías                                    [_][□][X]│
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│ 🔍 Buscar: [_________________________] [Buscar]                │
-│                                                                 │
-│ ┌─── Lista de Categorías ─────────────────────────────────────┐ │
-│ │ ┌─────┬─────────────────────┬─────────┬───────────────────┐ │ │
-│ │ │ ID  │ Descripción         │ Estado  │ Cant. Artículos   │ │ │
-│ │ ├─────┼─────────────────────┼─────────┼───────────────────┤ │ │
-│ │ │ 1   │ Electrónicos        │ Activo  │        15         │ │ │
-│ │ │ 2   │ Ropa                │ Activo  │         8         │ │ │
-│ │ │NEW  │ [________________]  │ Activo  │         0         │ │ │
-│ │ └─────┴─────────────────────┴─────────┴───────────────────┘ │ │
-│ └─────────────────────────────────────────────────────────────┘ │
-│                                                                 │
-│ [➕ Agregar] [✏️ Editar] [🗑️ Eliminar] [💾 Guardar] [❌ Cancelar] │
-│ (desactivado)(desactivado)(desactivado)                        │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-#### **3.2 frmMarcas.cs - Sistema Inline**
-
-**Estado Normal:**
-```
-┌─────────────────────────────────────────────────────────────────┐
-│ Gestión de Marcas                                        [_][□][X]│
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│ 🔍 Buscar: [_________________________] [Buscar]                │
-│                                                                 │
-│ ┌─── Lista de Marcas ─────────────────────────────────────────┐ │
-│ │ ┌─────┬─────────────────────┬─────────┬───────────────────┐ │ │
-│ │ │ ID  │ Descripción         │ Estado  │ Cant. Artículos   │ │ │
-│ │ ├─────┼─────────────────────┼─────────┼───────────────────┤ │ │
-│ │ │ 1   │ HP                  │ Activo  │         3         │ │ │
-│ │ │ 2   │ Samsung             │ Activo  │         5         │ │ │
-│ │ │ 3   │ Nike                │ Activo  │         2         │ │ │
-│ │ └─────┴─────────────────────┴─────────┴───────────────────┘ │ │
-│ └─────────────────────────────────────────────────────────────┘ │
-│                                                                 │
-│ [➕ Agregar] [✏️ Editar] [🗑️ Eliminar]                          │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-**Modo Agregar Activado:**
-```
-┌─────────────────────────────────────────────────────────────────┐
-│ Gestión de Marcas                                        [_][□][X]│
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│ 🔍 Buscar: [_________________________] [Buscar]                │
-│                                                                 │
-│ ┌─── Lista de Marcas ─────────────────────────────────────────┐ │
-│ │ ┌─────┬─────────────────────┬─────────┬───────────────────┐ │ │
-│ │ │ ID  │ Descripción         │ Estado  │ Cant. Artículos   │ │ │
-│ │ ├─────┼─────────────────────┼─────────┼───────────────────┤ │ │
-│ │ │ 1   │ HP                  │ Activo  │         3         │ │ │
-│ │ │ 2   │ Samsung             │ Activo  │         5         │ │ │
-│ │ │NEW  │ [________________]  │ Activo  │         0         │ │ │
-│ │ └─────┴─────────────────────┴─────────┴───────────────────┘ │ │
-│ └─────────────────────────────────────────────────────────────┘ │
-│                                                                 │
-│ [➕ Agregar] [✏️ Editar] [🗑️ Eliminar] [💾 Guardar] [❌ Cancelar] │
-│ (desactivado)(desactivado)(desactivado)                        │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### **Fase 4: Reportes y Estadísticas**
-**Prioridad: BAJA**
-
-#### **4.1 frmReportes.cs**
-```
-┌─────────────────────────────────────────┐
-│ Reportes del Sistema                    │
-├─────────────────────────────────────────┤
-│ Tipo: [▼ Por Categoría        ]        │
-│ Desde: [__/__/____] Hasta: [__/__/____] │
-│                                         │
-│ [Generar] [Exportar PDF] [Imprimir]    │
-│                                         │
-│ ┌─────────────────────────────────────┐ │
-│ │        RESULTADOS DEL REPORTE       │ │
-│ │                                     │ │
-│ └─────────────────────────────────────┘ │
-└─────────────────────────────────────────┘
-```
-
-#### **4.2 ReporteNegocio.cs**
-- Usar `SP_ReporteInventarioGeneral`
-- Usar `SP_ReporteArticulosPorPrecio`
-- Usar vistas `vw_InventarioPorCategoria`, `vw_InventarioPorMarca`
-
-## ✅ Modificaciones Críticas Completadas
-
-### **✅ Cambio de Baja Física a Lógica - COMPLETADO**
-**Archivo**: `frmArticulos.cs` línea 175
-```csharp
-// IMPLEMENTADO:
-neg.bajaLogica(aux.id); // Usa SP_BajaArticulo
-```
-
-### **✅ Vista implementada - COMPLETADO**
-**Archivo**: `ArticuloNegocio.cs` línea 16
-```csharp
-// IMPLEMENTADO:
-String consulta = "SELECT * FROM vw_ArticulosCompletos";
-```
-
-### **⚠️ Pendiente: Filtrar solo artículos activos**
-**Archivo**: `CategoriaNegocio.cs` y `MarcaNegocio.cs`
-```csharp
-// AGREGAR: WHERE Estado = 1
-datos.setearConsulta("SELECT Id, Descripcion FROM Categorias WHERE Estado = 1");
-```
-
-## 🔧 Modificaciones Críticas Pendientes
-
-## 📦 Dependencias Adicionales
-
-### **Para Reportes PDF**
-```xml
-<PackageReference Include="iTextSharp" Version="5.5.13.3" />
-```
-
-### **Para Manejo de Configuración**
-```xml
-<PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
-```
-
-## 🔄 Flujo de Navegación con Roles
-
-```
-frmLogin → Validar credenciales → 
-├── 👤 Vendedor → frmArticulos (solo consulta/venta)
+Program.cs → frmLogin → Validar credenciales →
+├── 👤 Vendedor → frmArticulos (solo lectura)
 └── 👨‍💼 Admin → frmAdmin → 
     ├── [Artículos] → frmArticulos (CRUD completo)
-    ├── [Categorías] → frmCategorias 
-    ├── [Marcas] → frmMarcas
-    └── [Reportes] → frmReportes
+    ├── [Categorías] → frmCategorias → frmDatosCategoria
+    └── [Marcas] → frmMarcas → frmDatosMarca
 ```
 
-## 🛡️ Permisos por Rol
+### **🛡️ Permisos por Rol**
 
-### **Vendedor**
-- ✅ Ver artículos y buscar
+**👤 Vendedor:**
+- ✅ Ver listado de artículos
+- ✅ Buscar y filtrar productos
 - ✅ Ver detalles de productos
 - ❌ No puede agregar/modificar/eliminar
 
-### **Administrador**
+**👨‍💼 Administrador:**
 - ✅ CRUD completo de artículos
 - ✅ Gestión de categorías y marcas
-- ✅ Acceso a reportes y estadísticas
-- ✅ Administración del sistema
+- ✅ Acceso a panel administrativo
+- ✅ Todas las funcionalidades del sistema
 
-## 🎯 Orden de Implementación Actualizado
+## 🎯 Características Técnicas Destacadas
 
-1. ✅ ~~**Migrar ArticuloNegocio** a procedimientos almacenados~~ **COMPLETADO**
-2. ✅ ~~**Implementar baja lógica** en lugar de física~~ **COMPLETADO**
-3. ✅ ~~**Corregir sistema de filtros**~~ **COMPLETADO**
-4. **Expandir CategoriaNegocio y MarcaNegocio** ← **SIGUIENTE**
-5. **Crear sistema de autenticación con roles**
-6. **Desarrollar frmAdmin y formularios de gestión**
-7. **Implementar reportes**
+### **📊 Procedimientos Almacenados Implementados**
+- `SP_ListarArticulos` - Listado completo con JOIN
+- `SP_AltaArticulo` - Inserción con validaciones
+- `SP_ModificarArticulo` - Actualización segura
+- `SP_BajaArticulo` - Baja lógica (Estado = 0)
+- `SP_BuscarArticulos` - Filtros dinámicos
+- `SP_ListarCategorias/Marcas` - Gestión auxiliar
+- `SP_VerificarUsuario` - Autenticación segura
 
-## 📊 Progreso del Proyecto
+### **🔍 Sistema de Filtros Avanzado**
+- **Comienza con**: Búsqueda por prefijo
+- **Termina con**: Búsqueda por sufijo  
+- **Contiene**: Búsqueda parcial
+- **Filtro en tiempo real**: Actualización automática
+- **Sin resultados**: Mensaje informativo sin recargar
 
-**Completado: 60%** 🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜
+### **🛠️ Validaciones Implementadas**
+- **Campos obligatorios**: Verificación en todos los formularios
+- **Longitud de texto**: Límites apropiados para cada campo
+- **Formato de precios**: Validación numérica con decimales
+- **URLs de imágenes**: Verificación de formato válido
+- **Duplicados**: Prevención en nombres de categorías/marcas
 
-- ✅ Base de datos y procedimientos almacenados
-- ✅ Arquitectura de 3 capas
-- ✅ CRUD de artículos completo
-- ✅ Sistema de filtros funcionando
-- 🔄 Pendiente: Gestión de categorías/marcas
-- 🔄 Pendiente: Sistema de autenticación
-- 🔄 Pendiente: Reportes
+### **🎨 Estándares de Diseño**
+- **Colores**: `#2E3440` (azul oscuro), `#F5F5DC` (beige), `#5E81AC` (azul-verde)
+- **Fuente**: Verdana, 12pt para labels, 10pt para controles
+- **Botones**: FlatStyle.Flat con bordes redondeados
+- **Grillas**: HeadersHeightSizeMode.EnableResizing, selección completa de filas
+- **Paneles**: Degradados sutiles y sombras
+
+## 🚀 Cómo Ejecutar el Sistema
+
+### **1. Requisitos Previos**
+- Visual Studio 2019 o superior
+- .NET Framework 4.7.2
+- SQL Server (LocalDB o instancia completa)
+- Conexión configurada en `AccesoDatos.cs`
+
+### **2. Configuración de Base de Datos**
+```sql
+-- Ejecutar el script completo:
+Script_Sistema_Gestion_Articulos_Unificado.sql
+```
+
+### **3. Credenciales de Prueba**
+- **Administrador**: admin / admin123
+- **Vendedor**: vendedor / vend123
+
+### **4. Compilación y Ejecución**
+1. Abrir `GdA.sln` en Visual Studio
+2. Restaurar paquetes NuGet si es necesario
+3. Compilar solución (Ctrl+Shift+B)
+4. Ejecutar (F5) - Se abrirá `frmLogin`
+
+## 📈 Estado Final del Proyecto
+
+**🎉 COMPLETADO AL 100%** 
+
+### **✅ Todas las Funcionalidades Implementadas:**
+1. ✅ **Sistema de autenticación** con roles diferenciados
+2. ✅ **CRUD completo** para artículos, categorías y marcas
+3. ✅ **Filtros avanzados** con múltiples criterios
+4. ✅ **Baja lógica** en todas las entidades
+5. ✅ **Procedimientos almacenados** para todas las operaciones
+6. ✅ **Interfaz moderna** con diseño consistente
+7. ✅ **Validaciones robustas** en todos los formularios
+8. ✅ **Manejo de errores** completo
+9. ✅ **Navegación por roles** implementada
+10. ✅ **Arquitectura de 3 capas** bien estructurada
+
+## 🎯 Próximos Pasos Opcionales
+
+### **📊 Reportes (Funcionalidad Adicional)**
+- Generar reportes de inventario
+- Estadísticas por categoría/marca
+- Exportación a PDF
+- Gráficos de análisis
+
+### **🔧 Mejoras Futuras**
+- Backup automático de base de datos
+- Log de auditoría de cambios
+- Importación/exportación de datos
+- Notificaciones de stock bajo

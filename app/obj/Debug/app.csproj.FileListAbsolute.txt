@@ -34,3 +34,7 @@ C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.exe
 C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.pdb
 C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmLogin.resources
 C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmAdmin.resources
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmCategorias.resources
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmMarcas.resources
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmDatosCategoria.resources
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmDatosMarca.resources
