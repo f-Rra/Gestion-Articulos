@@ -16,8 +16,8 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT Id, Descripcion FROM Categorias");
-                datos.ejecutarLectura();
+                datos.setearConsulta("SP_ListarCategorias");
+                datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
                 while (datos.Lector.Read())
                 {
                     Categoria aux = new Categoria();
@@ -26,6 +26,67 @@ namespace Negocio
                     lista.Add(aux);
                 }
                 return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void agregar(Categoria nueva)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            datos.setearConsulta("SP_AltaCategoria");
+            datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
+            try
+            {
+                datos.setearParametro("@Descripcion", nueva.descripcion);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void modificar(Categoria existente)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            datos.setearConsulta("SP_ModificarCategoria");
+            datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
+            try
+            {
+                datos.setearParametro("@Id", existente.id);
+                datos.setearParametro("@Descripcion", existente.descripcion);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void eliminar(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            datos.setearConsulta("SP_BajaCategoria");
+            datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
+            try
+            {
+                datos.setearParametro("@Id", id);
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
