@@ -103,13 +103,15 @@ Program.cs → frmLogin → Validar credenciales →
 - ✅ Ver listado de artículos
 - ✅ Buscar y filtrar productos
 - ✅ Ver detalles de productos
-- ❌ No puede agregar/modificar/eliminar
+- ✅ **CRUD completo de artículos** (agregar/modificar/eliminar)
+- ❌ No accede a gestión de categorías/marcas
+- ❌ No accede al panel administrativo
 
 **👨‍💼 Administrador:**
-- ✅ CRUD completo de artículos
-- ✅ Gestión de categorías y marcas
-- ✅ Acceso a panel administrativo
-- ✅ Todas las funcionalidades del sistema
+- ✅ **Acceso completo al sistema**
+- ✅ CRUD de artículos, categorías y marcas
+- ✅ Panel administrativo completo
+- ✅ Gestión de usuarios y configuración
 
 ## 🎯 Características Técnicas Destacadas
 
@@ -196,3 +198,22 @@ Script_Sistema_Gestion_Articulos_Unificado.sql
 - Log de auditoría de cambios
 - Importación/exportación de datos
 - Notificaciones de stock bajo
+- **Implementar edición inline** para categorías y marcas (placeholders ya preparados)
+
+## 📝 Historial de Refactorización
+
+### **✅ Refactorización de Formularios (Completada)**
+**Fecha**: Septiembre 2025  
+**Objetivo**: Estandarizar el diseño de todos los formularios de gestión
+
+**Cambios Realizados:**
+- ✅ **Eliminación de formularios auxiliares**: Removidos `frmDatosCategoria` y `frmDatosMarca`
+- ✅ **Rediseño de frmCategorias**: Aplicado mismo estilo que frmArticulos
+- ✅ **Rediseño de frmMarcas**: Aplicado mismo estilo que frmArticulos
+- ✅ **Estandarización de fuentes**: Verdana en todos los controles
+- ✅ **Unificación de colores**: Paleta consistente en toda la aplicación
+- ✅ **Botones uniformes**: Mismos iconos, tamaños y estilos
+- ✅ **Corrección de errores**: Eliminadas declaraciones duplicadas
+- ✅ **Limpieza de proyecto**: Referencias obsoletas removidas
+
+**Resultado**: Interfaz completamente unificada con funcionalidad inline preparada para futuro desarrollo.

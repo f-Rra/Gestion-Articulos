@@ -53,23 +53,199 @@ namespace app
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            frmDatosMarca agregar = new frmDatosMarca();
-            agregar.ShowDialog();
-            cargarMarcas();
+            try
+            {
+                // Crear controles dinámicos para entrada inline
+                TextBox txtNuevaMarca = new TextBox();
+                txtNuevaMarca.Location = new System.Drawing.Point(620, 200);
+                txtNuevaMarca.Size = new System.Drawing.Size(200, 23);
+                txtNuevaMarca.Font = new System.Drawing.Font("Verdana", 9.75F);
+                txtNuevaMarca.BackColor = System.Drawing.Color.FromArgb(242, 227, 213);
+                txtNuevaMarca.ForeColor = System.Drawing.Color.FromArgb(1, 46, 64);
+                txtNuevaMarca.Name = "txtNuevaMarca";
+
+                Label lblNuevaMarca = new Label();
+                lblNuevaMarca.Text = "Nueva Marca:";
+                lblNuevaMarca.Location = new System.Drawing.Point(620, 180);
+                lblNuevaMarca.Size = new System.Drawing.Size(150, 16);
+                lblNuevaMarca.Font = new System.Drawing.Font("Verdana", 9.75F);
+                lblNuevaMarca.ForeColor = System.Drawing.Color.FromArgb(242, 227, 213);
+                lblNuevaMarca.BackColor = System.Drawing.Color.Transparent;
+                lblNuevaMarca.Name = "lblNuevaMarca";
+
+                Button btnGuardar = new Button();
+                btnGuardar.Text = "Guardar";
+                btnGuardar.Location = new System.Drawing.Point(620, 235);
+                btnGuardar.Size = new System.Drawing.Size(90, 28);
+                btnGuardar.Font = new System.Drawing.Font("Verdana", 9.75F);
+                btnGuardar.BackColor = System.Drawing.Color.FromArgb(1, 46, 64);
+                btnGuardar.ForeColor = System.Drawing.Color.FromArgb(242, 227, 213);
+                btnGuardar.FlatStyle = FlatStyle.Flat;
+                btnGuardar.Name = "btnGuardar";
+
+                Button btnCancelarInline = new Button();
+                btnCancelarInline.Text = "Cancelar";
+                btnCancelarInline.Location = new System.Drawing.Point(720, 235);
+                btnCancelarInline.Size = new System.Drawing.Size(90, 28);
+                btnCancelarInline.Font = new System.Drawing.Font("Verdana", 9.75F);
+                btnCancelarInline.BackColor = System.Drawing.Color.FromArgb(2, 103, 115);
+                btnCancelarInline.ForeColor = System.Drawing.Color.FromArgb(242, 227, 213);
+                btnCancelarInline.FlatStyle = FlatStyle.Flat;
+                btnCancelarInline.Name = "btnCancelarInline";
+
+                // Agregar controles al formulario
+                this.Controls.Add(txtNuevaMarca);
+                this.Controls.Add(lblNuevaMarca);
+                this.Controls.Add(btnGuardar);
+                this.Controls.Add(btnCancelarInline);
+
+                // Eventos
+                btnGuardar.Click += (s, ev) => {
+                    try
+                    {
+                        if (!string.IsNullOrWhiteSpace(txtNuevaMarca.Text))
+                        {
+                            Marca nueva = new Marca();
+                            nueva.descripcion = txtNuevaMarca.Text.Trim();
+                            negocio.agregar(nueva);
+                            cargarMarcas();
+                            
+                            // Remover controles
+                            this.Controls.Remove(txtNuevaMarca);
+                            this.Controls.Remove(lblNuevaMarca);
+                            this.Controls.Remove(btnGuardar);
+                            this.Controls.Remove(btnCancelarInline);
+                            
+                            MessageBox.Show("Marca agregada correctamente", "Éxito");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ingrese una descripción para la marca", "Error");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                };
+
+                btnCancelarInline.Click += (s, ev) => {
+                    // Remover controles
+                    this.Controls.Remove(txtNuevaMarca);
+                    this.Controls.Remove(lblNuevaMarca);
+                    this.Controls.Remove(btnGuardar);
+                    this.Controls.Remove(btnCancelarInline);
+                };
+
+                txtNuevaMarca.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dgvMarcas.CurrentRow != null)
+            try
             {
-                Marca seleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
-                frmDatosMarca modificar = new frmDatosMarca(seleccionada);
-                modificar.ShowDialog();
-                cargarMarcas();
+                if (dgvMarcas.CurrentRow != null)
+                {
+                    Marca seleccionado = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+                    
+                    // Crear controles dinámicos para edición inline
+                    TextBox txtEditarMarca = new TextBox();
+                    txtEditarMarca.Location = new System.Drawing.Point(620, 200);
+                    txtEditarMarca.Size = new System.Drawing.Size(200, 23);
+                    txtEditarMarca.Font = new System.Drawing.Font("Verdana", 9.75F);
+                    txtEditarMarca.BackColor = System.Drawing.Color.FromArgb(242, 227, 213);
+                    txtEditarMarca.ForeColor = System.Drawing.Color.FromArgb(1, 46, 64);
+                    txtEditarMarca.Text = seleccionado.descripcion;
+                    txtEditarMarca.Name = "txtEditarMarca";
+
+                    Label lblEditarMarca = new Label();
+                    lblEditarMarca.Text = "Editar Marca:";
+                    lblEditarMarca.Location = new System.Drawing.Point(620, 180);
+                    lblEditarMarca.Size = new System.Drawing.Size(150, 16);
+                    lblEditarMarca.Font = new System.Drawing.Font("Verdana", 9.75F);
+                    lblEditarMarca.ForeColor = System.Drawing.Color.FromArgb(242, 227, 213);
+                    lblEditarMarca.BackColor = System.Drawing.Color.Transparent;
+                    lblEditarMarca.Name = "lblEditarMarca";
+
+                    Button btnGuardarEdicion = new Button();
+                    btnGuardarEdicion.Text = "Guardar";
+                    btnGuardarEdicion.Location = new System.Drawing.Point(620, 235);
+                    btnGuardarEdicion.Size = new System.Drawing.Size(90, 28);
+                    btnGuardarEdicion.Font = new System.Drawing.Font("Verdana", 9.75F);
+                    btnGuardarEdicion.BackColor = System.Drawing.Color.FromArgb(1, 46, 64);
+                    btnGuardarEdicion.ForeColor = System.Drawing.Color.FromArgb(242, 227, 213);
+                    btnGuardarEdicion.FlatStyle = FlatStyle.Flat;
+                    btnGuardarEdicion.Name = "btnGuardarEdicion";
+
+                    Button btnCancelarEdicion = new Button();
+                    btnCancelarEdicion.Text = "Cancelar";
+                    btnCancelarEdicion.Location = new System.Drawing.Point(720, 235);
+                    btnCancelarEdicion.Size = new System.Drawing.Size(90, 28);
+                    btnCancelarEdicion.Font = new System.Drawing.Font("Verdana", 9.75F);
+                    btnCancelarEdicion.BackColor = System.Drawing.Color.FromArgb(2, 103, 115);
+                    btnCancelarEdicion.ForeColor = System.Drawing.Color.FromArgb(242, 227, 213);
+                    btnCancelarEdicion.FlatStyle = FlatStyle.Flat;
+                    btnCancelarEdicion.Name = "btnCancelarEdicion";
+
+                    // Agregar controles al formulario
+                    this.Controls.Add(txtEditarMarca);
+                    this.Controls.Add(lblEditarMarca);
+                    this.Controls.Add(btnGuardarEdicion);
+                    this.Controls.Add(btnCancelarEdicion);
+
+                    // Eventos
+                    btnGuardarEdicion.Click += (s, ev) => {
+                        try
+                        {
+                            if (!string.IsNullOrWhiteSpace(txtEditarMarca.Text))
+                            {
+                                seleccionado.descripcion = txtEditarMarca.Text.Trim();
+                                negocio.modificar(seleccionado);
+                                cargarMarcas();
+                                
+                                // Remover controles
+                                this.Controls.Remove(txtEditarMarca);
+                                this.Controls.Remove(lblEditarMarca);
+                                this.Controls.Remove(btnGuardarEdicion);
+                                this.Controls.Remove(btnCancelarEdicion);
+                                
+                                MessageBox.Show("Marca modificada correctamente", "Éxito");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ingrese una descripción para la marca", "Error");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                        }
+                    };
+
+                    btnCancelarEdicion.Click += (s, ev) => {
+                        // Remover controles
+                        this.Controls.Remove(txtEditarMarca);
+                        this.Controls.Remove(lblEditarMarca);
+                        this.Controls.Remove(btnGuardarEdicion);
+                        this.Controls.Remove(btnCancelarEdicion);
+                    };
+
+                    txtEditarMarca.Focus();
+                    txtEditarMarca.SelectAll();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione una marca para editar", "Editar Marca");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Seleccione una marca de la lista", "Error");
+                MessageBox.Show(ex.ToString());
             }
         }
 

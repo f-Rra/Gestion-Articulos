@@ -88,18 +88,6 @@
     <Compile Include="frmMarcas.Designer.cs">
       <DependentUpon>frmMarcas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDatosCategoria.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDatosCategoria.Designer.cs">
-      <DependentUpon>frmDatosCategoria.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmDatosMarca.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDatosMarca.Designer.cs">
-      <DependentUpon>frmDatosMarca.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAdmin.resx">
@@ -122,12 +110,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMarcas.resx">
       <DependentUpon>frmMarcas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDatosCategoria.resx">
-      <DependentUpon>frmDatosCategoria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDatosMarca.resx">
-      <DependentUpon>frmDatosMarca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
