@@ -24,6 +24,14 @@
 - **Búsqueda en tiempo real** con txtFiltro
 - **Operaciones CRUD** completas usando procedimientos almacenados
 
+### **📊 Sistema de Reportes**
+- **frmReportes**: Interfaz moderna con 3 tipos de reportes
+- **Inventario Completo**: Vista optimizada sin columnas innecesarias
+- **Estadísticas por Categorías**: Análisis y conteo por categoría
+- **Estadísticas por Marcas**: Análisis y conteo por marca
+- **Exportación Inteligente**: PNG con conversión opcional a PDF
+- **ReporteNegocio**: Lógica de negocio especializada
+
 ### **🏷️ Gestión de Categorías**
 - **frmCategorias**: Interfaz moderna con diseño consistente
 - **frmDatosCategoria**: Formulario dedicado para agregar/editar
@@ -65,6 +73,7 @@ GdA.sln
 │   ├── ArticuloNegocio.cs # CRUD con procedimientos almacenados
 │   ├── CategoriaNegocio.cs # CRUD con SP_*Categoria
 │   ├── MarcaNegocio.cs    # CRUD con SP_*Marca
+│   ├── ReporteNegocio.cs  # Lógica de reportes y estadísticas
 │   └── UsuarioNegocio.cs  # Autenticación con SP_VerificarUsuario
 └── app/
     ├── Program.cs         # Punto de entrada con roles
@@ -73,6 +82,7 @@ GdA.sln
     ├── frmArticulos.cs    # Gestión principal de productos
     ├── frmDatos.cs        # Alta/modificación artículos
     ├── frmDetalles.cs     # Vista detallada
+    ├── frmReportes.cs     # Sistema de reportes y estadísticas
     ├── frmCategorias.cs   # Gestión de categorías
     ├── frmDatosCategoria.cs # Alta/modificación categorías
     ├── frmMarcas.cs       # Gestión de marcas
@@ -94,7 +104,8 @@ Program.cs → frmLogin → Validar credenciales →
 └── 👨‍💼 Admin → frmAdmin → 
     ├── [Artículos] → frmArticulos (CRUD completo)
     ├── [Categorías] → frmCategorias → frmDatosCategoria
-    └── [Marcas] → frmMarcas → frmDatosMarca
+    ├── [Marcas] → frmMarcas → frmDatosMarca
+    └── [Reportes] → frmReportes → Exportación PNG/PDF
 ```
 
 ### **🛡️ Permisos por Rol**
@@ -184,14 +195,19 @@ Script_Sistema_Gestion_Articulos_Unificado.sql
 8. ✅ **Manejo de errores** completo
 9. ✅ **Navegación por roles** implementada
 10. ✅ **Arquitectura de 3 capas** bien estructurada
+11. ✅ **Sistema de reportes** con exportación inteligente
+12. ✅ **Estadísticas dinámicas** por categorías y marcas
 
 ## 🎯 Próximos Pasos Opcionales
 
-### **📊 Reportes (Funcionalidad Adicional)**
-- Generar reportes de inventario
-- Estadísticas por categoría/marca
-- Exportación a PDF
-- Gráficos de análisis
+### **📊 Sistema de Reportes (IMPLEMENTADO)**
+- ✅ **frmReportes**: Interfaz moderna para generación de reportes
+- ✅ **Inventario Completo**: Listado optimizado con columnas esenciales
+- ✅ **Estadísticas por Categorías**: Conteo y análisis por categoría
+- ✅ **Estadísticas por Marcas**: Conteo y análisis por marca
+- ✅ **Exportación a Imagen**: Generación automática de reportes en PNG
+- ✅ **Estadísticas Generales**: Total artículos, categorías, marcas y precio promedio
+- ✅ **ReporteNegocio**: Clase de negocio especializada para reportes
 
 ### **🔧 Mejoras Futuras**
 - Backup automático de base de datos

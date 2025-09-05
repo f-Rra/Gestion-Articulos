@@ -69,8 +69,8 @@ namespace app
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-            // Por ahora mostrar mensaje, luego crear frmMarcas
-            MessageBox.Show("Reportes - Próximamente", "En desarrollo");
+            frmReportes ventana = new frmReportes();
+            ventana.ShowDialog();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

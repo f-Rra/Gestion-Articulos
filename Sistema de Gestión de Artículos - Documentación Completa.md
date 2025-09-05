@@ -2,169 +2,387 @@
 
 ## Introducción
 
-El Sistema de Gestión de Artículos es una aplicación desarrollada para la administración y catalogación de productos. El sistema permite mantener un registro organizado de artículos con sus respectivas categorías y marcas, facilitando la búsqueda y gestión de productos.
+El Sistema de Gestión de Artículos es una aplicación empresarial desarrollada en C# con arquitectura de 3 capas para la administración completa de inventarios. El sistema implementa un modelo robusto de gestión con autenticación por roles, procedimientos almacenados y una interfaz moderna consistente.
 
-El Sistema de Gestión de Artículos permite:
-- Mantener un catálogo organizado de artículos
-- Categorizar productos por tipo
-- Asociar productos con marcas específicas
-- Gestionar información básica de productos (código, nombre, descripción, precio)
-- Almacenar URLs de imágenes para visualización de productos
+### Características Principales del Sistema:
+- ✅ **Arquitectura de 3 capas** (Dominio, Negocio, Presentación)
+- ✅ **Sistema de autenticación** con roles diferenciados (Admin/Vendedor)
+- ✅ **CRUD completo** para artículos, categorías y marcas
+- ✅ **Sistema de reportes** con exportación inteligente
+- ✅ **Procedimientos almacenados** para todas las operaciones
+- ✅ **Baja lógica** implementada en todas las entidades
+- ✅ **Filtros avanzados** con múltiples criterios de búsqueda
+- ✅ **Interfaz moderna** con diseño consistente y paleta unificada
+- ✅ **Validaciones robustas** en todos los formularios
+- ✅ **Manejo de errores** completo con transacciones seguras
 
 ## Funcionalidades Principales
 
-### Gestión de Artículos
+### 📋 Gestión de Artículos
+- **frmArticulos**: Listado principal con filtros avanzados (Comienza con, Termina con, Contiene)
+- **frmDatos**: Formulario de alta/modificación con validaciones completas
+- **frmDetalles**: Vista detallada de productos con imagen y información completa
+- **Búsqueda en tiempo real** con txtFiltro y actualización automática
+- **Operaciones CRUD** completas usando procedimientos almacenados optimizados
+- **Baja lógica** implementada para mantener integridad referencial
 
-El sistema permite el registro y gestión de artículos con información básica como código, nombre, descripción, precio e imagen. Cada artículo puede ser asociado a una categoría y marca específica para facilitar su organización y búsqueda.
+### 📊 Sistema de Reportes
+- **frmReportes**: Interfaz moderna con 3 tipos de reportes especializados
+- **Inventario Completo**: Vista optimizada sin columnas innecesarias (sin ImagenUrl, IdMarca, IdCategoria)
+- **Estadísticas por Categorías**: Análisis y conteo dinámico por categoría
+- **Estadísticas por Marcas**: Análisis y conteo dinámico por marca
+- **Exportación Inteligente**: Generación automática en PNG con opción de conversión a PDF
+- **ReporteNegocio**: Clase de negocio especializada con consultas optimizadas
+- **Estadísticas Generales**: Total artículos, categorías, marcas y precio promedio
 
-### Categorización de Productos
+### 🏷️ Gestión de Categorías
+- **frmCategorias**: Interfaz moderna con diseño consistente
+- **frmDatosCategoria**: Formulario dedicado para agregar/editar
+- **CRUD completo** con procedimientos almacenados (SP_*Categoria)
+- **Validaciones** de longitud y campos obligatorios
+- **Baja lógica** implementada para preservar relaciones
 
-El sistema incluye un sistema de categorías que permite clasificar los artículos por tipo (Electrónicos, Ropa, Hogar, Deportes, etc.). Esta funcionalidad facilita la organización y búsqueda de productos por categoría.
+### 🔖 Gestión de Marcas
+- **frmMarcas**: Interfaz idéntica al patrón de categorías
+- **frmDatosMarca**: Formulario especializado
+- **Sistema completo** de gestión con procedimientos almacenados
+- **Filtrado dinámico** y búsqueda instantánea
 
-### Gestión de Marcas
+### 🔐 Sistema de Autenticación
+- **frmLogin**: Validación de credenciales segura con SP_VerificarUsuario
+- **Roles diferenciados**: Administrador (acceso completo) y Vendedor (solo artículos)
+- **Navegación por permisos**: Control de acceso basado en roles
+- **UsuarioNegocio**: Clase de negocio para autenticación y gestión de sesiones
 
-Los artículos pueden ser asociados a marcas específicas, permitiendo una mejor organización y facilitando la búsqueda de productos por marca.
+## 🏗️ Arquitectura del Sistema
 
-### Almacenamiento de Imágenes
+### Estructura de Capas
+```
+GdA.sln
+├── Dominio/                    # Capa de Entidades
+│   ├── Articulo.cs            # Modelo con DisplayName para GridView
+│   ├── Categoria.cs           # Modelo con ToString() override
+│   ├── Marca.cs              # Modelo con ToString() override
+│   └── Usuario.cs            # Modelo para autenticación
+├── Negocio/                   # Capa de Lógica de Negocio
+│   ├── AccesoDatos.cs        # Clase centralizada para BD
+│   ├── ArticuloNegocio.cs    # CRUD con procedimientos almacenados
+│   ├── CategoriaNegocio.cs   # CRUD con SP_*Categoria
+│   ├── MarcaNegocio.cs       # CRUD con SP_*Marca
+│   ├── ReporteNegocio.cs     # Lógica de reportes y estadísticas
+│   └── UsuarioNegocio.cs     # Autenticación con SP_VerificarUsuario
+└── app/                       # Capa de Presentación
+    ├── Program.cs            # Punto de entrada con roles
+    ├── frmLogin.cs           # Autenticación inicial
+    ├── frmAdmin.cs           # Panel administrativo
+    ├── frmArticulos.cs       # Gestión principal de productos
+    ├── frmDatos.cs           # Alta/modificación artículos
+    ├── frmDetalles.cs        # Vista detallada
+    ├── frmReportes.cs        # Sistema de reportes y estadísticas
+    ├── frmCategorias.cs      # Gestión de categorías
+    ├── frmDatosCategoria.cs  # Alta/modificación categorías
+    ├── frmMarcas.cs          # Gestión de marcas
+    └── frmDatosMarca.cs      # Alta/modificación marcas
+```
 
-El sistema permite almacenar URLs de imágenes para cada artículo, facilitando la visualización de los productos en la interfaz de usuario.
+### 🗄️ Modelo de Datos
 
-## Modelo de Datos (DER)
+#### Tablas Principales:
+- **ARTICULOS**: Información completa de artículos con baja lógica (Estado BIT)
+- **CATEGORIAS**: Clasificación de productos con baja lógica
+- **MARCAS**: Información de marcas con baja lógica
+- **Usuarios**: Sistema de autenticación con roles
 
-El modelo de datos está compuesto por las siguientes tablas principales: 
+#### Procedimientos Almacenados:
+- **SP_ListarArticulos**: Listado con JOIN optimizado
+- **SP_AltaArticulo**: Inserción con validaciones
+- **SP_ModificarArticulo**: Actualización segura
+- **SP_BajaArticulo**: Baja lógica (Estado = 0)
+- **SP_BuscarArticulos**: Filtros dinámicos corregidos
+- **SP_*Categoria/Marca**: Gestión completa de entidades auxiliares
 
-- **ARTICULOS**: almacena la información de cada artículo (Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio)
-- **CATEGORIAS**: contiene los datos de las categorías de artículos (Id, Descripcion)
-- **MARCAS**: contiene los datos de las marcas de los artículos (Id, Descripcion)
+#### Vistas:
+- **vw_ArticulosCompletos**: JOIN completo para reportes optimizados
 
-## Aplicación WinForm
+## 🔄 Flujo de Navegación del Sistema
 
-### Arquitectura de la Aplicación
+### 🚪 Inicio de Sesión
+```
+Program.cs → frmLogin → Validar credenciales →
+├── 👤 Vendedor → frmArticulos (CRUD completo)
+└── 👨‍💼 Admin → frmAdmin → 
+    ├── [Artículos] → frmArticulos (CRUD completo)
+    ├── [Categorías] → frmCategorias → frmDatosCategoria
+    ├── [Marcas] → frmMarcas → frmDatosMarca
+    └── [Reportes] → frmReportes → Exportación PNG/PDF
+```
 
-La aplicación de escritorio está desarrollada en C# con Windows Forms (.NET Framework 4.7.2) y se compone de los siguientes módulos principales:
+### 🛡️ Permisos por Rol
 
-#### 1. Formulario de Artículos (frmArticulos) - Formulario Principal
-- **Funcionalidad**: Formulario principal para gestión de artículos
+**👤 Vendedor:**
+- ✅ CRUD completo de artículos (agregar/modificar/eliminar)
+- ✅ Búsqueda y filtros avanzados
+- ✅ Vista detallada de productos
+- ❌ No accede a gestión de categorías/marcas
+- ❌ No accede a reportes administrativos
+
+**👨‍💼 Administrador:**
+- ✅ **Acceso completo al sistema**
+- ✅ CRUD de artículos, categorías y marcas
+- ✅ Sistema de reportes completo
+- ✅ Panel administrativo
+- ✅ Gestión de usuarios y configuración
+
+## 💻 Aplicación WinForm
+
+### Tecnologías Utilizadas
+- **Framework**: .NET Framework 4.8.1
+- **Lenguaje**: C# 7.3
+- **UI**: Windows Forms con controles modernos
+- **Base de Datos**: SQL Server con procedimientos almacenados
+- **Arquitectura**: 3 capas (Dominio, Negocio, Presentación)
+
+### Módulos Principales:
+
+#### 1. frmLogin - Autenticación Segura
+- **Funcionalidad**: Punto de entrada con validación de credenciales
 - **Características**:
-  - Listado de artículos en GridView
-  - Sistema de búsqueda y filtrado avanzado
+  - Validación con SP_VerificarUsuario
+  - Control de roles (Admin/Vendedor)
+  - Interfaz moderna con diseño corporativo
+  - Manejo de errores de autenticación
+
+#### 2. frmAdmin - Panel Administrativo
+- **Funcionalidad**: Centro de control para administradores
+- **Características**:
+  - Navegación a todos los módulos del sistema
+  - Acceso a reportes y estadísticas
+  - Gestión de artículos, categorías y marcas
+  - Diseño moderno con iconografía consistente
+
+#### 3. frmArticulos - Gestión Principal de Productos
+- **Funcionalidad**: Módulo central para gestión de artículos
+- **Características**:
+  - DataGridView optimizado con columnas configurables
+  - Sistema de filtros avanzado (Comienza con, Termina con, Contiene)
   - Panel de vista previa de imágenes
-  - Navegación a otros formularios
-  - Panel de control principal
+  - Operaciones CRUD completas
+  - Búsqueda en tiempo real sin recargas innecesarias
 
-#### 2. Formulario de Datos (frmDatos) - Agregar Artículo
-- **Funcionalidad**: Formulario para agregar nuevos artículos
+#### 4. frmDatos - Alta/Modificación de Artículos
+- **Funcionalidad**: Formulario especializado para gestión de datos
 - **Características**:
-  - Formulario de entrada de datos completo
-  - Campos para todos los datos del artículo
+  - Validaciones robustas en todos los campos
+  - ComboBox cargados dinámicamente desde BD
   - Vista previa de imagen en tiempo real
-  - Validaciones de entrada
-  - Botón de vista previa de imagen
+  - Manejo de estados (Alta/Modificación)
+  - Transacciones seguras con rollback
 
-#### 3. Formulario de Detalles (frmDetalles) - Vista Detallada
-- **Funcionalidad**: Visualización detallada de artículos
+#### 5. frmReportes - Sistema de Reportes
+- **Funcionalidad**: Generación de reportes y estadísticas
 - **Características**:
-  - Vista detallada de un artículo seleccionado
-  - Información completa del producto
-  - Visualización de imagen del artículo
-  - Información de categoría y marca
+  - 3 tipos de reportes: Inventario, por Categorías, por Marcas
+  - Exportación inteligente a PNG con opción PDF
+  - Estadísticas dinámicas en tiempo real
+  - Interfaz optimizada sin columnas innecesarias
+  - ReporteNegocio con consultas especializadas
 
-### Flujo de la Aplicación
+#### 6. frmCategorias/frmMarcas - Gestión de Entidades Auxiliares
+- **Funcionalidad**: Gestión completa de categorías y marcas
+- **Características**:
+  - Interfaz unificada con diseño consistente
+  - CRUD completo con procedimientos almacenados
+  - Baja lógica para preservar integridad referencial
+  - Validaciones específicas por entidad
 
-#### 1. Inicio de la Aplicación
-- La aplicación inicia mostrando el formulario `frmArticulos`
-- Este formulario actúa como formulario principal de la aplicación
-- Muestra el listado de artículos en un GridView
-- Incluye sistema de búsqueda y filtrado avanzado
-- Panel de vista previa de imágenes en el lado derecho
+## 🎯 Características Técnicas Destacadas
 
-#### 2. Búsqueda y Filtrado
-- El usuario puede seleccionar el campo de búsqueda (Campo)
-- Seleccionar el criterio de búsqueda (Criterio)
-- Ingresar el texto de filtro en el campo "Filtro"
-- Hacer clic en "Buscar" para aplicar los filtros
-- Los resultados se muestran en el GridView principal
+### 📊 Procedimientos Almacenados Implementados
+- **SP_ListarArticulos**: Listado completo con JOIN optimizado
+- **SP_AltaArticulo**: Inserción con validaciones y transacciones
+- **SP_ModificarArticulo**: Actualización segura con control de concurrencia
+- **SP_BajaArticulo**: Baja lógica (Estado = 0) preservando integridad
+- **SP_BuscarArticulos**: Filtros dinámicos corregidos (sin SQL dinámico)
+- **SP_ListarCategorias/Marcas**: Gestión auxiliar con baja lógica
+- **SP_VerificarUsuario**: Autenticación segura con roles
+- **Consultas de Reportes**: Optimizadas para estadísticas dinámicas
 
-#### 3. Agregar Nuevo Artículo (frmDatos)
-- Acceso desde el formulario principal haciendo clic en "Agregar"
-- Se abre el formulario `frmDatos` para ingresar los datos del nuevo artículo
-- El usuario completa todos los campos: URL Imagen, Código, ID Articulo, Nombre, Marca, Precio, Categoria, Descripción
-- Botón "Vista Previa" para ver la imagen antes de guardar
-- Al hacer clic en "Agregar", el artículo se guarda en la base de datos
-- Se retorna al formulario principal con el listado actualizado
+### 🔍 Sistema de Filtros Avanzado
+- **Comienza con**: Búsqueda por prefijo con LIKE 'texto%'
+- **Termina con**: Búsqueda por sufijo con LIKE '%texto'
+- **Contiene**: Búsqueda parcial con LIKE '%texto%'
+- **Filtro en tiempo real**: Actualización automática sin recargas
+- **Sin resultados**: Mensaje informativo sin recargar todos los artículos
+- **Múltiples campos**: Búsqueda por Código, Nombre, Descripción, Marca, Categoría
 
-#### 4. Gestión de Artículos (frmArticulos)
-- Formulario principal que muestra el listado de artículos
-- El usuario puede editar artículos existentes seleccionándolos y haciendo clic en "Editar"
-- Eliminación de artículos seleccionándolos y haciendo clic en "Eliminar"
-- Vista previa de imágenes en el panel derecho
-- Navegación a vista de detalles
+### 🛠️ Validaciones Implementadas
+- **Campos obligatorios**: Verificación en todos los formularios
+- **Longitud de texto**: Límites apropiados para cada campo
+- **Formato de precios**: Validación numérica con decimales
+- **URLs de imágenes**: Verificación de formato válido
+- **Duplicados**: Prevención en nombres de categorías/marcas
+- **Integridad referencial**: Validación antes de eliminaciones
 
-#### 5. Vista de Detalles (frmDetalles)
-- Acceso desde el formulario principal seleccionando un artículo y haciendo clic en "Detalles"
-- Muestra información detallada del artículo seleccionado
-- Visualización de la imagen del producto en el panel derecho
-- Información completa: ID, Código, Nombre, Marca, Precio, Categoria, URL Imagen, Descripción
-- Retorno al formulario principal
+### 🎨 Estándares de Diseño
+- **Paleta de colores**: #012E40 (azul oscuro), #F2E3D5 (beige), #3CA6A6 (verde-azul)
+- **Tipografía**: Verdana 9.75pt consistente en toda la aplicación
+- **Botones**: FlatStyle.Flat con iconografía moderna
+- **DataGridView**: Configuración uniforme con colores alternados
+- **Paneles superiores**: Logos y títulos con degradados sutiles
 
-#### 6. Navegación entre Formularios
-- `frmArticulos` → `frmDatos`: Agregar nuevo artículo
-- `frmDatos` → `frmArticulos`: Volver al listado principal
-- `frmArticulos` → `frmDetalles`: Ver detalles de un artículo
-- `frmDetalles` → `frmArticulos`: Volver al listado principal
+## 🗄️ Estructura de Base de Datos Detallada
 
-## Estructura de Base de Datos
+### Tablas Principales
 
-### Tabla ARTICULOS
-- **Id**: Identificador único del artículo (Primary Key, Identity)
-- **Codigo**: Código del artículo (VARCHAR(50), NULL)
-- **Nombre**: Nombre del artículo (VARCHAR(50), NULL)
-- **Descripcion**: Descripción detallada del artículo (VARCHAR(150), NULL)
-- **IdMarca**: Referencia a la tabla MARCAS (Foreign Key, NULL)
-- **IdCategoria**: Referencia a la tabla CATEGORIAS (Foreign Key, NULL)
-- **ImagenUrl**: URL de la imagen del artículo (VARCHAR(1000), NULL)
-- **Precio**: Precio del artículo (MONEY, NULL)
+#### ARTICULOS
+- **Id**: INT IDENTITY(1,1) PRIMARY KEY
+- **Codigo**: VARCHAR(50) - Código único del artículo
+- **Nombre**: VARCHAR(50) - Nombre del producto
+- **Descripcion**: VARCHAR(150) - Descripción detallada
+- **IdMarca**: INT FOREIGN KEY → MARCAS(Id)
+- **IdCategoria**: INT FOREIGN KEY → CATEGORIAS(Id)
+- **ImagenUrl**: VARCHAR(1000) - URL de imagen del producto
+- **Precio**: MONEY - Precio del artículo
+- **Estado**: BIT DEFAULT 1 - Baja lógica (1=Activo, 0=Inactivo)
 
-### Tabla CATEGORIAS
-- **Id**: Identificador único de la categoría (Primary Key, Identity)
-- **Descripcion**: Descripción de la categoría (VARCHAR(50), NULL)
+#### CATEGORIAS
+- **Id**: INT IDENTITY(1,1) PRIMARY KEY
+- **Descripcion**: VARCHAR(50) - Nombre de la categoría
+- **Estado**: BIT DEFAULT 1 - Baja lógica
 
-### Tabla MARCAS
-- **Id**: Identificador único de la marca (Primary Key, Identity)
-- **Descripcion**: Descripción de la marca (VARCHAR(50), NULL)
+#### MARCAS
+- **Id**: INT IDENTITY(1,1) PRIMARY KEY
+- **Descripcion**: VARCHAR(50) - Nombre de la marca
+- **Estado**: BIT DEFAULT 1 - Baja lógica
 
-## Relaciones del Modelo
+#### Usuarios
+- **Id**: INT IDENTITY(1,1) PRIMARY KEY
+- **Usuario**: VARCHAR(50) - Nombre de usuario
+- **Pass**: VARCHAR(50) - Contraseña
+- **TipoUsuario**: INT - Rol (1=Admin, 2=Vendedor)
 
+### Relaciones del Modelo
 - **MARCAS (1) → ARTICULOS (N)**: Una marca puede tener múltiples artículos
 - **CATEGORIAS (1) → ARTICULOS (N)**: Una categoría puede tener múltiples artículos
+- **Usuarios (1) → Sesiones (N)**: Control de acceso por roles
 
-## Funcionalidades Técnicas
+### Vistas Especializadas
 
-### Validaciones
-- Validación de campos obligatorios al agregar/editar artículos
-- Validación de formato de URLs de imágenes
-- Validación de precios numéricos
-- Validación de códigos únicos
+#### vw_ArticulosCompletos
+```sql
+SELECT 
+    a.Id, a.Codigo, a.Nombre, a.Descripcion,
+    m.Descripcion AS Marca, c.Descripcion AS Categoria,
+    a.ImagenUrl, a.Precio, a.Estado,
+    FORMAT(a.Precio, 'C2') AS PrecioFormateado
+FROM ARTICULOS a
+LEFT JOIN MARCAS m ON a.IdMarca = m.Id
+LEFT JOIN CATEGORIAS c ON a.IdCategoria = c.Id
+WHERE a.Estado = 1
+```
 
-### Operaciones CRUD
-- **Create**: Agregar nuevos artículos
-- **Read**: Listar artículos y ver detalles
-- **Update**: Editar artículos existentes
-- **Delete**: Eliminar artículos
+## 🚀 Guía de Instalación y Configuración
 
-### Búsqueda y Filtrado
-- Búsqueda por diferentes campos (Campo)
-- Múltiples criterios de búsqueda (Criterio)
-- Filtrado por texto libre
-- Vista previa de imágenes en tiempo real
+### Requisitos del Sistema
+- **Visual Studio 2019 o superior**
+- **.NET Framework 4.8.1**
+- **SQL Server 2016 o superior** (LocalDB o instancia completa)
+- **Windows 10 o superior**
 
-## Conclusión
+### Configuración de Base de Datos
+1. **Ejecutar el script completo**:
+   ```sql
+   Script_Sistema_Gestion_Articulos_Unificado.sql
+   ```
+2. **Configurar cadena de conexión** en `AccesoDatos.cs`
+3. **Verificar procedimientos almacenados** creados correctamente
 
-El Sistema de Gestión de Artículos proporciona una solución completa para la administración de un catálogo de productos. Su estructura simple pero efectiva permite mantener organizados los artículos por categorías y marcas, facilitando la búsqueda y gestión de productos.
+### Credenciales de Prueba
+- **Administrador**: `admin` / `admin123`
+- **Vendedor**: `vendedor` / `vend123`
 
-El sistema está diseñado para ser escalable y puede ser extendido con funcionalidades adicionales según las necesidades específicas del negocio, como:
-- Gestión de stock
-- Reportes de productos
-- Integración con sistemas de ventas
-- Gestión de proveedores
-- Sistema de usuarios y permisos
+### Compilación y Ejecución
+1. Abrir `GdA.sln` en Visual Studio
+2. Restaurar paquetes NuGet si es necesario
+3. Compilar solución (Ctrl+Shift+B)
+4. Ejecutar (F5) - Se abrirá `frmLogin`
+
+## 📈 Funcionalidades Técnicas Avanzadas
+
+### Sistema de Transacciones
+- **Transacciones explícitas** en todos los procedimientos almacenados
+- **Rollback automático** en caso de errores
+- **Control de concurrencia** en operaciones críticas
+- **Manejo de deadlocks** y timeouts
+
+### Optimizaciones de Rendimiento
+- **Índices optimizados** en campos de búsqueda frecuente
+- **Consultas parametrizadas** para prevenir SQL Injection
+- **Lazy loading** en carga de imágenes
+- **Cache de ComboBox** para mejorar rendimiento
+
+### Seguridad Implementada
+- **Autenticación por roles** con control granular
+- **Validación de entrada** en todos los formularios
+- **Prevención de SQL Injection** con parámetros
+- **Baja lógica** para preservar integridad de datos
+
+## 📊 Sistema de Reportes Detallado
+
+### Tipos de Reportes Disponibles
+
+#### 1. Inventario Completo
+- **Descripción**: Listado optimizado de todos los artículos activos
+- **Columnas**: Código, Nombre, Descripción, Marca, Categoría, Precio
+- **Optimización**: Eliminadas columnas innecesarias (ImagenUrl, IdMarca, IdCategoria)
+- **Ordenamiento**: Por nombre alfabéticamente
+
+#### 2. Estadísticas por Categorías
+- **Descripción**: Análisis de distribución por categorías
+- **Información**: Categoría, Cantidad de artículos, Precio promedio
+- **Cálculos**: COUNT(*) y AVG(Precio) dinámicos
+- **Agrupamiento**: GROUP BY Categoria
+
+#### 3. Estadísticas por Marcas
+- **Descripción**: Análisis de distribución por marcas
+- **Información**: Marca, Cantidad de artículos, Precio promedio
+- **Cálculos**: COUNT(*) y AVG(Precio) dinámicos
+- **Agrupamiento**: GROUP BY Marca
+
+### Exportación Inteligente
+- **Formato principal**: PNG de alta calidad
+- **Contenido**: Títulos, tabla de datos, estadísticas generales
+- **Conversión**: Opción de convertir a PDF desde cualquier visor
+- **Apertura automática**: Se abre el archivo generado
+- **Ubicación**: Carpeta seleccionada por el usuario
+
+## 🔧 Mejoras Futuras Planificadas
+
+### Funcionalidades Adicionales
+- **Gestión de stock**: Control de inventario con alertas
+- **Backup automático**: Respaldo programado de base de datos
+- **Log de auditoría**: Registro de cambios y operaciones
+- **Importación/exportación**: Datos desde/hacia Excel
+- **Notificaciones**: Stock bajo, precios actualizados
+- **Edición inline**: Para categorías y marcas (placeholders preparados)
+
+### Integraciones Posibles
+- **Sistemas de ventas**: Conexión con POS
+- **Gestión de proveedores**: Módulo de compras
+- **E-commerce**: Sincronización con tiendas online
+- **Códigos de barras**: Lectura y generación
+- **Reportes avanzados**: Gráficos y dashboards
+
+## 📝 Conclusión
+
+El Sistema de Gestión de Artículos representa una solución empresarial completa y robusta para la administración de inventarios. Con su arquitectura de 3 capas, sistema de autenticación por roles, procedimientos almacenados optimizados y interfaz moderna consistente, proporciona una base sólida para la gestión eficiente de productos.
+
+### Logros Principales:
+- ✅ **100% funcional** con todas las características implementadas
+- ✅ **Arquitectura escalable** preparada para futuras expansiones
+- ✅ **Seguridad robusta** con autenticación y validaciones completas
+- ✅ **Rendimiento optimizado** con procedimientos almacenados
+- ✅ **Interfaz moderna** con diseño consistente y profesional
+- ✅ **Sistema de reportes** con exportación inteligente
+
+El sistema está preparado para entornos de producción y puede ser extendido según las necesidades específicas del negocio, manteniendo siempre los estándares de calidad, seguridad y rendimiento implementados.
