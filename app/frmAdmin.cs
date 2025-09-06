@@ -73,6 +73,13 @@ namespace app
             ventana.ShowDialog();
         }
 
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            frmStock ventana = new frmStock();
+            ventana.ShowDialog();
+            cargarEstadisticas(); // Actualizar estadísticas al volver
+        }
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show("¿Está seguro que desea salir?",

@@ -111,6 +111,90 @@ namespace app
             }
         }
 
+        private void btnBajoStock_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable articulosBajoStock = reporteNegocio.obtenerArticulosBajoStock(5);
+                dgvReportes.DataSource = articulosBajoStock;
+                lblTituloReporte.Text = "Artículos con Bajo Stock (≤ 5 unidades)";
+                
+                // Configurar DataGridView
+                configurarDataGridView();
+                
+                // Cambiar color del botón activo
+                resetearColoresBotones();
+                btnBajoStock.BackColor = Color.FromArgb(2, 103, 115);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar reporte de bajo stock: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSinStock_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable articulosSinStock = reporteNegocio.obtenerArticulosSinStock();
+                dgvReportes.DataSource = articulosSinStock;
+                lblTituloReporte.Text = "Artículos Sin Stock (0 unidades)";
+                
+                // Configurar DataGridView
+                configurarDataGridView();
+                
+                // Cambiar color del botón activo
+                resetearColoresBotones();
+                btnSinStock.BackColor = Color.FromArgb(2, 103, 115);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar reporte sin stock: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnStockCategorias_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable stockCategorias = reporteNegocio.obtenerEstadisticasStockPorCategoria();
+                dgvReportes.DataSource = stockCategorias;
+                lblTituloReporte.Text = "Estadísticas de Stock por Categoría";
+                
+                // Configurar DataGridView
+                configurarDataGridView();
+                
+                // Cambiar color del botón activo
+                resetearColoresBotones();
+                btnStockCategorias.BackColor = Color.FromArgb(2, 103, 115);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar estadísticas de stock por categoría: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnStockMarcas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable stockMarcas = reporteNegocio.obtenerEstadisticasStockPorMarca();
+                dgvReportes.DataSource = stockMarcas;
+                lblTituloReporte.Text = "Estadísticas de Stock por Marca";
+                
+                // Configurar DataGridView
+                configurarDataGridView();
+                
+                // Cambiar color del botón activo
+                resetearColoresBotones();
+                btnStockMarcas.BackColor = Color.FromArgb(2, 103, 115);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar estadísticas de stock por marca: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnEstadisticasMarcas_Click(object sender, EventArgs e)
         {
             try
@@ -235,6 +319,10 @@ namespace app
             btnInventarioCompleto.BackColor = Color.FromArgb(1, 46, 64);
             btnEstadisticasCategorias.BackColor = Color.FromArgb(1, 46, 64);
             btnEstadisticasMarcas.BackColor = Color.FromArgb(1, 46, 64);
+            btnBajoStock.BackColor = Color.FromArgb(1, 46, 64);
+            btnSinStock.BackColor = Color.FromArgb(1, 46, 64);
+            btnStockCategorias.BackColor = Color.FromArgb(1, 46, 64);
+            btnStockMarcas.BackColor = Color.FromArgb(1, 46, 64);
         }
     }
 }

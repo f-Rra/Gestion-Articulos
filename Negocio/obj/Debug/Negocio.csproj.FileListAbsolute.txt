@@ -15,4 +15,4 @@ C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\obj\Debug\Negoci
 C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
 C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\obj\Debug\Negocio.dll
 C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\obj\Debug\Negocio.pdb
-C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\obj\Debug\Negocio.csproj.Up2Date
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\obj\Debug\Negocio.csproj.CopyComplete

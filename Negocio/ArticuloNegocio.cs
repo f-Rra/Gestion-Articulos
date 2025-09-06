@@ -33,6 +33,7 @@ namespace Negocio
                     aux.categoria.descripcion = (string)datos.Lector["Categoria"];
                     aux.urlImagen = (string)datos.Lector["ImagenUrl"];
                     aux.precio = (decimal)datos.Lector["Precio"];
+                    aux.stock = (int)datos.Lector["Stock"];
                     lista.Add(aux);
                 }
                 return lista;
@@ -61,6 +62,7 @@ namespace Negocio
                 datos.setearParametro("@IdCategoria", nuevo.categoria.id);
                 datos.setearParametro("@ImagenUrl", nuevo.urlImagen);
                 datos.setearParametro("@Precio", nuevo.precio);
+                datos.setearParametro("@Stock", nuevo.stock);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -87,6 +89,7 @@ namespace Negocio
                 datos.setearParametro("@IdCategoria", existente.categoria.id);
                 datos.setearParametro("@ImagenUrl", existente.urlImagen);
                 datos.setearParametro("@Precio", existente.precio);
+                datos.setearParametro("@Stock", existente.stock);
                 datos.setearParametro("@Id", existente.id); 
                 datos.ejecutarAccion();
             }
@@ -159,6 +162,7 @@ namespace Negocio
                     aux.categoria.descripcion = datos.Lector["Categoria"].ToString();
                     aux.urlImagen = datos.Lector["ImagenUrl"].ToString();
                     aux.precio = Convert.ToDecimal(datos.Lector["Precio"]);
+                    aux.stock = Convert.ToInt32(datos.Lector["Stock"]);
                     lista.Add(aux);
                 }
                 return lista;
@@ -189,6 +193,154 @@ namespace Negocio
                 {
                     throw new Exception("No se pudo obtener el ultimo ID");
                 }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        // MÉTODOS DE GESTIÓN DE STOCK
+
+        public void actualizarStock(int idArticulo, int nuevoStock)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SP_ActualizarStock");
+                datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
+                datos.setearParametro("@Id", idArticulo);
+                datos.setearParametro("@NuevoStock", nuevoStock);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public int sumarStock(int idArticulo, int cantidad)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SP_SumarStock");
+                datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
+                datos.setearParametro("@Id", idArticulo);
+                datos.setearParametro("@Cantidad", cantidad);
+                datos.ejecutarLectura();
+                
+                if (datos.Lector.Read())
+                {
+                    return (int)datos.Lector["Stock"];
+                }
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public int restarStock(int idArticulo, int cantidad)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SP_RestarStock");
+                datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
+                datos.setearParametro("@Id", idArticulo);
+                datos.setearParametro("@Cantidad", cantidad);
+                datos.ejecutarLectura();
+                
+                if (datos.Lector.Read())
+                {
+                    return (int)datos.Lector["Stock"];
+                }
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public List<Articulo> obtenerArticulosBajoStock(int stockMinimo = 5)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SP_ArticulosBajoStock");
+                datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
+                datos.setearParametro("@StockMinimo", stockMinimo);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.id = Convert.ToInt32(datos.Lector["Id"]);
+                    aux.codigo = datos.Lector["Codigo"].ToString();
+                    aux.nombre = datos.Lector["Nombre"].ToString();
+                    aux.marca = new Marca();
+                    aux.marca.descripcion = datos.Lector["Marca"].ToString();
+                    aux.categoria = new Categoria();
+                    aux.categoria.descripcion = datos.Lector["Categoria"].ToString();
+                    aux.stock = Convert.ToInt32(datos.Lector["Stock"]);
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public List<Articulo> obtenerArticulosSinStock()
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SP_ArticulosSinStock");
+                datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.id = Convert.ToInt32(datos.Lector["Id"]);
+                    aux.codigo = datos.Lector["Codigo"].ToString();
+                    aux.nombre = datos.Lector["Nombre"].ToString();
+                    aux.marca = new Marca();
+                    aux.marca.descripcion = datos.Lector["Marca"].ToString();
+                    aux.categoria = new Categoria();
+                    aux.categoria.descripcion = datos.Lector["Categoria"].ToString();
+                    aux.stock = Convert.ToInt32(datos.Lector["Stock"]);
+                    lista.Add(aux);
+                }
+                return lista;
             }
             catch (Exception ex)
             {

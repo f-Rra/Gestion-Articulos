@@ -29,8 +29,10 @@ namespace app
         {
             cargarArticulos();
             cargarCBOs();
-            ocultarColumnas();
-            cargarImagen(listadoArticulos[0].urlImagen);
+            if (listadoArticulos != null && listadoArticulos.Count > 0)
+            {
+                cargarImagen(listadoArticulos[0].urlImagen);
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -117,6 +119,7 @@ namespace app
                 else
                 {
                     dgvArticulos.DataSource = resultados;
+                    ocultarColumnas(); // Aplicar formato y colores a los resultados de búsqueda
                 }
             }
             catch (Exception ex)
@@ -187,6 +190,7 @@ namespace app
             {
                 listadoArticulos = neg.listar();
                 dgvArticulos.DataSource = listadoArticulos;
+                ocultarColumnas(); // Aplicar formato y colores después de cargar datos
             }
             catch (Exception ex)
             {
@@ -200,6 +204,46 @@ namespace app
             dgvArticulos.Columns["Descripcion"].Visible = false;
             dgvArticulos.Columns["UrlImagen"].Visible = false;
             dgvArticulos.Columns["Precio"].Visible = false;
+            
+            // Configurar columna Stock para que sea visible y con formato apropiado
+            if (dgvArticulos.Columns["Stock"] != null)
+            {
+                dgvArticulos.Columns["Stock"].Visible = true;
+                dgvArticulos.Columns["Stock"].Width = 80;
+                dgvArticulos.Columns["Stock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            
+            // Configurar columna EstadoStock para mostrar el estado visual
+            if (dgvArticulos.Columns["EstadoStock"] != null)
+            {
+                dgvArticulos.Columns["EstadoStock"].Visible = true;
+                dgvArticulos.Columns["EstadoStock"].Width = 100;
+                dgvArticulos.Columns["EstadoStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                
+                // Aplicar colores según el estado del stock
+                foreach (DataGridViewRow row in dgvArticulos.Rows)
+                {
+                    if (row.DataBoundItem != null)
+                    {
+                        Articulo articulo = (Articulo)row.DataBoundItem;
+                        if (articulo.stock == 0)
+                        {
+                            row.Cells["EstadoStock"].Style.BackColor = Color.LightCoral;
+                            row.Cells["EstadoStock"].Style.ForeColor = Color.DarkRed;
+                        }
+                        else if (articulo.stock <= 5)
+                        {
+                            row.Cells["EstadoStock"].Style.BackColor = Color.LightYellow;
+                            row.Cells["EstadoStock"].Style.ForeColor = Color.DarkOrange;
+                        }
+                        else
+                        {
+                            row.Cells["EstadoStock"].Style.BackColor = Color.LightGreen;
+                            row.Cells["EstadoStock"].Style.ForeColor = Color.DarkGreen;
+                        }
+                    }
+                }
+            }
         }
 
         private void cargarImagen(string imagen)

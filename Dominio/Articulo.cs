@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -40,6 +40,36 @@ namespace Dominio
         public string precioF
         {
             get { return _precio.ToString("C", CultureInfo.CreateSpecificCulture("es-AR"));}
+        }
+
+        private int _stock;
+
+        [DisplayName(" Stock")]
+        public int stock
+        {
+            get { return _stock; }
+            set { _stock = value; }
+        }
+
+        [DisplayName(" Estado Stock")]
+        public string estadoStock
+        {
+            get 
+            { 
+                return _stock > 0 ? "Disponible" : "Sin Stock";
+            }
+        }
+
+        // Método para verificar si hay stock disponible
+        public bool tieneStock()
+        {
+            return _stock > 0;
+        }
+
+        // Método para verificar si el stock es suficiente para una cantidad
+        public bool stockSuficiente(int cantidad)
+        {
+            return _stock >= cantidad;
         }
     }
 }

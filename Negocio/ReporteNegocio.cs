@@ -45,14 +45,16 @@ namespace Negocio
             DataTable tabla = new DataTable();
             try
             {
-                // Seleccionar solo las columnas necesarias para el reporte
+                // Seleccionar columnas incluyendo Stock y EstadoStock
                 datos.setearConsulta(@"SELECT 
                     Codigo, 
                     Nombre, 
                     Descripcion, 
                     Marca, 
                     Categoria, 
-                    Precio
+                    Precio,
+                    Stock,
+                    EstadoStock
                 FROM vw_ArticulosCompletos 
                 ORDER BY Nombre");
                 datos.ejecutarLectura();
@@ -213,24 +215,117 @@ namespace Negocio
         }
 
         /// <summary>
-        /// Obtiene lista de artículos con bajo stock (menos de 5 unidades)
-        /// Utiliza la vista vw_ArticulosCompletos con filtro
+        /// Obtiene lista de artículos con bajo stock usando procedimiento almacenado
         /// </summary>
+        /// <param name="stockMinimo">Nivel mínimo de stock para considerar como bajo</param>
         /// <returns>DataTable con artículos de bajo stock</returns>
-        public DataTable obtenerArticulosBajoStock()
+        public DataTable obtenerArticulosBajoStock(int stockMinimo = 5)
         {
             AccesoDatos datos = new AccesoDatos();
             DataTable tabla = new DataTable();
             try
             {
-                // Asumiendo que existe un campo Stock en la vista o tabla
-                datos.setearConsulta(@"SELECT * FROM vw_ArticulosCompletos 
-                                     WHERE Id IN (
-                                         SELECT Id FROM ARTICULOS 
-                                         WHERE Estado = 1 
-                                         -- Aquí se podría agregar lógica de stock si existe el campo
-                                     ) 
-                                     ORDER BY Nombre");
+                datos.setearConsulta("SP_ArticulosBajoStock");
+                datos.setearTipoComando(CommandType.StoredProcedure);
+                datos.setearParametro("@StockMinimo", stockMinimo);
+                datos.ejecutarLectura();
+                tabla.Load(datos.Lector);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        /// <summary>
+        /// Obtiene lista de artículos sin stock usando procedimiento almacenado
+        /// </summary>
+        /// <returns>DataTable con artículos sin stock</returns>
+        public DataTable obtenerArticulosSinStock()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            DataTable tabla = new DataTable();
+            try
+            {
+                datos.setearConsulta("SP_ArticulosSinStock");
+                datos.setearTipoComando(CommandType.StoredProcedure);
+                datos.ejecutarLectura();
+                tabla.Load(datos.Lector);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        /// <summary>
+        /// Obtiene estadísticas de stock por categoría
+        /// </summary>
+        /// <returns>DataTable con estadísticas de stock por categoría</returns>
+        public DataTable obtenerEstadisticasStockPorCategoria()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            DataTable tabla = new DataTable();
+            try
+            {
+                datos.setearConsulta(@"SELECT 
+                    c.Descripcion as Categoria,
+                    COUNT(a.Id) as TotalArticulos,
+                    SUM(a.Stock) as StockTotal,
+                    AVG(CAST(a.Stock as FLOAT)) as StockPromedio,
+                    COUNT(CASE WHEN a.Stock = 0 THEN 1 END) as ArticulosSinStock,
+                    COUNT(CASE WHEN a.Stock <= 5 THEN 1 END) as ArticulosBajoStock
+                FROM ARTICULOS a
+                INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id
+                WHERE a.Estado = 1 AND c.Estado = 1
+                GROUP BY c.Descripcion
+                ORDER BY StockTotal DESC");
+                datos.ejecutarLectura();
+                tabla.Load(datos.Lector);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        /// <summary>
+        /// Obtiene estadísticas de stock por marca
+        /// </summary>
+        /// <returns>DataTable con estadísticas de stock por marca</returns>
+        public DataTable obtenerEstadisticasStockPorMarca()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            DataTable tabla = new DataTable();
+            try
+            {
+                datos.setearConsulta(@"SELECT 
+                    m.Descripcion as Marca,
+                    COUNT(a.Id) as TotalArticulos,
+                    SUM(a.Stock) as StockTotal,
+                    AVG(CAST(a.Stock as FLOAT)) as StockPromedio,
+                    COUNT(CASE WHEN a.Stock = 0 THEN 1 END) as ArticulosSinStock,
+                    COUNT(CASE WHEN a.Stock <= 5 THEN 1 END) as ArticulosBajoStock
+                FROM ARTICULOS a
+                INNER JOIN MARCAS m ON a.IdMarca = m.Id
+                WHERE a.Estado = 1 AND m.Estado = 1
+                GROUP BY m.Descripcion
+                ORDER BY StockTotal DESC");
                 datos.ejecutarLectura();
                 tabla.Load(datos.Lector);
                 return tabla;

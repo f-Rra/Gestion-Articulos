@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -39,6 +39,11 @@ namespace app
                 if (articulo != null)
                 {
                     cargarArticulo();
+                }
+                else
+                {
+                    // Inicializar Stock con valor por defecto para artículos nuevos
+                    txtStock.Text = "0";
                 }
             }
             catch (Exception ex)
@@ -100,6 +105,7 @@ namespace app
             articulo.marca = (Marca)cboMarca.SelectedItem;
             articulo.categoria = (Categoria)cboCategoria.SelectedItem;
             articulo.precio = decimal.Parse(txtPrecio.Text, CultureInfo.InvariantCulture);
+            articulo.stock = int.Parse(txtStock.Text);
         }
 
         private void cargarArticulo()
@@ -111,6 +117,7 @@ namespace app
             cboMarca.SelectedValue = articulo.marca.id;
             cboCategoria.SelectedValue = articulo.categoria.id;
             txtPrecio.Text = articulo.precio.ToString(CultureInfo.InvariantCulture);
+            txtStock.Text = articulo.stock.ToString();
             cargarImagen(articulo.urlImagen);
             txtID.Text = articulo.id.ToString();
         }
@@ -143,11 +150,23 @@ namespace app
         private bool validarCampos()
         {
             if (string.IsNullOrWhiteSpace(txtCodigo.Text) || string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                string.IsNullOrWhiteSpace(txtDescripcion.Text) || string.IsNullOrWhiteSpace(txtPrecio.Text))
+                string.IsNullOrWhiteSpace(txtDescripcion.Text) || string.IsNullOrWhiteSpace(txtPrecio.Text) ||
+                string.IsNullOrWhiteSpace(txtStock.Text))
                 return false;
             if (!soloPrecio(txtPrecio.Text))
             {
-                MessageBox.Show("Solo se permiten numeros y puntos(.) en el campo", "Error en el ingreso");
+                MessageBox.Show("Solo se permiten numeros y puntos(.) en el campo precio", "Error en el ingreso");
+                return false;
+            }
+            if (!soloNumeros(txtStock.Text))
+            {
+                MessageBox.Show("Solo se permiten numeros enteros en el campo stock", "Error en el ingreso");
+                return false;
+            }
+            int stock = int.Parse(txtStock.Text);
+            if (stock < 0)
+            {
+                MessageBox.Show("El stock no puede ser negativo", "Error en el ingreso");
                 return false;
             }
             return true;
@@ -171,6 +190,33 @@ namespace app
                 return false;
             }
             return true;
+        }
+
+        private bool soloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!char.IsDigit(caracter))
+                    return false;
+            }
+            return true;
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtStock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Solo permitir números y teclas de control (backspace, delete, etc.)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

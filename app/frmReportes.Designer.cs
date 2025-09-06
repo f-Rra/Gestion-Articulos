@@ -34,6 +34,10 @@ namespace app
             this.btnInventarioCompleto = new System.Windows.Forms.Button();
             this.btnEstadisticasCategorias = new System.Windows.Forms.Button();
             this.btnEstadisticasMarcas = new System.Windows.Forms.Button();
+            this.btnBajoStock = new System.Windows.Forms.Button();
+            this.btnSinStock = new System.Windows.Forms.Button();
+            this.btnStockCategorias = new System.Windows.Forms.Button();
+            this.btnStockMarcas = new System.Windows.Forms.Button();
             this.btnExportarPDF = new System.Windows.Forms.Button();
             this.dgvReportes = new System.Windows.Forms.DataGridView();
             this.lblTotalArticulos = new System.Windows.Forms.Label();
@@ -121,13 +125,69 @@ namespace app
             this.btnEstadisticasMarcas.UseVisualStyleBackColor = false;
             this.btnEstadisticasMarcas.Click += new System.EventHandler(this.btnEstadisticasMarcas_Click);
             // 
+            // btnBajoStock
+            // 
+            this.btnBajoStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.btnBajoStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBajoStock.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBajoStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
+            this.btnBajoStock.Location = new System.Drawing.Point(606, 100);
+            this.btnBajoStock.Name = "btnBajoStock";
+            this.btnBajoStock.Size = new System.Drawing.Size(180, 35);
+            this.btnBajoStock.TabIndex = 12;
+            this.btnBajoStock.Text = "⚠️ Bajo Stock";
+            this.btnBajoStock.UseVisualStyleBackColor = false;
+            this.btnBajoStock.Click += new System.EventHandler(this.btnBajoStock_Click);
+            // 
+            // btnSinStock
+            // 
+            this.btnSinStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.btnSinStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSinStock.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSinStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
+            this.btnSinStock.Location = new System.Drawing.Point(12, 140);
+            this.btnSinStock.Name = "btnSinStock";
+            this.btnSinStock.Size = new System.Drawing.Size(180, 35);
+            this.btnSinStock.TabIndex = 13;
+            this.btnSinStock.Text = "❌ Sin Stock";
+            this.btnSinStock.UseVisualStyleBackColor = false;
+            this.btnSinStock.Click += new System.EventHandler(this.btnSinStock_Click);
+            // 
+            // btnStockCategorias
+            // 
+            this.btnStockCategorias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.btnStockCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockCategorias.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockCategorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
+            this.btnStockCategorias.Location = new System.Drawing.Point(210, 140);
+            this.btnStockCategorias.Name = "btnStockCategorias";
+            this.btnStockCategorias.Size = new System.Drawing.Size(180, 35);
+            this.btnStockCategorias.TabIndex = 14;
+            this.btnStockCategorias.Text = "📦 Stock por Categorías";
+            this.btnStockCategorias.UseVisualStyleBackColor = false;
+            this.btnStockCategorias.Click += new System.EventHandler(this.btnStockCategorias_Click);
+            // 
+            // btnStockMarcas
+            // 
+            this.btnStockMarcas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.btnStockMarcas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockMarcas.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockMarcas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
+            this.btnStockMarcas.Location = new System.Drawing.Point(408, 140);
+            this.btnStockMarcas.Name = "btnStockMarcas";
+            this.btnStockMarcas.Size = new System.Drawing.Size(180, 35);
+            this.btnStockMarcas.TabIndex = 15;
+            this.btnStockMarcas.Text = "🏭 Stock por Marcas";
+            this.btnStockMarcas.UseVisualStyleBackColor = false;
+            this.btnStockMarcas.Click += new System.EventHandler(this.btnStockMarcas_Click);
+            // 
             // btnExportarPDF
             // 
             this.btnExportarPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(103)))), ((int)(((byte)(115)))));
             this.btnExportarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportarPDF.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportarPDF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.btnExportarPDF.Location = new System.Drawing.Point(606, 100);
+            this.btnExportarPDF.Location = new System.Drawing.Point(12, 180);
             this.btnExportarPDF.Name = "btnExportarPDF";
             this.btnExportarPDF.Size = new System.Drawing.Size(180, 35);
             this.btnExportarPDF.TabIndex = 4;
@@ -143,7 +203,7 @@ namespace app
             this.dgvReportes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.dgvReportes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvReportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReportes.Location = new System.Drawing.Point(12, 165);
+            this.dgvReportes.Location = new System.Drawing.Point(12, 225);
             this.dgvReportes.Name = "dgvReportes";
             this.dgvReportes.ReadOnly = true;
             this.dgvReportes.RowHeadersVisible = false;
@@ -156,7 +216,7 @@ namespace app
             this.lblTituloReporte.AutoSize = true;
             this.lblTituloReporte.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblTituloReporte.Location = new System.Drawing.Point(12, 140);
+            this.lblTituloReporte.Location = new System.Drawing.Point(12, 200);
             this.lblTituloReporte.Name = "lblTituloReporte";
             this.lblTituloReporte.Size = new System.Drawing.Size(0, 17);
             this.lblTituloReporte.TabIndex = 11;
@@ -166,7 +226,7 @@ namespace app
             this.lblTotalArticulos.AutoSize = true;
             this.lblTotalArticulos.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
             this.lblTotalArticulos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblTotalArticulos.Location = new System.Drawing.Point(12, 420);
+            this.lblTotalArticulos.Location = new System.Drawing.Point(12, 480);
             this.lblTotalArticulos.Name = "lblTotalArticulos";
             this.lblTotalArticulos.Size = new System.Drawing.Size(150, 16);
             this.lblTotalArticulos.TabIndex = 6;
@@ -177,7 +237,7 @@ namespace app
             this.lblTotalCategorias.AutoSize = true;
             this.lblTotalCategorias.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
             this.lblTotalCategorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblTotalCategorias.Location = new System.Drawing.Point(210, 420);
+            this.lblTotalCategorias.Location = new System.Drawing.Point(210, 480);
             this.lblTotalCategorias.Name = "lblTotalCategorias";
             this.lblTotalCategorias.Size = new System.Drawing.Size(160, 16);
             this.lblTotalCategorias.TabIndex = 7;
@@ -188,7 +248,7 @@ namespace app
             this.lblTotalMarcas.AutoSize = true;
             this.lblTotalMarcas.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
             this.lblTotalMarcas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblTotalMarcas.Location = new System.Drawing.Point(408, 420);
+            this.lblTotalMarcas.Location = new System.Drawing.Point(408, 480);
             this.lblTotalMarcas.Name = "lblTotalMarcas";
             this.lblTotalMarcas.Size = new System.Drawing.Size(130, 16);
             this.lblTotalMarcas.TabIndex = 8;
@@ -199,7 +259,7 @@ namespace app
             this.lblPrecioPromedio.AutoSize = true;
             this.lblPrecioPromedio.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
             this.lblPrecioPromedio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblPrecioPromedio.Location = new System.Drawing.Point(606, 420);
+            this.lblPrecioPromedio.Location = new System.Drawing.Point(606, 480);
             this.lblPrecioPromedio.Name = "lblPrecioPromedio";
             this.lblPrecioPromedio.Size = new System.Drawing.Size(160, 16);
             this.lblPrecioPromedio.TabIndex = 9;
@@ -209,13 +269,17 @@ namespace app
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(73)))), ((int)(((byte)(89)))));
-            this.ClientSize = new System.Drawing.Size(854, 491);
+            this.ClientSize = new System.Drawing.Size(854, 520);
             this.Controls.Add(this.lblTituloReporte);
             this.Controls.Add(this.lblPrecioPromedio);
             this.Controls.Add(this.lblTotalMarcas);
             this.Controls.Add(this.lblTotalCategorias);
             this.Controls.Add(this.lblTotalArticulos);
             this.Controls.Add(this.dgvReportes);
+            this.Controls.Add(this.btnStockMarcas);
+            this.Controls.Add(this.btnStockCategorias);
+            this.Controls.Add(this.btnSinStock);
+            this.Controls.Add(this.btnBajoStock);
             this.Controls.Add(this.btnExportarPDF);
             this.Controls.Add(this.btnEstadisticasMarcas);
             this.Controls.Add(this.btnEstadisticasCategorias);
@@ -250,5 +314,9 @@ namespace app
         private System.Windows.Forms.Label lblTotalMarcas;
         private System.Windows.Forms.Label lblPrecioPromedio;
         private System.Windows.Forms.Label lblTituloReporte;
+        private System.Windows.Forms.Button btnBajoStock;
+        private System.Windows.Forms.Button btnSinStock;
+        private System.Windows.Forms.Button btnStockCategorias;
+        private System.Windows.Forms.Button btnStockMarcas;
     }
 }

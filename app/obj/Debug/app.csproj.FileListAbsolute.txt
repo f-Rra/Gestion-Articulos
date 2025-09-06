@@ -37,3 +37,4 @@ C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmAdm
 C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmCategorias.resources
 C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmMarcas.resources
 C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmReportes.resources
+C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\app\obj\Debug\app.frmStock.resources
