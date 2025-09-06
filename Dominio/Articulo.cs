@@ -51,7 +51,11 @@ namespace Dominio
             set { _stock = value; }
         }
 
+<<<<<<< HEAD
         [DisplayName(" Estado Stock")]
+=======
+        [DisplayName(" Estado")]
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public string estadoStock
         {
             get 
@@ -60,13 +64,19 @@ namespace Dominio
             }
         }
 
+<<<<<<< HEAD
         // Método para verificar si hay stock disponible
+=======
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public bool tieneStock()
         {
             return _stock > 0;
         }
 
+<<<<<<< HEAD
         // Método para verificar si el stock es suficiente para una cantidad
+=======
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public bool stockSuficiente(int cantidad)
         {
             return _stock >= cantidad;

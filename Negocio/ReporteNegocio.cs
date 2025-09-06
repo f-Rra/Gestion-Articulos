@@ -10,10 +10,13 @@ namespace Negocio
 {
     public class ReporteNegocio
     {
+<<<<<<< HEAD
         /// <summary>
         /// Obtiene las estadísticas generales del sistema usando la vista vw_EstadisticasGenerales
         /// </summary>
         /// <returns>DataTable con estadísticas generales</returns>
+=======
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public DataTable obtenerEstadisticasGenerales()
         {
             AccesoDatos datos = new AccesoDatos();
@@ -35,10 +38,13 @@ namespace Negocio
             }
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Obtiene el inventario completo usando la vista vw_ArticulosCompletos
         /// </summary>
         /// <returns>DataTable con todos los artículos activos</returns>
+=======
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public DataTable obtenerInventarioCompleto()
         {
             AccesoDatos datos = new AccesoDatos();
@@ -71,10 +77,13 @@ namespace Negocio
             }
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Obtiene estadísticas de inventario agrupadas por categoría usando la vista vw_InventarioPorCategoria
         /// </summary>
         /// <returns>DataTable con estadísticas por categoría</returns>
+=======
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public DataTable obtenerInventarioPorCategoria()
         {
             AccesoDatos datos = new AccesoDatos();
@@ -96,10 +105,13 @@ namespace Negocio
             }
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Obtiene estadísticas de inventario agrupadas por marca usando la vista vw_InventarioPorMarca
         /// </summary>
         /// <returns>DataTable con estadísticas por marca</returns>
+=======
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public DataTable obtenerInventarioPorMarca()
         {
             AccesoDatos datos = new AccesoDatos();
@@ -121,10 +133,13 @@ namespace Negocio
             }
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Ejecuta el procedimiento almacenado SP_ReporteInventarioGeneral que devuelve múltiples conjuntos de datos
         /// </summary>
         /// <returns>DataSet con múltiples tablas de reporte</returns>
+=======
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public DataSet obtenerReporteInventarioGeneral()
         {
             AccesoDatos datos = new AccesoDatos();
@@ -184,12 +199,15 @@ namespace Negocio
             }
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Obtiene artículos filtrados por rango de precios usando el procedimiento SP_ReporteArticulosPorPrecio
         /// </summary>
         /// <param name="precioMinimo">Precio mínimo del rango</param>
         /// <param name="precioMaximo">Precio máximo del rango</param>
         /// <returns>DataTable con artículos en el rango de precios especificado</returns>
+=======
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public DataTable obtenerArticulosPorRangoPrecio(decimal precioMinimo, decimal precioMaximo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -214,11 +232,15 @@ namespace Negocio
             }
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Obtiene lista de artículos con bajo stock usando procedimiento almacenado
         /// </summary>
         /// <param name="stockMinimo">Nivel mínimo de stock para considerar como bajo</param>
         /// <returns>DataTable con artículos de bajo stock</returns>
+=======
+
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public DataTable obtenerArticulosBajoStock(int stockMinimo = 5)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -242,10 +264,14 @@ namespace Negocio
             }
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Obtiene lista de artículos sin stock usando procedimiento almacenado
         /// </summary>
         /// <returns>DataTable con artículos sin stock</returns>
+=======
+
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public DataTable obtenerArticulosSinStock()
         {
             AccesoDatos datos = new AccesoDatos();
@@ -268,10 +294,14 @@ namespace Negocio
             }
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Obtiene estadísticas de stock por categoría
         /// </summary>
         /// <returns>DataTable con estadísticas de stock por categoría</returns>
+=======
+
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public DataTable obtenerEstadisticasStockPorCategoria()
         {
             AccesoDatos datos = new AccesoDatos();
@@ -304,10 +334,13 @@ namespace Negocio
             }
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Obtiene estadísticas de stock por marca
         /// </summary>
         /// <returns>DataTable con estadísticas de stock por marca</returns>
+=======
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public DataTable obtenerEstadisticasStockPorMarca()
         {
             AccesoDatos datos = new AccesoDatos();
@@ -340,11 +373,14 @@ namespace Negocio
             }
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Obtiene los artículos más caros del inventario
         /// </summary>
         /// <param name="cantidad">Cantidad de artículos a obtener (top N)</param>
         /// <returns>DataTable con los artículos más caros</returns>
+=======
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public DataTable obtenerArticulosMasCaros(int cantidad = 10)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -366,11 +402,14 @@ namespace Negocio
             }
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Obtiene los artículos más baratos del inventario
         /// </summary>
         /// <param name="cantidad">Cantidad de artículos a obtener (top N)</param>
         /// <returns>DataTable con los artículos más baratos</returns>
+=======
+>>>>>>> 965eb23 (Correcciones en todos los formularios)
         public DataTable obtenerArticulosMasBaratos(int cantidad = 10)
         {
             AccesoDatos datos = new AccesoDatos();
