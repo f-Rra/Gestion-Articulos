@@ -16,6 +16,8 @@ namespace app
     {
         private List<Marca> listaMarcas;
         private MarcaNegocio negocio;
+        private bool modoEdicion = false;
+        private Marca marcaEditando;
 
         public frmMarcas()
         {
@@ -55,11 +57,44 @@ namespace app
         {
             try
             {
-                Marca nueva = new Marca();
-                nueva.descripcion = txtAgregar.Text.Trim();
-                negocio.agregar(nueva);
-                cargarMarcas();
-                MessageBox.Show("Marca agregada correctamente", "Éxito");
+                if (!string.IsNullOrWhiteSpace(txtAgregar.Text))
+                {
+                    if (modoEdicion)
+                    {
+                        string nuevaDescripcion = txtAgregar.Text.Trim();
+                        if (nuevaDescripcion != marcaEditando.descripcion && negocio.buscarMarca(nuevaDescripcion))
+                        {
+                            MessageBox.Show("Esta marca ya existe", "Error");
+                            return;
+                        }
+                        
+                        marcaEditando.descripcion = nuevaDescripcion;
+                        negocio.modificar(marcaEditando);
+                        cargarMarcas();
+                        limpiarControles();
+                        MessageBox.Show("Marca modificada correctamente", "Éxito");
+                    }
+                    else
+                    {
+                        Marca nueva = new Marca();
+                        nueva.descripcion = txtAgregar.Text.Trim();
+                        if (!negocio.buscarMarca(nueva.descripcion))
+                        {
+                            negocio.agregar(nueva);
+                            cargarMarcas();
+                            limpiarControles();
+                            MessageBox.Show("Marca agregada correctamente", "Éxito");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Esta marca ya existe", "Error");
+                        }
+                    }
+                }
+                else 
+                {
+                    MessageBox.Show("Debe ingresar una marca", "Error");
+                }
             }
             catch (Exception ex)
             {
@@ -71,98 +106,26 @@ namespace app
         {
             try
             {
-                if (dgvMarcas.CurrentRow != null)
+                if (modoEdicion)
                 {
-                    Marca seleccionado = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
-                    
-                    // Crear controles dinámicos para edición inline
-                    TextBox txtEditarMarca = new TextBox();
-                    txtEditarMarca.Location = new System.Drawing.Point(620, 200);
-                    txtEditarMarca.Size = new System.Drawing.Size(200, 23);
-                    txtEditarMarca.Font = new System.Drawing.Font("Verdana", 9.75F);
-                    txtEditarMarca.BackColor = System.Drawing.Color.FromArgb(242, 227, 213);
-                    txtEditarMarca.ForeColor = System.Drawing.Color.FromArgb(1, 46, 64);
-                    txtEditarMarca.Text = seleccionado.descripcion;
-                    txtEditarMarca.Name = "txtEditarMarca";
-
-                    Label lblEditarMarca = new Label();
-                    lblEditarMarca.Text = "Editar Marca:";
-                    lblEditarMarca.Location = new System.Drawing.Point(620, 180);
-                    lblEditarMarca.Size = new System.Drawing.Size(150, 16);
-                    lblEditarMarca.Font = new System.Drawing.Font("Verdana", 9.75F);
-                    lblEditarMarca.ForeColor = System.Drawing.Color.FromArgb(242, 227, 213);
-                    lblEditarMarca.BackColor = System.Drawing.Color.Transparent;
-                    lblEditarMarca.Name = "lblEditarMarca";
-
-                    Button btnGuardarEdicion = new Button();
-                    btnGuardarEdicion.Text = "Guardar";
-                    btnGuardarEdicion.Location = new System.Drawing.Point(620, 235);
-                    btnGuardarEdicion.Size = new System.Drawing.Size(90, 28);
-                    btnGuardarEdicion.Font = new System.Drawing.Font("Verdana", 9.75F);
-                    btnGuardarEdicion.BackColor = System.Drawing.Color.FromArgb(1, 46, 64);
-                    btnGuardarEdicion.ForeColor = System.Drawing.Color.FromArgb(242, 227, 213);
-                    btnGuardarEdicion.FlatStyle = FlatStyle.Flat;
-                    btnGuardarEdicion.Name = "btnGuardarEdicion";
-
-                    Button btnCancelarEdicion = new Button();
-                    btnCancelarEdicion.Text = "Cancelar";
-                    btnCancelarEdicion.Location = new System.Drawing.Point(720, 235);
-                    btnCancelarEdicion.Size = new System.Drawing.Size(90, 28);
-                    btnCancelarEdicion.Font = new System.Drawing.Font("Verdana", 9.75F);
-                    btnCancelarEdicion.BackColor = System.Drawing.Color.FromArgb(2, 103, 115);
-                    btnCancelarEdicion.ForeColor = System.Drawing.Color.FromArgb(242, 227, 213);
-                    btnCancelarEdicion.FlatStyle = FlatStyle.Flat;
-                    btnCancelarEdicion.Name = "btnCancelarEdicion";
-
-                    // Agregar controles al formulario
-                    this.Controls.Add(txtEditarMarca);
-                    this.Controls.Add(lblEditarMarca);
-                    this.Controls.Add(btnGuardarEdicion);
-                    this.Controls.Add(btnCancelarEdicion);
-
-                    // Eventos
-                    btnGuardarEdicion.Click += (s, ev) => {
-                        try
-                        {
-                            if (!string.IsNullOrWhiteSpace(txtEditarMarca.Text))
-                            {
-                                seleccionado.descripcion = txtEditarMarca.Text.Trim();
-                                negocio.modificar(seleccionado);
-                                cargarMarcas();
-                                
-                                // Remover controles
-                                this.Controls.Remove(txtEditarMarca);
-                                this.Controls.Remove(lblEditarMarca);
-                                this.Controls.Remove(btnGuardarEdicion);
-                                this.Controls.Remove(btnCancelarEdicion);
-                                
-                                MessageBox.Show("Marca modificada correctamente", "Éxito");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Ingrese una descripción para la marca", "Error");
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.ToString());
-                        }
-                    };
-
-                    btnCancelarEdicion.Click += (s, ev) => {
-                        // Remover controles
-                        this.Controls.Remove(txtEditarMarca);
-                        this.Controls.Remove(lblEditarMarca);
-                        this.Controls.Remove(btnGuardarEdicion);
-                        this.Controls.Remove(btnCancelarEdicion);
-                    };
-
-                    txtEditarMarca.Focus();
-                    txtEditarMarca.SelectAll();
+                    limpiarControles();
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione una marca para editar", "Editar Marca");
+                    if (dgvMarcas.CurrentRow != null)
+                    {
+                        marcaEditando = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+                        modoEdicion = true;
+                        txtAgregar.Text = marcaEditando.descripcion;
+                        btnAgregar.Text = "Guardar";
+                        btnEditar.Text = "Cancelar";
+                        txtAgregar.Focus();
+                        txtAgregar.SelectAll();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione una marca para editar", "Editar Marca");
+                    }
                 }
             }
             catch (Exception ex)
@@ -233,6 +196,16 @@ namespace app
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             btnBuscar_Click(sender, e);
+        }
+
+        private void limpiarControles()
+        {
+            modoEdicion = false;
+            marcaEditando = null;
+            txtAgregar.Clear();
+            btnAgregar.Text = "Agregar";
+            btnEditar.Text = "Editar";
+            dgvMarcas.ClearSelection();
         }
     }
 }

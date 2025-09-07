@@ -99,5 +99,26 @@ namespace Negocio
             }
         }
 
+        public bool buscarMarca(string descripcion)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SP_BuscarMarcaPorDescripcion");
+                datos.setearTipoComando(System.Data.CommandType.StoredProcedure);
+                datos.setearParametro("@Descripcion", descripcion);
+                datos.ejecutarLectura();
+                return datos.Lector.Read();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

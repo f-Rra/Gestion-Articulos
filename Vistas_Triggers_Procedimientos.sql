@@ -441,6 +441,21 @@ BEGIN
 END;
 GO
 
+-- Buscar Marca por Descripción
+CREATE OR ALTER PROCEDURE SP_BuscarMarcaPorDescripcion
+    @Descripcion VARCHAR(50)
+AS
+BEGIN
+    SELECT 
+        Id,
+        Descripcion,
+        CASE Estado WHEN 1 THEN 'Activo' ELSE 'Inactivo' END AS EstadoTexto,
+        Estado
+    FROM MARCAS
+    WHERE Descripcion = @Descripcion AND Estado = 1;
+END;
+GO
+
 -- =====================================================
 -- PROCEDIMIENTOS ALMACENADOS - STOCK
 -- =====================================================

@@ -103,13 +103,13 @@ namespace Dominio
         [DisplayName("Cantidad")]
         public int Cantidad { get; set; }
         
-        [DisplayName("Precio Unit.")]
+        [DisplayName("Precio")]
         public decimal PrecioUnitario { get; set; }
         
         [DisplayName("Subtotal")]
         public decimal Subtotal { get; set; }
         
-        [DisplayName("Stock Disp.")]
+        [DisplayName("Stock")]
         public int StockDisponible { get; set; }
         
         public DetalleVenta()
@@ -186,7 +186,6 @@ namespace Negocio
         
         /// <summary>
         /// Registra una nueva venta y actualiza el stock automáticamente
-        /// NUEVO: Transacción completa con validaciones
         /// </summary>
         public void registrarVenta(Venta venta)
         {
@@ -200,11 +199,23 @@ namespace Negocio
                 datos.setearParametro("@Cliente", venta.Cliente ?? "");
                 datos.setearParametro("@Total", venta.Total);
                 
-                // Convertir detalles a XML para el procedimiento
-                string detallesXml = convertirDetallesAXml(venta.Detalles);
-                datos.setearParametro("@DetallesXml", detallesXml);
-                
-                datos.ejecutarAccion();
+                int idVenta = Convert.ToInt32(datos.ejecutarScalar());
+
+                // Registrar los detalles de la venta
+                foreach (var detalle in venta.Detalles)
+                {
+                    using (AccesoDatos datosDetalle = new AccesoDatos())
+                    {
+                        datosDetalle.setearConsulta("SP_RegistrarDetalleVenta");
+                        datosDetalle.setearTipoComando(CommandType.StoredProcedure);
+                        datosDetalle.setearParametro("@IdVenta", idVenta);
+                        datosDetalle.setearParametro("@IdArticulo", detalle.IdArticulo);
+                        datosDetalle.setearParametro("@Cantidad", detalle.Cantidad);
+                        datosDetalle.setearParametro("@PrecioUnitario", detalle.PrecioUnitario);
+                        datosDetalle.setearParametro("@Subtotal", detalle.Subtotal);
+                        datosDetalle.ejecutarAccion();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -301,28 +312,7 @@ namespace Negocio
             }
         }
         
-        /// <summary>
-        /// Convierte lista de detalles a XML para el procedimiento almacenado
-        /// NUEVO: Método auxiliar para manejo de datos complejos
-        /// </summary>
-        private string convertirDetallesAXml(List<DetalleVenta> detalles)
-        {
-            StringBuilder xml = new StringBuilder();
-            xml.Append("<Detalles>");
-            
-            foreach (var detalle in detalles)
-            {
-                xml.Append("<Detalle ");
-                xml.Append($"IdArticulo='{detalle.IdArticulo}' ");
-                xml.Append($"Cantidad='{detalle.Cantidad}' ");
-                xml.Append($"PrecioUnitario='{detalle.PrecioUnitario}' ");
-                xml.Append($"Subtotal='{detalle.Subtotal}' ");
-                xml.Append("/>");
-            }
-            
-            xml.Append("</Detalles>");
-            return xml.ToString();
-        }
+
     }
 }
 ```
@@ -413,13 +403,12 @@ BEGIN
 END;
 GO
 
--- 2. Registrar venta completa con transacción
+-- 2. Registrar venta principal
 CREATE OR ALTER PROCEDURE SP_RegistrarVenta
     @NumeroVenta VARCHAR(20),
     @Vendedor VARCHAR(100),
     @Cliente VARCHAR(200),
-    @Total DECIMAL(10,2),
-    @DetallesXml XML
+    @Total DECIMAL(10,2)
 AS
 BEGIN
     BEGIN TRY
@@ -433,43 +422,47 @@ BEGIN
         
         SET @IdVenta = SCOPE_IDENTITY();
         
-        -- Insertar detalles de la venta
-        INSERT INTO DETALLE_VENTAS (IdVenta, IdArticulo, Cantidad, PrecioUnitario, Subtotal)
-        SELECT 
-            @IdVenta,
-            T.c.value('@IdArticulo', 'int'),
-            T.c.value('@Cantidad', 'int'),
-            T.c.value('@PrecioUnitario', 'decimal(10,2)'),
-            T.c.value('@Subtotal', 'decimal(10,2)')
-        FROM @DetallesXml.nodes('/Detalles/Detalle') T(c);
-        
-        -- Actualizar stock de artículos
-        UPDATE a 
-        SET Stock = Stock - d.Cantidad
-        FROM ARTICULOS a
-        INNER JOIN (
-            SELECT 
-                T.c.value('@IdArticulo', 'int') as IdArticulo,
-                T.c.value('@Cantidad', 'int') as Cantidad
-            FROM @DetallesXml.nodes('/Detalles/Detalle') T(c)
-        ) d ON a.Id = d.IdArticulo;
-        
-        -- Verificar que no haya stock negativo
-        IF EXISTS (SELECT 1 FROM ARTICULOS WHERE Stock < 0)
-        BEGIN
-            RAISERROR('Error: Stock insuficiente para completar la venta', 16, 1);
-            RETURN;
-        END
-        
         COMMIT TRANSACTION;
-        
-        -- Retornar ID de la venta creada
-        SELECT @IdVenta AS IdVentaCreada;
-        
+        RETURN @IdVenta;
     END TRY
     BEGIN CATCH
         ROLLBACK TRANSACTION;
-        RAISERROR('Error al registrar la venta: %s', 16, 1, ERROR_MESSAGE());
+        THROW;
+    END CATCH
+END;
+
+-- 3. Registrar detalle de venta
+CREATE OR ALTER PROCEDURE SP_RegistrarDetalleVenta
+    @IdVenta INT,
+    @IdArticulo INT,
+    @Cantidad INT,
+    @PrecioUnitario DECIMAL(10,2),
+    @Subtotal DECIMAL(10,2)
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        -- Validar stock suficiente
+        IF NOT EXISTS (SELECT 1 FROM ARTICULOS WHERE Id = @IdArticulo AND Stock >= @Cantidad)
+        BEGIN
+            THROW 50000, 'Stock insuficiente para completar la venta', 1;
+        END
+        
+        -- Insertar detalle
+        INSERT INTO DETALLE_VENTAS (IdVenta, IdArticulo, Cantidad, PrecioUnitario, Subtotal)
+        VALUES (@IdVenta, @IdArticulo, @Cantidad, @PrecioUnitario, @Subtotal);
+        
+        -- Actualizar stock
+        UPDATE ARTICULOS 
+        SET Stock = Stock - @Cantidad
+        WHERE Id = @IdArticulo;
+        
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW;
     END CATCH
 END;
 GO
@@ -542,7 +535,7 @@ GO
 -- =====================================================
 
 -- Trigger que se ejecuta automáticamente al insertar detalles de venta
--- Actualiza el stock y registra la operación
+-- Actualiza el stock
 CREATE OR ALTER TRIGGER tr_ActualizarStockEnVenta
 ON DETALLE_VENTAS
 AFTER INSERT
@@ -566,35 +559,11 @@ BEGIN
             RETURN;
         END
         
-        -- Log de la operación (opcional - para auditoría)
-        INSERT INTO LOG_OPERACIONES (TipoOperacion, Descripcion, Fecha, Usuario)
-        SELECT 
-            'VENTA',
-            'Venta registrada - Artículo: ' + a.Nombre + ' - Cantidad: ' + CAST(i.Cantidad AS VARCHAR),
-            GETDATE(),
-            v.Vendedor
-        FROM inserted i
-        INNER JOIN ARTICULOS a ON i.IdArticulo = a.Id
-        INNER JOIN VENTAS v ON i.IdVenta = v.Id;
-        
     END TRY
     BEGIN CATCH
         RAISERROR('Error en trigger de actualización de stock: %s', 16, 1, ERROR_MESSAGE());
         ROLLBACK TRANSACTION;
     END CATCH
-END;
-GO
-
--- Tabla opcional para log de operaciones (si no existe)
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='LOG_OPERACIONES' AND xtype='U')
-BEGIN
-    CREATE TABLE LOG_OPERACIONES (
-        Id INT IDENTITY(1,1) PRIMARY KEY,
-        TipoOperacion VARCHAR(50) NOT NULL,
-        Descripcion VARCHAR(500) NOT NULL,
-        Fecha DATETIME NOT NULL DEFAULT GETDATE(),
-        Usuario VARCHAR(100)
-    );
 END;
 GO
 ```

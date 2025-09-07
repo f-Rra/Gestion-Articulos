@@ -65,7 +65,7 @@ namespace app
             this.lblCategoria.BackColor = System.Drawing.Color.Transparent;
             this.lblCategoria.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-this.lblCategoria.Location = new System.Drawing.Point(397, 395);
+            this.lblCategoria.Location = new System.Drawing.Point(404, 421);
             this.lblCategoria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(87, 18);
@@ -80,10 +80,10 @@ this.lblCategoria.Location = new System.Drawing.Point(397, 395);
             this.cboCategoria.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.cboCategoria.FormattingEnabled = true;
-this.cboCategoria.Location = new System.Drawing.Point(400, 420);
+            this.cboCategoria.Location = new System.Drawing.Point(407, 446);
             this.cboCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.cboCategoria.Name = "cboCategoria";
-            this.cboCategoria.Size = new System.Drawing.Size(350, 35);
+            this.cboCategoria.Size = new System.Drawing.Size(350, 31);
             this.cboCategoria.TabIndex = 6;
             // 
             // cboMarca
@@ -94,10 +94,10 @@ this.cboCategoria.Location = new System.Drawing.Point(400, 420);
             this.cboMarca.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMarca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.cboMarca.FormattingEnabled = true;
-this.cboMarca.Location = new System.Drawing.Point(400, 320);
+            this.cboMarca.Location = new System.Drawing.Point(407, 346);
             this.cboMarca.Margin = new System.Windows.Forms.Padding(4);
             this.cboMarca.Name = "cboMarca";
-            this.cboMarca.Size = new System.Drawing.Size(350, 35);
+            this.cboMarca.Size = new System.Drawing.Size(350, 31);
             this.cboMarca.TabIndex = 5;
             // 
             // lblMarca
@@ -106,7 +106,7 @@ this.cboMarca.Location = new System.Drawing.Point(400, 320);
             this.lblMarca.BackColor = System.Drawing.Color.Transparent;
             this.lblMarca.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMarca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-this.lblMarca.Location = new System.Drawing.Point(397, 295);
+            this.lblMarca.Location = new System.Drawing.Point(404, 321);
             this.lblMarca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(60, 18);
@@ -119,7 +119,7 @@ this.lblMarca.Location = new System.Drawing.Point(397, 295);
             this.lblCodigo.BackColor = System.Drawing.Color.Transparent;
             this.lblCodigo.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-this.lblCodigo.Location = new System.Drawing.Point(27, 195);
+            this.lblCodigo.Location = new System.Drawing.Point(34, 221);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(67, 18);
@@ -131,10 +131,10 @@ this.lblCodigo.Location = new System.Drawing.Point(27, 195);
             this.txtCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.txtCodigo.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-this.txtCodigo.Location = new System.Drawing.Point(30, 220);
+            this.txtCodigo.Location = new System.Drawing.Point(37, 246);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(350, 35);
+            this.txtCodigo.Size = new System.Drawing.Size(350, 31);
             this.txtCodigo.TabIndex = 2;
             // 
             // lblNombre
@@ -143,7 +143,7 @@ this.txtCodigo.Location = new System.Drawing.Point(30, 220);
             this.lblNombre.BackColor = System.Drawing.Color.Transparent;
             this.lblNombre.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-this.lblNombre.Location = new System.Drawing.Point(27, 295);
+            this.lblNombre.Location = new System.Drawing.Point(34, 321);
             this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(75, 18);
@@ -155,10 +155,10 @@ this.lblNombre.Location = new System.Drawing.Point(27, 295);
             this.txtNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.txtNombre.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-this.txtNombre.Location = new System.Drawing.Point(30, 320);
+            this.txtNombre.Location = new System.Drawing.Point(37, 346);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(350, 35);
+            this.txtNombre.Size = new System.Drawing.Size(350, 31);
             this.txtNombre.TabIndex = 3;
             // 
             // lblImagen
@@ -167,7 +167,7 @@ this.txtNombre.Location = new System.Drawing.Point(30, 320);
             this.lblImagen.BackColor = System.Drawing.Color.Transparent;
             this.lblImagen.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblImagen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-this.lblImagen.Location = new System.Drawing.Point(27, 115);
+            this.lblImagen.Location = new System.Drawing.Point(34, 141);
             this.lblImagen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblImagen.Name = "lblImagen";
             this.lblImagen.Size = new System.Drawing.Size(105, 18);
@@ -179,10 +179,10 @@ this.lblImagen.Location = new System.Drawing.Point(27, 115);
             this.txtURL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.txtURL.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtURL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-this.txtURL.Location = new System.Drawing.Point(30, 140);
+            this.txtURL.Location = new System.Drawing.Point(37, 166);
             this.txtURL.Margin = new System.Windows.Forms.Padding(4);
             this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(450, 35);
+            this.txtURL.Size = new System.Drawing.Size(450, 31);
             this.txtURL.TabIndex = 1;
             // 
             // lblPrecio
@@ -191,7 +191,7 @@ this.txtURL.Location = new System.Drawing.Point(30, 140);
             this.lblPrecio.BackColor = System.Drawing.Color.Transparent;
             this.lblPrecio.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-this.lblPrecio.Location = new System.Drawing.Point(27, 395);
+            this.lblPrecio.Location = new System.Drawing.Point(34, 421);
             this.lblPrecio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(60, 18);
@@ -203,10 +203,10 @@ this.lblPrecio.Location = new System.Drawing.Point(27, 395);
             this.txtPrecio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.txtPrecio.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-this.txtPrecio.Location = new System.Drawing.Point(30, 420);
+            this.txtPrecio.Location = new System.Drawing.Point(37, 446);
             this.txtPrecio.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(350, 35);
+            this.txtPrecio.Size = new System.Drawing.Size(350, 31);
             this.txtPrecio.TabIndex = 4;
             // 
             // txtDescripcion
@@ -214,10 +214,10 @@ this.txtPrecio.Location = new System.Drawing.Point(30, 420);
             this.txtDescripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.txtDescripcion.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-this.txtDescripcion.Location = new System.Drawing.Point(30, 520);
+            this.txtDescripcion.Location = new System.Drawing.Point(37, 546);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(6);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(350, 35);
+            this.txtDescripcion.Size = new System.Drawing.Size(350, 31);
             this.txtDescripcion.TabIndex = 7;
             // 
             // lblDescripcion
@@ -226,7 +226,7 @@ this.txtDescripcion.Location = new System.Drawing.Point(30, 520);
             this.lblDescripcion.BackColor = System.Drawing.Color.Transparent;
             this.lblDescripcion.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-this.lblDescripcion.Location = new System.Drawing.Point(27, 495);
+            this.lblDescripcion.Location = new System.Drawing.Point(34, 521);
             this.lblDescripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(99, 18);
@@ -242,24 +242,24 @@ this.lblDescripcion.Location = new System.Drawing.Point(27, 495);
             this.panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
-this.panel.Size = new System.Drawing.Size(1200, 90);
+            this.panel.Size = new System.Drawing.Size(1200, 90);
             this.panel.TabIndex = 34;
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-this.lblTitulo.Font = new System.Drawing.Font("Verdana", 24F);
+            this.lblTitulo.Font = new System.Drawing.Font("Verdana", 24F);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.lblTitulo.Location = new System.Drawing.Point(90, 28);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(455, 38);
+            this.lblTitulo.Size = new System.Drawing.Size(500, 38);
             this.lblTitulo.TabIndex = 1;
             this.lblTitulo.Text = "Sistema de Gestión Comercial";
             // 
             // pbxLogo
             // 
-            this.pbxLogo.Image = global::app.Properties.Resources.logo_datos;
-this.pbxLogo.Location = new System.Drawing.Point(15, 15);
+            this.pbxLogo.Image = global::app.Properties.Resources.logo_principal;
+            this.pbxLogo.Location = new System.Drawing.Point(15, 15);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(65, 65);
             this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -270,11 +270,11 @@ this.pbxLogo.Location = new System.Drawing.Point(15, 15);
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-this.btnCancelar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnCancelar.Image = global::app.Properties.Resources.cancelar;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(500, 580);
+            this.btnCancelar.Location = new System.Drawing.Point(877, 611);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -288,15 +288,15 @@ this.btnCancelar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.F
             // 
             this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-this.btnAgregar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnAgregar.Image = global::app.Properties.Resources.agregar;
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregar.Location = new System.Drawing.Point(800, 580);
+            this.btnAgregar.Location = new System.Drawing.Point(573, 611);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnAgregar.Size = new System.Drawing.Size(350, 45);
+            this.btnAgregar.Size = new System.Drawing.Size(280, 45);
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar Articulo";
             this.btnAgregar.UseVisualStyleBackColor = false;
@@ -306,7 +306,7 @@ this.btnAgregar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.Fo
             // 
             this.pbxImagen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.pbxImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-this.pbxImagen.Location = new System.Drawing.Point(800, 140);
+            this.pbxImagen.Location = new System.Drawing.Point(807, 166);
             this.pbxImagen.Margin = new System.Windows.Forms.Padding(4);
             this.pbxImagen.Name = "pbxImagen";
             this.pbxImagen.Size = new System.Drawing.Size(350, 400);
@@ -318,11 +318,11 @@ this.pbxImagen.Location = new System.Drawing.Point(800, 140);
             // 
             this.btnCargarImagen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(103)))), ((int)(((byte)(115)))));
             this.btnCargarImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-this.btnCargarImagen.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargarImagen.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargarImagen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnCargarImagen.Image = global::app.Properties.Resources.imagen;
             this.btnCargarImagen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCargarImagen.Location = new System.Drawing.Point(500, 139);
+            this.btnCargarImagen.Location = new System.Drawing.Point(507, 165);
             this.btnCargarImagen.Margin = new System.Windows.Forms.Padding(4);
             this.btnCargarImagen.Name = "btnCargarImagen";
             this.btnCargarImagen.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -338,11 +338,11 @@ this.btnCargarImagen.Font = new System.Drawing.Font("Verdana", 12F, System.Drawi
             this.txtID.Enabled = false;
             this.txtID.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-this.txtID.Location = new System.Drawing.Point(400, 220);
+            this.txtID.Location = new System.Drawing.Point(407, 246);
             this.txtID.Margin = new System.Windows.Forms.Padding(4);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(350, 35);
+            this.txtID.Size = new System.Drawing.Size(350, 31);
             this.txtID.TabIndex = 35;
             // 
             // lblID
@@ -351,12 +351,24 @@ this.txtID.Location = new System.Drawing.Point(400, 220);
             this.lblID.BackColor = System.Drawing.Color.Transparent;
             this.lblID.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-this.lblID.Location = new System.Drawing.Point(397, 195);
+            this.lblID.Location = new System.Drawing.Point(404, 221);
             this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(91, 18);
+            this.lblID.Size = new System.Drawing.Size(31, 18);
             this.lblID.TabIndex = 5;
             this.lblID.Text = "ID:";
+            // 
+            // txtStock
+            // 
+            this.txtStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
+            this.txtStock.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.txtStock.Location = new System.Drawing.Point(407, 546);
+            this.txtStock.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(350, 31);
+            this.txtStock.TabIndex = 8;
+            this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStock_KeyPress);
             // 
             // lblStock
             // 
@@ -364,31 +376,18 @@ this.lblID.Location = new System.Drawing.Point(397, 195);
             this.lblStock.BackColor = System.Drawing.Color.Transparent;
             this.lblStock.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-this.lblStock.Location = new System.Drawing.Point(397, 495);
+            this.lblStock.Location = new System.Drawing.Point(404, 521);
             this.lblStock.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStock.Name = "lblStock";
-            this.lblStock.Size = new System.Drawing.Size(55, 18);
+            this.lblStock.Size = new System.Drawing.Size(58, 18);
             this.lblStock.TabIndex = 5;
             this.lblStock.Text = "Stock:";
             // 
-            // txtStock
-            // 
-            this.txtStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.txtStock.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-this.txtStock.Location = new System.Drawing.Point(400, 520);
-            this.txtStock.Margin = new System.Windows.Forms.Padding(4);
-            this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(350, 35);
-            this.txtStock.TabIndex = 8;
-            this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStock_KeyPress);
-            // 
             // frmDatos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(73)))), ((int)(((byte)(89)))));
-this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.ClientSize = new System.Drawing.Size(1200, 700);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.lblStock);
             this.Controls.Add(this.txtID);
