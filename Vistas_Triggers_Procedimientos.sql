@@ -1,103 +1,14 @@
+
 -- =====================================================
--- SISTEMA DE GESTIÓN DE ARTÍCULOS - SCRIPT UNIFICADO
+-- SISTEMA DE GESTIÓN COMERCIAL - VISTAS, TRIGGERS Y PROCEDIMIENTOS
 -- =====================================================
 
--- Creación de la base de datos
-CREATE DATABASE CATALOGO_DB;
+USE SISTEMA_GESTION_COMERCIAL;
 GO
 
-USE CATALOGO_DB;
-GO
-
--- Tabla de Categorías
-CREATE TABLE CATEGORIAS (
-    Id INT IDENTITY(1,1) PRIMARY KEY,
-    Descripcion VARCHAR(50) NULL,
-    Estado BIT NOT NULL DEFAULT 1
-);
-
--- Tabla de Marcas
-CREATE TABLE MARCAS (
-    Id INT IDENTITY(1,1) PRIMARY KEY,
-    Descripcion VARCHAR(50) NULL,
-    Estado BIT NOT NULL DEFAULT 1
-);
-
--- Tabla de Artículos
-CREATE TABLE ARTICULOS (
-    Id INT IDENTITY(1,1) PRIMARY KEY,
-    Codigo VARCHAR(50) NULL,
-    Nombre VARCHAR(50) NULL,
-    Descripcion VARCHAR(150) NULL,
-    IdMarca INT NULL,
-    IdCategoria INT NULL,
-    ImagenUrl VARCHAR(1000) NULL,
-    Precio MONEY NULL,
-    Stock INT NOT NULL DEFAULT 0,
-    Estado BIT NOT NULL DEFAULT 1,
-    FOREIGN KEY (IdMarca) REFERENCES MARCAS(Id),
-    FOREIGN KEY (IdCategoria) REFERENCES CATEGORIAS(Id)
-);
-
--- Tabla de Usuarios para autenticación
-CREATE TABLE Usuarios (
-    IdUsuario INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-    NombreUsuario VARCHAR(50) NOT NULL UNIQUE,
-    Contrasena VARCHAR(50) NOT NULL,
-    EsAdministrador BIT NOT NULL DEFAULT 0,
-    Estado BIT NOT NULL DEFAULT 1,
-    FechaCreacion DATETIME NOT NULL DEFAULT GETDATE()
-);
-GO
-
--- Datos iniciales
--- Categorías
-INSERT INTO CATEGORIAS (Descripcion) VALUES 
-('Electrónicos'),
-('Ropa'),
-('Hogar'),
-('Deportes'),
-('Libros'),
-('Herramientas'),
-('Alimentos'),
-('Bebidas'),
-('Limpieza'),
-('Jardín');
-
--- Marcas
-INSERT INTO MARCAS (Descripcion) VALUES 
-('HP'),
-('Samsung'),
-('Nike'),
-('Adidas'),
-('Apple'),
-('Sony'),
-('LG'),
-('Philips'),
-('Bosch'),
-('Black & Decker');
-
--- Usuarios del sistema
-INSERT INTO Usuarios (NombreUsuario, Contrasena, EsAdministrador, Estado) VALUES 
-('admin', 'admin123', 1, 1),
-('usuario', 'user123', 0, 1),
-('vendedor', 'vend123', 0, 1);
-
--- Artículos de prueba con Stock
-INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio, Stock) VALUES 
-('ART001', 'Laptop HP Pavilion', 'Laptop 15.6" Intel i5 8GB RAM', 1, 1, 'https://ejemplo.com/laptop.jpg', 850.00, 15),
-('ART002', 'Mouse Inalámbrico', 'Mouse óptico inalámbrico USB', 1, 1, 'https://ejemplo.com/mouse.jpg', 25.00, 50),
-('ART003', 'Teclado Mecánico', 'Teclado mecánico RGB gaming', 1, 1, 'https://ejemplo.com/teclado.jpg', 120.00, 25),
-('ART004', 'Monitor 24"', 'Monitor LED 24" Full HD', 2, 1, 'https://ejemplo.com/monitor.jpg', 200.00, 8),
-('ART005', 'Auriculares Bluetooth', 'Auriculares inalámbricos con micrófono', 2, 1, 'https://ejemplo.com/auriculares.jpg', 80.00, 0),
-('ART006', 'Camisa de Algodón', 'Camisa formal 100% algodón', 3, 2, 'https://ejemplo.com/camisa.jpg', 45.00, 30),
-('ART007', 'Pantalón Vaquero', 'Pantalón vaquero clásico', 4, 2, 'https://ejemplo.com/pantalon.jpg', 65.00, 12),
-('ART008', 'Zapatillas Deportivas', 'Zapatillas running profesionales', 3, 2, 'https://ejemplo.com/zapatillas.jpg', 95.00, 18),
-('ART009', 'Sofá de 3 Plazas', 'Sofá moderno para living', 7, 3, 'https://ejemplo.com/sofa.jpg', 450.00, 3),
-('ART010', 'Mesa de Centro', 'Mesa de centro de madera', 7, 3, 'https://ejemplo.com/mesa.jpg', 120.00, 7);
-GO
-
---VISTAS--
+-- =====================================================
+-- VISTAS
+-- =====================================================
 
 -- Vista de Artículos Completos con Stock
 CREATE OR ALTER VIEW vw_ArticulosCompletos AS
@@ -166,9 +77,9 @@ SELECT
     (SELECT COUNT(*) FROM Usuarios WHERE Estado = 1) AS TotalUsuarios;
 GO
 
---PROCEDIMIENTOS ALMACENADOS--
-
---USUARIOS--
+-- =====================================================
+-- PROCEDIMIENTOS ALMACENADOS - USUARIOS
+-- =====================================================
 
 -- Verificar Usuario para Login
 CREATE OR ALTER PROCEDURE SP_VerificarUsuario
@@ -204,7 +115,9 @@ BEGIN
 END;
 GO
 
---ARTÍCULOS--
+-- =====================================================
+-- PROCEDIMIENTOS ALMACENADOS - ARTÍCULOS
+-- =====================================================
 
 -- Listar Artículos
 CREATE OR ALTER PROCEDURE SP_ListarArticulos
@@ -348,7 +261,9 @@ BEGIN
 END;
 GO
 
---CATEGORÍAS--
+-- =====================================================
+-- PROCEDIMIENTOS ALMACENADOS - CATEGORÍAS
+-- =====================================================
 
 -- Listar Categorías
 CREATE OR ALTER PROCEDURE SP_ListarCategorias
@@ -436,7 +351,9 @@ BEGIN
 END;
 GO
 
---MARCAS--
+-- =====================================================
+-- PROCEDIMIENTOS ALMACENADOS - MARCAS
+-- =====================================================
 
 -- Listar Marcas
 CREATE OR ALTER PROCEDURE SP_ListarMarcas
@@ -524,7 +441,9 @@ BEGIN
 END;
 GO
 
---GESTIÓN DE STOCK--
+-- =====================================================
+-- PROCEDIMIENTOS ALMACENADOS - STOCK
+-- =====================================================
 
 -- Actualizar Stock de Artículo
 CREATE OR ALTER PROCEDURE SP_ActualizarStock
@@ -560,7 +479,7 @@ BEGIN
 END;
 GO
 
--- Sumar Stock (Entrada de mercadería)
+-- Sumar Stock 
 CREATE OR ALTER PROCEDURE SP_SumarStock
     @Id INT,
     @Cantidad INT
@@ -596,7 +515,7 @@ BEGIN
 END;
 GO
 
--- Restar Stock (Salida de mercadería)
+-- Restar Stock 
 CREATE OR ALTER PROCEDURE SP_RestarStock
     @Id INT,
     @Cantidad INT
@@ -641,7 +560,7 @@ BEGIN
 END;
 GO
 
--- Obtener Artículos con Bajo Stock
+-- Artículos con Bajo Stock
 CREATE OR ALTER PROCEDURE SP_ArticulosBajoStock
     @StockMinimo INT = 5
 AS
@@ -661,7 +580,7 @@ BEGIN
 END;
 GO
 
--- Obtener Artículos Sin Stock
+-- Artículos Sin Stock
 CREATE OR ALTER PROCEDURE SP_ArticulosSinStock
 AS
 BEGIN
@@ -680,7 +599,9 @@ BEGIN
 END;
 GO
 
---REPORTES--
+-- =====================================================
+-- PROCEDIMIENTOS ALMACENADOS - REPORTES
+-- =====================================================
 
 -- Reporte de Inventario General
 CREATE OR ALTER PROCEDURE SP_ReporteInventarioGeneral
@@ -715,9 +636,170 @@ BEGIN
 END;
 GO
 
---TRIGGERS--
+-- =====================================================
+-- PROCEDIMIENTOS ALMACENADOS - VENTAS
+-- =====================================================
 
--- Trigger para validar código único de artículo
+-- 1. Buscar artículos disponibles para venta
+CREATE OR ALTER PROCEDURE SP_BuscarArticulosParaVenta
+    @Filtro VARCHAR(100) = ''
+AS
+BEGIN
+    SELECT 
+        a.Id,
+        a.Codigo,
+        a.Nombre,
+        a.Descripcion,
+        a.Precio,
+        a.Stock,
+        m.Descripcion AS Marca,
+        c.Descripcion AS Categoria,
+        CASE 
+            WHEN a.Stock > 0 THEN 'Disponible'
+            ELSE 'Sin Stock'
+        END AS EstadoStock
+    FROM ARTICULOS a
+    INNER JOIN MARCAS m ON a.IdMarca = m.Id
+    INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id
+    WHERE a.Estado = 1 
+      AND a.Stock > 0
+      AND (@Filtro = '' OR 
+           a.Codigo LIKE '%' + @Filtro + '%' OR 
+           a.Nombre LIKE '%' + @Filtro + '%' OR 
+           a.Descripcion LIKE '%' + @Filtro + '%')
+    ORDER BY a.Nombre;
+END;
+GO
+
+-- 2. Registrar venta completa
+CREATE OR ALTER PROCEDURE SP_RegistrarVenta
+    @NumeroVenta VARCHAR(20),
+    @Vendedor VARCHAR(100),
+    @Cliente VARCHAR(200),
+    @Total DECIMAL(10,2),
+    @DetallesXml XML
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        DECLARE @IdVenta INT;
+        
+        -- Insertar venta principal
+        INSERT INTO VENTAS (NumeroVenta, Vendedor, Cliente, Total)
+        VALUES (@NumeroVenta, @Vendedor, @Cliente, @Total);
+        
+        SET @IdVenta = SCOPE_IDENTITY();
+        
+        -- Insertar detalles de la venta
+        INSERT INTO DETALLE_VENTAS (IdVenta, IdArticulo, Cantidad, PrecioUnitario, Subtotal)
+        SELECT 
+            @IdVenta,
+            T.c.value('@IdArticulo', 'int'),
+            T.c.value('@Cantidad', 'int'),
+            T.c.value('@PrecioUnitario', 'decimal(10,2)'),
+            T.c.value('@Subtotal', 'decimal(10,2)')
+        FROM @DetallesXml.nodes('/Detalles/Detalle') T(c);
+        
+        -- Actualizar stock de artículos
+        UPDATE a 
+        SET Stock = Stock - d.Cantidad
+        FROM ARTICULOS a
+        INNER JOIN (
+            SELECT 
+                T.c.value('@IdArticulo', 'int') as IdArticulo,
+                T.c.value('@Cantidad', 'int') as Cantidad
+            FROM @DetallesXml.nodes('/Detalles/Detalle') T(c)
+        ) d ON a.Id = d.IdArticulo;
+        
+        -- Verificar que no haya stock negativo
+        IF EXISTS (SELECT 1 FROM ARTICULOS WHERE Stock < 0)
+        BEGIN
+            RAISERROR('Error: Stock insuficiente para completar la venta', 16, 1);
+            RETURN;
+        END
+        
+        COMMIT TRANSACTION;
+        
+        -- Retornar ID de la venta creada
+        SELECT @IdVenta AS IdVentaCreada;
+        
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        RAISERROR('Error al registrar la venta: %s', 16, 1, ERROR_MESSAGE());
+    END CATCH
+END;
+GO
+
+-- 3. Obtener ventas por vendedor 
+CREATE OR ALTER PROCEDURE SP_ObtenerVentasPorVendedor
+    @Vendedor VARCHAR(100)
+AS
+BEGIN
+    SELECT 
+        v.Id,
+        v.NumeroVenta,
+        v.Fecha,
+        v.Cliente,
+        v.Total,
+        v.Estado,
+        COUNT(d.Id) AS CantidadArticulos
+    FROM VENTAS v
+    LEFT JOIN DETALLE_VENTAS d ON v.Id = d.IdVenta
+    WHERE v.Vendedor = @Vendedor
+    GROUP BY v.Id, v.NumeroVenta, v.Fecha, v.Cliente, v.Total, v.Estado
+    ORDER BY v.Fecha DESC;
+END;
+GO
+
+-- 4. Validar stock disponible 
+CREATE OR ALTER PROCEDURE SP_ValidarStockDisponible
+    @IdArticulo INT,
+    @CantidadSolicitada INT
+AS
+BEGIN
+    DECLARE @StockActual INT;
+    
+    SELECT @StockActual = Stock 
+    FROM ARTICULOS 
+    WHERE Id = @IdArticulo AND Estado = 1;
+    
+    SELECT 
+        CASE 
+            WHEN @StockActual IS NULL THEN 0
+            WHEN @StockActual >= @CantidadSolicitada THEN 1
+            ELSE 0
+        END AS StockSuficiente,
+        ISNULL(@StockActual, 0) AS StockActual;
+END;
+GO
+
+-- 5. Obtener detalles de una venta específica 
+CREATE OR ALTER PROCEDURE SP_ObtenerDetallesVenta
+    @IdVenta INT
+AS
+BEGIN
+    SELECT 
+        d.Id,
+        d.IdArticulo,
+        a.Codigo,
+        a.Nombre,
+        d.Cantidad,
+        d.PrecioUnitario,
+        d.Subtotal
+    FROM DETALLE_VENTAS d
+    INNER JOIN ARTICULOS a ON d.IdArticulo = a.Id
+    WHERE d.IdVenta = @IdVenta
+    ORDER BY a.Nombre;
+END;
+GO
+
+-- =====================================================
+-- TRIGGERS
+-- =====================================================
+
+-- validar código único de artículo
 CREATE OR ALTER TRIGGER tr_ValidarCodigoUnicoArticulo
 ON ARTICULOS
 INSTEAD OF INSERT, UPDATE
@@ -773,25 +855,73 @@ BEGIN
 END;
 GO
 
+-- =====================================================
+-- TRIGGER PARA VENTAS
+-- =====================================================
+
+-- Trigger que se ejecuta automáticamente al insertar detalles de venta
+-- Actualiza el stock y registra la operación
+CREATE OR ALTER TRIGGER tr_ActualizarStockEnVenta
+ON DETALLE_VENTAS
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    BEGIN TRY
+        -- Actualizar stock de artículos vendidos
+        UPDATE a 
+        SET Stock = Stock - i.Cantidad
+        FROM ARTICULOS a
+        INNER JOIN inserted i ON a.Id = i.IdArticulo
+        WHERE a.Estado = 1;
+        
+        -- Verificar que no haya stock negativo
+        IF EXISTS (SELECT 1 FROM ARTICULOS WHERE Stock < 0 AND Estado = 1)
+        BEGIN
+            RAISERROR('Error: Stock insuficiente detectado por trigger', 16, 1);
+            ROLLBACK TRANSACTION;
+            RETURN;
+        END
+        
+        
+    END TRY
+    BEGIN CATCH
+        RAISERROR('Error en trigger de actualización de stock: %s', 16, 1, ERROR_MESSAGE());
+        ROLLBACK TRANSACTION;
+    END CATCH
+END;
+GO
+
 /*
+=====================================================
+SISTEMA DE GESTIÓN COMERCIAL - DESCRIPCIÓN COMPLETA
+=====================================================
+
 RELACIONES DEL MODELO:
 - MARCAS (1) → ARTICULOS (N)
 - CATEGORIAS (1) → ARTICULOS (N)
+- VENTAS (1) → DETALLE_VENTAS (N)
+- ARTICULOS (1) → DETALLE_VENTAS (N)
 
 DESCRIPCIÓN DE TABLAS:
 - ARTICULOS: almacena la información de cada artículo con su código, nombre, descripción, marca, categoría, imagen, precio y STOCK
 - CATEGORIAS: contiene los datos de las categorías de artículos
 - MARCAS: contiene los datos de las marcas de los artículos
 - Usuarios: almacena usuarios del sistema con autenticación
+- VENTAS: registra las ventas realizadas por vendedores
+- DETALLE_VENTAS: detalla los artículos vendidos en cada venta
 
 CARACTERÍSTICAS IMPLEMENTADAS:
 - Baja lógica con campo Estado BIT
 - Gestión completa de STOCK con validaciones
+- Sistema de VENTAS completo (FASE 14)
 - Procedimientos almacenados para todas las operaciones CRUD
-- Procedimientos específicos para gestión de inventario (SP_ActualizarStock, SP_SumarStock, SP_RestarStock)
-- Consultas de stock bajo y sin stock (SP_ArticulosBajoStock, SP_ArticulosSinStock)
+- Procedimientos específicos para gestión de inventario
+- Procedimientos para sistema de ventas
+- Consultas de stock bajo y sin stock
 - Vistas para consultas complejas con estado de stock
-- Triggers para validaciones
+- Triggers para validaciones y control automático de stock
 - Transacciones con manejo de errores
 - Validaciones de integridad referencial y stock negativo
 - Nomenclatura consistente (SP_, vw_, tr_)
@@ -802,5 +932,15 @@ PROCEDIMIENTOS DE STOCK DISPONIBLES:
 - SP_RestarStock: Resta cantidad del stock (salidas) con validación
 - SP_ArticulosBajoStock: Lista artículos con stock menor al mínimo
 - SP_ArticulosSinStock: Lista artículos sin stock disponible
-*/
 
+PROCEDIMIENTOS DE VENTAS (FASE 14):
+- SP_BuscarArticulosParaVenta: Busca artículos disponibles para venta
+- SP_RegistrarVenta: Registra venta completa con transacción
+- SP_ObtenerVentasPorVendedor: Obtiene historial de ventas por vendedor
+- SP_ValidarStockDisponible: Valida stock antes de vender
+- SP_ObtenerDetallesVenta: Obtiene detalles de una venta específica
+
+TRIGGERS IMPLEMENTADOS:
+- tr_ValidarCodigoUnicoArticulo: Valida códigos únicos de artículos
+- tr_ActualizarStockEnVenta: Actualiza stock automáticamente al vender
+*/

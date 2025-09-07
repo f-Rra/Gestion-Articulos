@@ -74,11 +74,7 @@ namespace app
             this.dgvArticulos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvArticulos.EnableHeadersVisualStyles = false;
             this.dgvArticulos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-<<<<<<< HEAD
-            this.dgvArticulos.Location = new System.Drawing.Point(12, 80);
-=======
-            this.dgvArticulos.Location = new System.Drawing.Point(20, 120);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.dgvArticulos.Location = new System.Drawing.Point(20, 120);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.ReadOnly = true;
@@ -98,11 +94,7 @@ namespace app
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-<<<<<<< HEAD
-            this.dgvArticulos.Size = new System.Drawing.Size(760, 300);
-=======
-            this.dgvArticulos.Size = new System.Drawing.Size(850, 380);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.dgvArticulos.Size = new System.Drawing.Size(850, 380);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
@@ -114,25 +106,15 @@ namespace app
             this.panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
-<<<<<<< HEAD
-            this.panel.Size = new System.Drawing.Size(1084, 74);
-=======
-            this.panel.Size = new System.Drawing.Size(1200, 90);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.panel.Size = new System.Drawing.Size(1200, 90);
             this.panel.TabIndex = 1;
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-<<<<<<< HEAD
-            this.lblTitulo.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblTitulo.Location = new System.Drawing.Point(80, 23);
-=======
-            this.lblTitulo.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.lblTitulo.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.lblTitulo.Location = new System.Drawing.Point(90, 28);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(270, 29);
             this.lblTitulo.TabIndex = 1;
@@ -141,15 +123,9 @@ namespace app
             // pbxLogo
             // 
             this.pbxLogo.Image = global::app.Properties.Resources.logo;
-<<<<<<< HEAD
-            this.pbxLogo.Location = new System.Drawing.Point(12, 12);
-            this.pbxLogo.Name = "pbxLogo";
-            this.pbxLogo.Size = new System.Drawing.Size(50, 50);
-=======
-            this.pbxLogo.Location = new System.Drawing.Point(15, 15);
+this.pbxLogo.Location = new System.Drawing.Point(15, 15);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(65, 65);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxLogo.TabIndex = 0;
             this.pbxLogo.TabStop = false;
@@ -158,15 +134,9 @@ namespace app
             // 
             this.lblArticulo.AutoSize = true;
             this.lblArticulo.BackColor = System.Drawing.Color.Transparent;
-<<<<<<< HEAD
-            this.lblArticulo.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArticulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblArticulo.Location = new System.Drawing.Point(790, 90);
-=======
-            this.lblArticulo.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.lblArticulo.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArticulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.lblArticulo.Location = new System.Drawing.Point(900, 130);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblArticulo.Name = "lblArticulo";
             this.lblArticulo.Size = new System.Drawing.Size(155, 18);
             this.lblArticulo.TabIndex = 2;
@@ -175,36 +145,21 @@ namespace app
             // txtArticuloSeleccionado
             // 
             this.txtArticuloSeleccionado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.txtArticuloSeleccionado.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtArticuloSeleccionado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-            this.txtArticuloSeleccionado.Location = new System.Drawing.Point(793, 111);
-            this.txtArticuloSeleccionado.Name = "txtArticuloSeleccionado";
-            this.txtArticuloSeleccionado.ReadOnly = true;
-            this.txtArticuloSeleccionado.Size = new System.Drawing.Size(270, 24);
-=======
-            this.txtArticuloSeleccionado.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.txtArticuloSeleccionado.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtArticuloSeleccionado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.txtArticuloSeleccionado.Location = new System.Drawing.Point(900, 155);
             this.txtArticuloSeleccionado.Name = "txtArticuloSeleccionado";
             this.txtArticuloSeleccionado.ReadOnly = true;
             this.txtArticuloSeleccionado.Size = new System.Drawing.Size(280, 28);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.txtArticuloSeleccionado.TabIndex = 3;
             // 
             // lblStockActual
             // 
             this.lblStockActual.AutoSize = true;
             this.lblStockActual.BackColor = System.Drawing.Color.Transparent;
-<<<<<<< HEAD
-            this.lblStockActual.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblStockActual.Location = new System.Drawing.Point(790, 150);
-=======
-            this.lblStockActual.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.lblStockActual.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStockActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.lblStockActual.Location = new System.Drawing.Point(900, 200);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblStockActual.Name = "lblStockActual";
             this.lblStockActual.Size = new System.Drawing.Size(105, 18);
             this.lblStockActual.TabIndex = 4;
@@ -213,21 +168,12 @@ namespace app
             // txtStockActual
             // 
             this.txtStockActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.txtStockActual.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStockActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-            this.txtStockActual.Location = new System.Drawing.Point(793, 171);
-            this.txtStockActual.Name = "txtStockActual";
-            this.txtStockActual.ReadOnly = true;
-            this.txtStockActual.Size = new System.Drawing.Size(100, 24);
-=======
-            this.txtStockActual.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.txtStockActual.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStockActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.txtStockActual.Location = new System.Drawing.Point(900, 225);
             this.txtStockActual.Name = "txtStockActual";
             this.txtStockActual.ReadOnly = true;
             this.txtStockActual.Size = new System.Drawing.Size(120, 28);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.txtStockActual.TabIndex = 5;
             this.txtStockActual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -235,15 +181,9 @@ namespace app
             // 
             this.lblTipoOperacion.AutoSize = true;
             this.lblTipoOperacion.BackColor = System.Drawing.Color.Transparent;
-<<<<<<< HEAD
-            this.lblTipoOperacion.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoOperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblTipoOperacion.Location = new System.Drawing.Point(790, 210);
-=======
-            this.lblTipoOperacion.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.lblTipoOperacion.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipoOperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.lblTipoOperacion.Location = new System.Drawing.Point(900, 270);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblTipoOperacion.Name = "lblTipoOperacion";
             this.lblTipoOperacion.Size = new System.Drawing.Size(138, 18);
             this.lblTipoOperacion.TabIndex = 6;
@@ -253,26 +193,16 @@ namespace app
             // 
             this.cboTipoOperacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.cboTipoOperacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-<<<<<<< HEAD
-            this.cboTipoOperacion.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-=======
-            this.cboTipoOperacion.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.cboTipoOperacion.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTipoOperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.cboTipoOperacion.FormattingEnabled = true;
             this.cboTipoOperacion.Items.AddRange(new object[] {
             "Sumar",
             "Restar",
             "Ajustar"});
-<<<<<<< HEAD
-            this.cboTipoOperacion.Location = new System.Drawing.Point(793, 231);
-            this.cboTipoOperacion.Name = "cboTipoOperacion";
-            this.cboTipoOperacion.Size = new System.Drawing.Size(150, 24);
-=======
-            this.cboTipoOperacion.Location = new System.Drawing.Point(900, 295);
+this.cboTipoOperacion.Location = new System.Drawing.Point(900, 295);
             this.cboTipoOperacion.Name = "cboTipoOperacion";
             this.cboTipoOperacion.Size = new System.Drawing.Size(180, 28);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.cboTipoOperacion.TabIndex = 7;
             this.cboTipoOperacion.SelectedIndexChanged += new System.EventHandler(this.cboTipoOperacion_SelectedIndexChanged);
             // 
@@ -280,15 +210,9 @@ namespace app
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.BackColor = System.Drawing.Color.Transparent;
-<<<<<<< HEAD
-            this.lblCantidad.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblCantidad.Location = new System.Drawing.Point(790, 270);
-=======
-            this.lblCantidad.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.lblCantidad.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.lblCantidad.Location = new System.Drawing.Point(900, 340);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(80, 18);
             this.lblCantidad.TabIndex = 8;
@@ -297,19 +221,11 @@ namespace app
             // txtCantidad
             // 
             this.txtCantidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.txtCantidad.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-            this.txtCantidad.Location = new System.Drawing.Point(793, 291);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(100, 24);
-=======
-            this.txtCantidad.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.txtCantidad.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.txtCantidad.Location = new System.Drawing.Point(900, 365);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(120, 28);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.txtCantidad.TabIndex = 9;
             this.txtCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
@@ -318,19 +234,11 @@ namespace app
             // 
             this.btnEjecutar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnEjecutar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-<<<<<<< HEAD
-            this.btnEjecutar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEjecutar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.btnEjecutar.Location = new System.Drawing.Point(793, 330);
-            this.btnEjecutar.Name = "btnEjecutar";
-            this.btnEjecutar.Size = new System.Drawing.Size(100, 30);
-=======
-            this.btnEjecutar.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.btnEjecutar.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEjecutar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnEjecutar.Location = new System.Drawing.Point(900, 410);
             this.btnEjecutar.Name = "btnEjecutar";
             this.btnEjecutar.Size = new System.Drawing.Size(130, 40);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.btnEjecutar.TabIndex = 10;
             this.btnEjecutar.Text = "Ejecutar";
             this.btnEjecutar.UseVisualStyleBackColor = false;
@@ -340,19 +248,11 @@ namespace app
             // 
             this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(103)))), ((int)(((byte)(115)))));
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-<<<<<<< HEAD
-            this.btnLimpiar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.btnLimpiar.Location = new System.Drawing.Point(913, 330);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(100, 30);
-=======
-            this.btnLimpiar.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.btnLimpiar.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnLimpiar.Location = new System.Drawing.Point(1050, 410);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(130, 40);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.btnLimpiar.TabIndex = 11;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = false;
@@ -362,19 +262,11 @@ namespace app
             // 
             this.btnBajoStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnBajoStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-<<<<<<< HEAD
-            this.btnBajoStock.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBajoStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.btnBajoStock.Location = new System.Drawing.Point(12, 390);
-            this.btnBajoStock.Name = "btnBajoStock";
-            this.btnBajoStock.Size = new System.Drawing.Size(120, 30);
-=======
-            this.btnBajoStock.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.btnBajoStock.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBajoStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnBajoStock.Location = new System.Drawing.Point(20, 530);
             this.btnBajoStock.Name = "btnBajoStock";
             this.btnBajoStock.Size = new System.Drawing.Size(150, 40);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.btnBajoStock.TabIndex = 12;
             this.btnBajoStock.Text = "Stock Bajo";
             this.btnBajoStock.UseVisualStyleBackColor = false;
@@ -384,19 +276,11 @@ namespace app
             // 
             this.btnSinStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnSinStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-<<<<<<< HEAD
-            this.btnSinStock.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSinStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.btnSinStock.Location = new System.Drawing.Point(150, 390);
-            this.btnSinStock.Name = "btnSinStock";
-            this.btnSinStock.Size = new System.Drawing.Size(120, 30);
-=======
-            this.btnSinStock.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.btnSinStock.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSinStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnSinStock.Location = new System.Drawing.Point(190, 530);
             this.btnSinStock.Name = "btnSinStock";
             this.btnSinStock.Size = new System.Drawing.Size(150, 40);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.btnSinStock.TabIndex = 13;
             this.btnSinStock.Text = "Sin Stock";
             this.btnSinStock.UseVisualStyleBackColor = false;
@@ -406,19 +290,11 @@ namespace app
             // 
             this.btnTodos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnTodos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-<<<<<<< HEAD
-            this.btnTodos.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTodos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.btnTodos.Location = new System.Drawing.Point(288, 390);
-            this.btnTodos.Name = "btnTodos";
-            this.btnTodos.Size = new System.Drawing.Size(120, 30);
-=======
-            this.btnTodos.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.btnTodos.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTodos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnTodos.Location = new System.Drawing.Point(360, 530);
             this.btnTodos.Name = "btnTodos";
             this.btnTodos.Size = new System.Drawing.Size(150, 40);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.btnTodos.TabIndex = 14;
             this.btnTodos.Text = "Todos";
             this.btnTodos.UseVisualStyleBackColor = false;
@@ -428,15 +304,9 @@ namespace app
             // 
             this.lblStockMinimo.AutoSize = true;
             this.lblStockMinimo.BackColor = System.Drawing.Color.Transparent;
-<<<<<<< HEAD
-            this.lblStockMinimo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockMinimo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblStockMinimo.Location = new System.Drawing.Point(430, 398);
-=======
-            this.lblStockMinimo.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.lblStockMinimo.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStockMinimo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.lblStockMinimo.Location = new System.Drawing.Point(540, 538);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblStockMinimo.Name = "lblStockMinimo";
             this.lblStockMinimo.Size = new System.Drawing.Size(100, 16);
             this.lblStockMinimo.TabIndex = 15;
@@ -445,26 +315,16 @@ namespace app
             // nudStockMinimo
             // 
             this.nudStockMinimo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.nudStockMinimo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudStockMinimo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-            this.nudStockMinimo.Location = new System.Drawing.Point(540, 396);
-=======
-            this.nudStockMinimo.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.nudStockMinimo.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudStockMinimo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.nudStockMinimo.Location = new System.Drawing.Point(670, 536);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.nudStockMinimo.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.nudStockMinimo.Name = "nudStockMinimo";
-<<<<<<< HEAD
-            this.nudStockMinimo.Size = new System.Drawing.Size(60, 23);
-=======
-            this.nudStockMinimo.Size = new System.Drawing.Size(80, 28);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.nudStockMinimo.Size = new System.Drawing.Size(80, 28);
             this.nudStockMinimo.TabIndex = 16;
             this.nudStockMinimo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudStockMinimo.Value = new decimal(new int[] {
@@ -477,15 +337,9 @@ namespace app
             // 
             this.lblDescripcionOperacion.AutoSize = true;
             this.lblDescripcionOperacion.BackColor = System.Drawing.Color.Transparent;
-<<<<<<< HEAD
-            this.lblDescripcionOperacion.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescripcionOperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblDescripcionOperacion.Location = new System.Drawing.Point(790, 370);
-=======
-            this.lblDescripcionOperacion.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.lblDescripcionOperacion.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescripcionOperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.lblDescripcionOperacion.Location = new System.Drawing.Point(900, 470);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblDescripcionOperacion.Name = "lblDescripcionOperacion";
             this.lblDescripcionOperacion.Size = new System.Drawing.Size(223, 14);
             this.lblDescripcionOperacion.TabIndex = 17;
@@ -495,15 +349,9 @@ namespace app
             // 
             this.lblResultados.AutoSize = true;
             this.lblResultados.BackColor = System.Drawing.Color.Transparent;
-<<<<<<< HEAD
-            this.lblResultados.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResultados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblResultados.Location = new System.Drawing.Point(12, 430);
-=======
-            this.lblResultados.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.lblResultados.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResultados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.lblResultados.Location = new System.Drawing.Point(20, 590);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblResultados.Name = "lblResultados";
             this.lblResultados.Size = new System.Drawing.Size(200, 16);
             this.lblResultados.TabIndex = 18;
@@ -514,11 +362,7 @@ namespace app
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(73)))), ((int)(((byte)(89)))));
-<<<<<<< HEAD
-            this.ClientSize = new System.Drawing.Size(1084, 461);
-=======
-            this.ClientSize = new System.Drawing.Size(1200, 700);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.ClientSize = new System.Drawing.Size(1200, 700);
             this.Controls.Add(this.lblResultados);
             this.Controls.Add(this.lblDescripcionOperacion);
             this.Controls.Add(this.nudStockMinimo);

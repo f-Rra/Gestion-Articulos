@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-﻿
-=======
-
->>>>>>> 965eb23 (Correcciones en todos los formularios)
 namespace app
 {
     partial class frmDetalles
@@ -65,11 +60,7 @@ namespace app
             this.lbl_Precio.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Precio.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Precio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lbl_Precio.Location = new System.Drawing.Point(323, 153);
-=======
-            this.lbl_Precio.Location = new System.Drawing.Point(400, 210);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.lbl_Precio.Location = new System.Drawing.Point(400, 210);
             this.lbl_Precio.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_Precio.Name = "lbl_Precio";
             this.lbl_Precio.Padding = new System.Windows.Forms.Padding(5);
@@ -86,25 +77,15 @@ namespace app
             this.panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
-<<<<<<< HEAD
-            this.panel.Size = new System.Drawing.Size(854, 76);
-=======
-            this.panel.Size = new System.Drawing.Size(1200, 90);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.panel.Size = new System.Drawing.Size(1200, 90);
             this.panel.TabIndex = 33;
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-<<<<<<< HEAD
-            this.lblTitulo.Font = new System.Drawing.Font("Verdana", 20F);
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblTitulo.Location = new System.Drawing.Point(74, 22);
-=======
-            this.lblTitulo.Font = new System.Drawing.Font("Verdana", 24F);
+this.lblTitulo.Font = new System.Drawing.Font("Verdana", 24F);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.lblTitulo.Location = new System.Drawing.Point(90, 28);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(285, 32);
             this.lblTitulo.TabIndex = 1;
@@ -113,15 +94,9 @@ namespace app
             // pbxLogo
             // 
             this.pbxLogo.Image = global::app.Properties.Resources.logo_detalles;
-<<<<<<< HEAD
-            this.pbxLogo.Location = new System.Drawing.Point(12, 12);
-            this.pbxLogo.Name = "pbxLogo";
-            this.pbxLogo.Size = new System.Drawing.Size(50, 50);
-=======
-            this.pbxLogo.Location = new System.Drawing.Point(15, 15);
+this.pbxLogo.Location = new System.Drawing.Point(15, 15);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(65, 65);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxLogo.TabIndex = 0;
             this.pbxLogo.TabStop = false;
@@ -130,18 +105,7 @@ namespace app
             // 
             this.btnListado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(103)))), ((int)(((byte)(115)))));
             this.btnListado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-<<<<<<< HEAD
-            this.btnListado.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.btnListado.Image = global::app.Properties.Resources.cancelar;
-            this.btnListado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListado.Location = new System.Drawing.Point(617, 437);
-            this.btnListado.Margin = new System.Windows.Forms.Padding(0);
-            this.btnListado.Name = "btnListado";
-            this.btnListado.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnListado.Size = new System.Drawing.Size(224, 33);
-=======
-            this.btnListado.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+this.btnListado.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnListado.Image = global::app.Properties.Resources.cancelar;
             this.btnListado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -150,7 +114,6 @@ namespace app
             this.btnListado.Name = "btnListado";
             this.btnListado.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnListado.Size = new System.Drawing.Size(350, 45);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.btnListado.TabIndex = 0;
             this.btnListado.Text = "Volver al Listado";
             this.btnListado.UseVisualStyleBackColor = false;
@@ -163,15 +126,9 @@ namespace app
             this.lblPrecio.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblPrecio.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lblPrecio.Location = new System.Drawing.Point(326, 181);
-            this.lblPrecio.Margin = new System.Windows.Forms.Padding(0);
-            this.lblPrecio.MinimumSize = new System.Drawing.Size(275, 33);
-=======
-            this.lblPrecio.Location = new System.Drawing.Point(400, 240);
+this.lblPrecio.Location = new System.Drawing.Point(400, 240);
             this.lblPrecio.Margin = new System.Windows.Forms.Padding(0);
             this.lblPrecio.MinimumSize = new System.Drawing.Size(350, 40);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Padding = new System.Windows.Forms.Padding(4);
             this.lblPrecio.Size = new System.Drawing.Size(275, 33);
@@ -184,15 +141,9 @@ namespace app
             this.lblCodigo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblCodigo.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lblCodigo.Location = new System.Drawing.Point(12, 181);
-            this.lblCodigo.Margin = new System.Windows.Forms.Padding(0);
-            this.lblCodigo.MinimumSize = new System.Drawing.Size(275, 33);
-=======
-            this.lblCodigo.Location = new System.Drawing.Point(20, 240);
+this.lblCodigo.Location = new System.Drawing.Point(20, 240);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(0);
             this.lblCodigo.MinimumSize = new System.Drawing.Size(350, 40);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Padding = new System.Windows.Forms.Padding(4);
             this.lblCodigo.Size = new System.Drawing.Size(275, 33);
@@ -204,11 +155,7 @@ namespace app
             this.lbl_Codigo.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Codigo.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Codigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lbl_Codigo.Location = new System.Drawing.Point(9, 153);
-=======
-            this.lbl_Codigo.Location = new System.Drawing.Point(20, 210);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.lbl_Codigo.Location = new System.Drawing.Point(20, 210);
             this.lbl_Codigo.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_Codigo.Name = "lbl_Codigo";
             this.lbl_Codigo.Padding = new System.Windows.Forms.Padding(5);
@@ -222,11 +169,7 @@ namespace app
             this.lbl_Categoria.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Categoria.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Categoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lbl_Categoria.Location = new System.Drawing.Point(323, 219);
-=======
-            this.lbl_Categoria.Location = new System.Drawing.Point(400, 300);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.lbl_Categoria.Location = new System.Drawing.Point(400, 300);
             this.lbl_Categoria.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_Categoria.Name = "lbl_Categoria";
             this.lbl_Categoria.Padding = new System.Windows.Forms.Padding(5);
@@ -241,15 +184,9 @@ namespace app
             this.lblCategoria.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblCategoria.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lblCategoria.Location = new System.Drawing.Point(326, 247);
-            this.lblCategoria.Margin = new System.Windows.Forms.Padding(0);
-            this.lblCategoria.MinimumSize = new System.Drawing.Size(275, 33);
-=======
-            this.lblCategoria.Location = new System.Drawing.Point(400, 330);
+this.lblCategoria.Location = new System.Drawing.Point(400, 330);
             this.lblCategoria.Margin = new System.Windows.Forms.Padding(0);
             this.lblCategoria.MinimumSize = new System.Drawing.Size(350, 40);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Padding = new System.Windows.Forms.Padding(4);
             this.lblCategoria.Size = new System.Drawing.Size(275, 33);
@@ -261,11 +198,7 @@ namespace app
             this.lbl_URL.BackColor = System.Drawing.Color.Transparent;
             this.lbl_URL.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_URL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lbl_URL.Location = new System.Drawing.Point(8, 285);
-=======
-            this.lbl_URL.Location = new System.Drawing.Point(20, 390);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.lbl_URL.Location = new System.Drawing.Point(20, 390);
             this.lbl_URL.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_URL.Name = "lbl_URL";
             this.lbl_URL.Padding = new System.Windows.Forms.Padding(5);
@@ -280,17 +213,10 @@ namespace app
             this.lblURL.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblURL.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblURL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lblURL.Location = new System.Drawing.Point(12, 313);
-            this.lblURL.Margin = new System.Windows.Forms.Padding(0);
-            this.lblURL.MaximumSize = new System.Drawing.Size(589, 33);
-            this.lblURL.MinimumSize = new System.Drawing.Size(589, 33);
-=======
-            this.lblURL.Location = new System.Drawing.Point(20, 420);
+this.lblURL.Location = new System.Drawing.Point(20, 420);
             this.lblURL.Margin = new System.Windows.Forms.Padding(0);
             this.lblURL.MaximumSize = new System.Drawing.Size(730, 40);
             this.lblURL.MinimumSize = new System.Drawing.Size(730, 40);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblURL.Name = "lblURL";
             this.lblURL.Padding = new System.Windows.Forms.Padding(4);
             this.lblURL.Size = new System.Drawing.Size(589, 33);
@@ -302,11 +228,7 @@ namespace app
             this.lbl_Descripcion.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Descripcion.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Descripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lbl_Descripcion.Location = new System.Drawing.Point(9, 354);
-=======
-            this.lbl_Descripcion.Location = new System.Drawing.Point(20, 480);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.lbl_Descripcion.Location = new System.Drawing.Point(20, 480);
             this.lbl_Descripcion.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_Descripcion.Name = "lbl_Descripcion";
             this.lbl_Descripcion.Padding = new System.Windows.Forms.Padding(5);
@@ -321,17 +243,10 @@ namespace app
             this.lblDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblDescripcion.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lblDescripcion.Location = new System.Drawing.Point(12, 382);
-            this.lblDescripcion.Margin = new System.Windows.Forms.Padding(0);
-            this.lblDescripcion.MaximumSize = new System.Drawing.Size(589, 33);
-            this.lblDescripcion.MinimumSize = new System.Drawing.Size(589, 33);
-=======
-            this.lblDescripcion.Location = new System.Drawing.Point(20, 510);
+this.lblDescripcion.Location = new System.Drawing.Point(20, 510);
             this.lblDescripcion.Margin = new System.Windows.Forms.Padding(0);
             this.lblDescripcion.MaximumSize = new System.Drawing.Size(730, 40);
             this.lblDescripcion.MinimumSize = new System.Drawing.Size(730, 40);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Padding = new System.Windows.Forms.Padding(4);
             this.lblDescripcion.Size = new System.Drawing.Size(589, 33);
@@ -344,15 +259,9 @@ namespace app
             this.lblID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblID.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lblID.Location = new System.Drawing.Point(12, 115);
-            this.lblID.Margin = new System.Windows.Forms.Padding(0);
-            this.lblID.MinimumSize = new System.Drawing.Size(275, 33);
-=======
-            this.lblID.Location = new System.Drawing.Point(20, 150);
+this.lblID.Location = new System.Drawing.Point(20, 150);
             this.lblID.Margin = new System.Windows.Forms.Padding(0);
             this.lblID.MinimumSize = new System.Drawing.Size(350, 40);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblID.Name = "lblID";
             this.lblID.Padding = new System.Windows.Forms.Padding(4);
             this.lblID.Size = new System.Drawing.Size(275, 33);
@@ -364,11 +273,7 @@ namespace app
             this.lbl_ID.BackColor = System.Drawing.Color.Transparent;
             this.lbl_ID.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lbl_ID.Location = new System.Drawing.Point(9, 88);
-=======
-            this.lbl_ID.Location = new System.Drawing.Point(20, 120);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.lbl_ID.Location = new System.Drawing.Point(20, 120);
             this.lbl_ID.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_ID.Name = "lbl_ID";
             this.lbl_ID.Padding = new System.Windows.Forms.Padding(5);
@@ -382,11 +287,7 @@ namespace app
             this.lbl_Marca.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Marca.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Marca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lbl_Marca.Location = new System.Drawing.Point(9, 219);
-=======
-            this.lbl_Marca.Location = new System.Drawing.Point(20, 300);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.lbl_Marca.Location = new System.Drawing.Point(20, 300);
             this.lbl_Marca.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_Marca.Name = "lbl_Marca";
             this.lbl_Marca.Padding = new System.Windows.Forms.Padding(5);
@@ -401,15 +302,9 @@ namespace app
             this.lblMarca.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblMarca.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMarca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lblMarca.Location = new System.Drawing.Point(12, 247);
-            this.lblMarca.Margin = new System.Windows.Forms.Padding(0);
-            this.lblMarca.MinimumSize = new System.Drawing.Size(275, 33);
-=======
-            this.lblMarca.Location = new System.Drawing.Point(20, 330);
+this.lblMarca.Location = new System.Drawing.Point(20, 330);
             this.lblMarca.Margin = new System.Windows.Forms.Padding(0);
             this.lblMarca.MinimumSize = new System.Drawing.Size(350, 40);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Padding = new System.Windows.Forms.Padding(4);
             this.lblMarca.Size = new System.Drawing.Size(275, 33);
@@ -421,11 +316,7 @@ namespace app
             this.lbl_Nombre.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Nombre.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Nombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lbl_Nombre.Location = new System.Drawing.Point(323, 88);
-=======
-            this.lbl_Nombre.Location = new System.Drawing.Point(400, 120);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.lbl_Nombre.Location = new System.Drawing.Point(400, 120);
             this.lbl_Nombre.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_Nombre.Name = "lbl_Nombre";
             this.lbl_Nombre.Padding = new System.Windows.Forms.Padding(5);
@@ -440,15 +331,9 @@ namespace app
             this.lblNombre.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblNombre.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-<<<<<<< HEAD
-            this.lblNombre.Location = new System.Drawing.Point(326, 116);
-            this.lblNombre.Margin = new System.Windows.Forms.Padding(0);
-            this.lblNombre.MinimumSize = new System.Drawing.Size(275, 33);
-=======
-            this.lblNombre.Location = new System.Drawing.Point(400, 150);
+this.lblNombre.Location = new System.Drawing.Point(400, 150);
             this.lblNombre.Margin = new System.Windows.Forms.Padding(0);
             this.lblNombre.MinimumSize = new System.Drawing.Size(350, 40);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Padding = new System.Windows.Forms.Padding(4);
             this.lblNombre.Size = new System.Drawing.Size(275, 33);
@@ -458,17 +343,10 @@ namespace app
             // 
             this.pbxImagen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.pbxImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-<<<<<<< HEAD
-            this.pbxImagen.Location = new System.Drawing.Point(617, 115);
-            this.pbxImagen.Margin = new System.Windows.Forms.Padding(6);
-            this.pbxImagen.Name = "pbxImagen";
-            this.pbxImagen.Size = new System.Drawing.Size(224, 300);
-=======
-            this.pbxImagen.Location = new System.Drawing.Point(800, 150);
+this.pbxImagen.Location = new System.Drawing.Point(800, 150);
             this.pbxImagen.Margin = new System.Windows.Forms.Padding(6);
             this.pbxImagen.Name = "pbxImagen";
             this.pbxImagen.Size = new System.Drawing.Size(350, 400);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
             this.pbxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxImagen.TabIndex = 17;
             this.pbxImagen.TabStop = false;
@@ -477,11 +355,7 @@ namespace app
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(73)))), ((int)(((byte)(89)))));
-<<<<<<< HEAD
-            this.ClientSize = new System.Drawing.Size(854, 491);
-=======
-            this.ClientSize = new System.Drawing.Size(1200, 700);
->>>>>>> 965eb23 (Correcciones en todos los formularios)
+this.ClientSize = new System.Drawing.Size(1200, 700);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.lbl_ID);
             this.Controls.Add(this.lblURL);

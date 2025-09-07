@@ -204,11 +204,6 @@ namespace Negocio
             }
         }
 
-<<<<<<< HEAD
-        // MÉTODOS DE GESTIÓN DE STOCK
-
-=======
->>>>>>> 965eb23 (Correcciones en todos los formularios)
         public void actualizarStock(int idArticulo, int nuevoStock)
         {
             AccesoDatos datos = new AccesoDatos();

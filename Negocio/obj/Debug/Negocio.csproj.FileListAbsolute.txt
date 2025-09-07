@@ -1,18 +1,9 @@
-C:\Users\710\Desktop\TPFinalNivel2_Herrera\Negocio\bin\Debug\Negocio.dll
-C:\Users\710\Desktop\TPFinalNivel2_Herrera\Negocio\bin\Debug\Negocio.pdb
-C:\Users\710\Desktop\TPFinalNivel2_Herrera\Negocio\bin\Debug\Dominio.dll
-C:\Users\710\Desktop\TPFinalNivel2_Herrera\Negocio\bin\Debug\Dominio.pdb
-C:\Users\710\Desktop\TPFinalNivel2_Herrera\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
-C:\Users\710\Desktop\TPFinalNivel2_Herrera\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
-C:\Users\710\Desktop\TPFinalNivel2_Herrera\Negocio\obj\Debug\Negocio.csproj.CopyComplete
-C:\Users\710\Desktop\TPFinalNivel2_Herrera\Negocio\obj\Debug\Negocio.dll
-C:\Users\710\Desktop\TPFinalNivel2_Herrera\Negocio\obj\Debug\Negocio.pdb
-C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\bin\Debug\Negocio.dll
-C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\bin\Debug\Negocio.pdb
-C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\bin\Debug\Dominio.dll
-C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\bin\Debug\Dominio.pdb
-C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
-C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
-C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\obj\Debug\Negocio.dll
-C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\obj\Debug\Negocio.pdb
-C:\Users\710\Desktop\TUP\Proyectos\Gestion de Articulos\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\Negocio\bin\Debug\Negocio.dll
+C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\Negocio\bin\Debug\Negocio.pdb
+C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\Negocio\bin\Debug\Dominio.dll
+C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\Negocio\bin\Debug\Dominio.pdb
+C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\Negocio\obj\Debug\Negocio.dll
+C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\Negocio\obj\Debug\Negocio.pdb
+C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\Negocio\obj\Debug\Negocio.csproj.CopyComplete
