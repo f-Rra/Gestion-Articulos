@@ -32,11 +32,11 @@ namespace app
             this.panel = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
-            this.lblResumen = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnStock = new System.Windows.Forms.Button();
             this.btnReportes = new System.Windows.Forms.Button();
             this.btnMarcas = new System.Windows.Forms.Button();
+            this.btnArticulos = new System.Windows.Forms.Button();
             this.btnCategorias = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
@@ -51,7 +51,7 @@ namespace app
             this.panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(1200, 90);
+            this.panel.Size = new System.Drawing.Size(882, 90);
             this.panel.TabIndex = 8;
             // 
             // lblTitulo
@@ -61,13 +61,13 @@ namespace app
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.lblTitulo.Location = new System.Drawing.Point(90, 28);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(500, 38);
+            this.lblTitulo.Size = new System.Drawing.Size(775, 38);
             this.lblTitulo.TabIndex = 1;
-            this.lblTitulo.Text = "Sistema de Gestión Comercial";
+            this.lblTitulo.Text = "Sistema de Gestión Comercial - Administración";
             // 
             // pbxLogo
             // 
-            this.pbxLogo.Image = global::app.Properties.Resources.logo;
+            this.pbxLogo.Image = global::app.Properties.Resources.logo_principal;
             this.pbxLogo.Location = new System.Drawing.Point(15, 15);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(65, 65);
@@ -75,29 +75,18 @@ namespace app
             this.pbxLogo.TabIndex = 0;
             this.pbxLogo.TabStop = false;
             // 
-            // lblResumen
-            // 
-            this.lblResumen.AutoSize = true;
-            this.lblResumen.BackColor = System.Drawing.Color.Transparent;
-            this.lblResumen.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResumen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblResumen.Location = new System.Drawing.Point(200, 400);
-            this.lblResumen.Name = "lblResumen";
-            this.lblResumen.Size = new System.Drawing.Size(253, 23);
-            this.lblResumen.TabIndex = 14;
-            this.lblResumen.Text = "📈 Resumen: Cargando...";
-            // 
             // btnSalir
             // 
             this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(103)))), ((int)(((byte)(115)))));
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
+            this.btnSalir.Image = global::app.Properties.Resources.cancelar;
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(750, 400);
+            this.btnSalir.Location = new System.Drawing.Point(577, 223);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnSalir.Size = new System.Drawing.Size(180, 50);
+            this.btnSalir.Size = new System.Drawing.Size(200, 50);
             this.btnSalir.TabIndex = 13;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
@@ -109,8 +98,9 @@ namespace app
             this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStock.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
+            this.btnStock.Image = global::app.Properties.Resources.stock;
             this.btnStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStock.Location = new System.Drawing.Point(450, 280);
+            this.btnStock.Location = new System.Drawing.Point(77, 223);
             this.btnStock.Name = "btnStock";
             this.btnStock.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnStock.Size = new System.Drawing.Size(200, 50);
@@ -125,8 +115,9 @@ namespace app
             this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReportes.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReportes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
+            this.btnReportes.Image = global::app.Properties.Resources.reportes;
             this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportes.Location = new System.Drawing.Point(700, 200);
+            this.btnReportes.Location = new System.Drawing.Point(327, 223);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnReportes.Size = new System.Drawing.Size(200, 50);
@@ -141,8 +132,9 @@ namespace app
             this.btnMarcas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMarcas.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMarcas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
+            this.btnMarcas.Image = global::app.Properties.Resources.marcas;
             this.btnMarcas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMarcas.Location = new System.Drawing.Point(450, 200);
+            this.btnMarcas.Location = new System.Drawing.Point(327, 143);
             this.btnMarcas.Name = "btnMarcas";
             this.btnMarcas.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnMarcas.Size = new System.Drawing.Size(200, 50);
@@ -151,14 +143,32 @@ namespace app
             this.btnMarcas.UseVisualStyleBackColor = false;
             this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
             // 
+            // btnArticulos
+            // 
+            this.btnArticulos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.btnArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArticulos.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnArticulos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
+            this.btnArticulos.Image = global::app.Properties.Resources.articulos;
+            this.btnArticulos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnArticulos.Location = new System.Drawing.Point(77, 143);
+            this.btnArticulos.Name = "btnArticulos";
+            this.btnArticulos.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnArticulos.Size = new System.Drawing.Size(200, 50);
+            this.btnArticulos.TabIndex = 9;
+            this.btnArticulos.Text = "Articulos";
+            this.btnArticulos.UseVisualStyleBackColor = false;
+            this.btnArticulos.Click += new System.EventHandler(this.btnArticulos_Click);
+            // 
             // btnCategorias
             // 
             this.btnCategorias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategorias.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCategorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
+            this.btnCategorias.Image = global::app.Properties.Resources.categoria;
             this.btnCategorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategorias.Location = new System.Drawing.Point(200, 200);
+            this.btnCategorias.Location = new System.Drawing.Point(577, 143);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnCategorias.Size = new System.Drawing.Size(200, 50);
@@ -171,25 +181,23 @@ namespace app
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(73)))), ((int)(((byte)(89)))));
-            this.ClientSize = new System.Drawing.Size(1200, 700);
-            this.Controls.Add(this.lblResumen);
+            this.ClientSize = new System.Drawing.Size(882, 338);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnStock);
             this.Controls.Add(this.btnReportes);
             this.Controls.Add(this.btnMarcas);
+            this.Controls.Add(this.btnArticulos);
             this.Controls.Add(this.btnCategorias);
             this.Controls.Add(this.panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Panel de Administración";
             this.Load += new System.EventHandler(this.frmAdmin_Load);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -203,6 +211,6 @@ namespace app
         private System.Windows.Forms.Button btnReportes;
         private System.Windows.Forms.Button btnStock;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Label lblResumen;
+        private System.Windows.Forms.Button btnArticulos;
     }
 }

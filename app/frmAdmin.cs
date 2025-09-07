@@ -24,47 +24,24 @@ namespace app
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
-            cargarEstadisticas();
         }
 
-        private void cargarEstadisticas()
+        private void btnArticulos_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Primero mostrar que el método se ejecuta
-                lblResumen.Text = "📈 Obteniendo datos...";
-                this.Refresh();
-
-                ArticuloNegocio artNeg = new ArticuloNegocio();
-                CategoriaNegocio catNeg = new CategoriaNegocio();
-                MarcaNegocio marNeg = new MarcaNegocio();
-
-                int totalArticulos = artNeg.listar().Count;
-                int totalCategorias = catNeg.listar().Count;
-                int totalMarcas = marNeg.listar().Count;
-
-                lblResumen.Text = $"📈 Resumen: {totalCategorias} Categorías | {totalMarcas} Marcas | {totalArticulos} artículos";
-                this.Refresh();
-            }
-            catch (Exception ex)
-            {
-                lblResumen.Text = "❌ Error: " + ex.Message;
-                this.Refresh();
-            }
+            frmArticulos ventana = new frmArticulos();
+            ventana.ShowDialog();
         }
 
         private void btnCategorias_Click(object sender, EventArgs e)
         {
             frmCategorias ventana = new frmCategorias();
             ventana.ShowDialog();
-            cargarEstadisticas(); // Actualizar estadísticas al volver
         }
 
         private void btnMarcas_Click(object sender, EventArgs e)
         {
             frmMarcas ventana = new frmMarcas();
             ventana.ShowDialog();
-            cargarEstadisticas(); // Actualizar estadísticas al volver
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
@@ -77,7 +54,6 @@ namespace app
         {
             frmStock ventana = new frmStock();
             ventana.ShowDialog();
-            cargarEstadisticas(); // Actualizar estadísticas al volver
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -90,5 +66,6 @@ namespace app
                 this.Close();
             }
         }
+
     }
 }

@@ -40,10 +40,6 @@ namespace app
             this.btnStockMarcas = new System.Windows.Forms.Button();
             this.btnExportarPDF = new System.Windows.Forms.Button();
             this.dgvReportes = new System.Windows.Forms.DataGridView();
-            this.lblTotalArticulos = new System.Windows.Forms.Label();
-            this.lblTotalCategorias = new System.Windows.Forms.Label();
-            this.lblTotalMarcas = new System.Windows.Forms.Label();
-            this.lblPrecioPromedio = new System.Windows.Forms.Label();
             this.lblTituloReporte = new System.Windows.Forms.Label();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
@@ -59,13 +55,13 @@ namespace app
             this.panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
-this.panel.Size = new System.Drawing.Size(1200, 90);
+            this.panel.Size = new System.Drawing.Size(1200, 90);
             this.panel.TabIndex = 0;
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-this.lblTitulo.Font = new System.Drawing.Font("Verdana", 24F);
+            this.lblTitulo.Font = new System.Drawing.Font("Verdana", 24F);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.lblTitulo.Location = new System.Drawing.Point(90, 28);
             this.lblTitulo.Name = "lblTitulo";
@@ -76,7 +72,7 @@ this.lblTitulo.Font = new System.Drawing.Font("Verdana", 24F);
             // pbxLogo
             // 
             this.pbxLogo.Image = global::app.Properties.Resources.logo;
-this.pbxLogo.Location = new System.Drawing.Point(15, 15);
+            this.pbxLogo.Location = new System.Drawing.Point(15, 15);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(65, 65);
             this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -87,7 +83,7 @@ this.pbxLogo.Location = new System.Drawing.Point(15, 15);
             // 
             this.btnInventarioCompleto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnInventarioCompleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-this.btnInventarioCompleto.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventarioCompleto.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInventarioCompleto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnInventarioCompleto.Location = new System.Drawing.Point(20, 120);
             this.btnInventarioCompleto.Name = "btnInventarioCompleto";
@@ -101,7 +97,7 @@ this.btnInventarioCompleto.Font = new System.Drawing.Font("Verdana", 11F, System
             // 
             this.btnEstadisticasCategorias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnEstadisticasCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-this.btnEstadisticasCategorias.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEstadisticasCategorias.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEstadisticasCategorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnEstadisticasCategorias.Location = new System.Drawing.Point(260, 120);
             this.btnEstadisticasCategorias.Name = "btnEstadisticasCategorias";
@@ -115,7 +111,7 @@ this.btnEstadisticasCategorias.Font = new System.Drawing.Font("Verdana", 11F, Sy
             // 
             this.btnEstadisticasMarcas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnEstadisticasMarcas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-this.btnEstadisticasMarcas.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEstadisticasMarcas.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEstadisticasMarcas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnEstadisticasMarcas.Location = new System.Drawing.Point(500, 120);
             this.btnEstadisticasMarcas.Name = "btnEstadisticasMarcas";
@@ -129,7 +125,7 @@ this.btnEstadisticasMarcas.Font = new System.Drawing.Font("Verdana", 11F, System
             // 
             this.btnBajoStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnBajoStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-this.btnBajoStock.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBajoStock.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBajoStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnBajoStock.Location = new System.Drawing.Point(740, 120);
             this.btnBajoStock.Name = "btnBajoStock";
@@ -143,7 +139,7 @@ this.btnBajoStock.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.
             // 
             this.btnSinStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnSinStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-this.btnSinStock.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSinStock.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSinStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnSinStock.Location = new System.Drawing.Point(20, 180);
             this.btnSinStock.Name = "btnSinStock";
@@ -157,7 +153,7 @@ this.btnSinStock.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.F
             // 
             this.btnStockCategorias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnStockCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-this.btnStockCategorias.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockCategorias.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStockCategorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnStockCategorias.Location = new System.Drawing.Point(260, 180);
             this.btnStockCategorias.Name = "btnStockCategorias";
@@ -171,7 +167,7 @@ this.btnStockCategorias.Font = new System.Drawing.Font("Verdana", 11F, System.Dr
             // 
             this.btnStockMarcas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.btnStockMarcas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-this.btnStockMarcas.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockMarcas.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStockMarcas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnStockMarcas.Location = new System.Drawing.Point(500, 180);
             this.btnStockMarcas.Name = "btnStockMarcas";
@@ -185,13 +181,13 @@ this.btnStockMarcas.Font = new System.Drawing.Font("Verdana", 11F, System.Drawin
             // 
             this.btnExportarPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(103)))), ((int)(((byte)(115)))));
             this.btnExportarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-this.btnExportarPDF.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarPDF.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportarPDF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.btnExportarPDF.Location = new System.Drawing.Point(740, 180);
             this.btnExportarPDF.Name = "btnExportarPDF";
             this.btnExportarPDF.Size = new System.Drawing.Size(220, 45);
             this.btnExportarPDF.TabIndex = 4;
-            this.btnExportarPDF.Text = "📄 Exportar a PDF";
+            this.btnExportarPDF.Text = "📄 Exportar";
             this.btnExportarPDF.UseVisualStyleBackColor = false;
             this.btnExportarPDF.Click += new System.EventHandler(this.btnExportarPDF_Click);
             // 
@@ -203,57 +199,13 @@ this.btnExportarPDF.Font = new System.Drawing.Font("Verdana", 11F, System.Drawin
             this.dgvReportes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
             this.dgvReportes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvReportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-this.dgvReportes.Location = new System.Drawing.Point(20, 280);
+            this.dgvReportes.Location = new System.Drawing.Point(20, 280);
             this.dgvReportes.Name = "dgvReportes";
             this.dgvReportes.ReadOnly = true;
             this.dgvReportes.RowHeadersVisible = false;
             this.dgvReportes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-this.dgvReportes.Size = new System.Drawing.Size(1160, 350);
+            this.dgvReportes.Size = new System.Drawing.Size(1160, 350);
             this.dgvReportes.TabIndex = 10;
-            // 
-            // lblTotalArticulos
-            // 
-            this.lblTotalArticulos.AutoSize = true;
-            this.lblTotalArticulos.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
-            this.lblTotalArticulos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblTotalArticulos.Location = new System.Drawing.Point(20, 650);
-            this.lblTotalArticulos.Name = "lblTotalArticulos";
-            this.lblTotalArticulos.Size = new System.Drawing.Size(147, 18);
-            this.lblTotalArticulos.TabIndex = 6;
-            this.lblTotalArticulos.Text = "Total Artículos: 0";
-            // 
-            // lblTotalCategorias
-            // 
-            this.lblTotalCategorias.AutoSize = true;
-this.lblTotalCategorias.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
-            this.lblTotalCategorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblTotalCategorias.Location = new System.Drawing.Point(300, 650);
-            this.lblTotalCategorias.Name = "lblTotalCategorias";
-            this.lblTotalCategorias.Size = new System.Drawing.Size(164, 18);
-            this.lblTotalCategorias.TabIndex = 7;
-            this.lblTotalCategorias.Text = "Total Categorías: 0";
-            // 
-            // lblTotalMarcas
-            // 
-            this.lblTotalMarcas.AutoSize = true;
-this.lblTotalMarcas.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
-            this.lblTotalMarcas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblTotalMarcas.Location = new System.Drawing.Point(580, 650);
-            this.lblTotalMarcas.Name = "lblTotalMarcas";
-            this.lblTotalMarcas.Size = new System.Drawing.Size(134, 18);
-            this.lblTotalMarcas.TabIndex = 8;
-            this.lblTotalMarcas.Text = "Total Marcas: 0";
-            // 
-            // lblPrecioPromedio
-            // 
-            this.lblPrecioPromedio.AutoSize = true;
-this.lblPrecioPromedio.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
-            this.lblPrecioPromedio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(227)))), ((int)(((byte)(213)))));
-            this.lblPrecioPromedio.Location = new System.Drawing.Point(860, 650);
-            this.lblPrecioPromedio.Name = "lblPrecioPromedio";
-            this.lblPrecioPromedio.Size = new System.Drawing.Size(174, 18);
-            this.lblPrecioPromedio.TabIndex = 9;
-            this.lblPrecioPromedio.Text = "Precio Promedio: $0";
             // 
             // lblTituloReporte
             // 
@@ -269,12 +221,8 @@ this.lblPrecioPromedio.Font = new System.Drawing.Font("Verdana", 11F, System.Dra
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(73)))), ((int)(((byte)(89)))));
-this.ClientSize = new System.Drawing.Size(1200, 750);
+            this.ClientSize = new System.Drawing.Size(1200, 750);
             this.Controls.Add(this.lblTituloReporte);
-            this.Controls.Add(this.lblPrecioPromedio);
-            this.Controls.Add(this.lblTotalMarcas);
-            this.Controls.Add(this.lblTotalCategorias);
-            this.Controls.Add(this.lblTotalArticulos);
             this.Controls.Add(this.dgvReportes);
             this.Controls.Add(this.btnStockMarcas);
             this.Controls.Add(this.btnStockCategorias);
@@ -297,6 +245,7 @@ this.ClientSize = new System.Drawing.Size(1200, 750);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReportes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -309,10 +258,6 @@ this.ClientSize = new System.Drawing.Size(1200, 750);
         private System.Windows.Forms.Button btnEstadisticasMarcas;
         private System.Windows.Forms.Button btnExportarPDF;
         private System.Windows.Forms.DataGridView dgvReportes;
-        private System.Windows.Forms.Label lblTotalArticulos;
-        private System.Windows.Forms.Label lblTotalCategorias;
-        private System.Windows.Forms.Label lblTotalMarcas;
-        private System.Windows.Forms.Label lblPrecioPromedio;
         private System.Windows.Forms.Label lblTituloReporte;
         private System.Windows.Forms.Button btnBajoStock;
         private System.Windows.Forms.Button btnSinStock;

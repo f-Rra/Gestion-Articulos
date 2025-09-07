@@ -19,6 +19,8 @@ namespace app
         public frmLogin()
         {
             InitializeComponent();
+            txtUsuario.Text = " 👤 ";
+            txtContrasena.Text = " 🔑 ";        
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -77,6 +79,17 @@ namespace app
         private void frmLogin_Load(object sender, EventArgs e)
         {
             txtUsuario.Focus();
+        }
+
+        private void txtUsuario_Click(object sender, EventArgs e)
+        {
+            txtUsuario.Text = "";
+        }
+
+        private void txtContrasena_Click(object sender, EventArgs e)
+        {
+            txtContrasena.Text = "";
+            txtContrasena.UseSystemPasswordChar = true;
         }
     }
 }

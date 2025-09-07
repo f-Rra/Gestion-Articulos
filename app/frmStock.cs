@@ -25,7 +25,6 @@ namespace app
         private void frmStock_Load(object sender, EventArgs e)
         {
             cargarArticulos();
-            cargarTiposOperacion();
             limpiarCampos();
         }
 
@@ -71,12 +70,15 @@ namespace app
                 {
                     case "Sumar":
                         neg.sumarStock(seleccionado.id, cantidad);
+                        MessageBox.Show("Stock Agregado Correctamente", "");
                         break;
                     case "Restar":
                         neg.restarStock(seleccionado.id, cantidad);
+                        MessageBox.Show("Stock Restado Correctamente", "");
                         break;
                     case "Ajustar":
                         neg.actualizarStock(seleccionado.id, cantidad);
+                        MessageBox.Show("Stock Ajustado Correctamente", "");
                         break;
                 }
 
@@ -97,7 +99,6 @@ namespace app
                 var articulosBajoStock = neg.obtenerArticulosBajoStock(stockMinimo);
                 dgvArticulos.DataSource = articulosBajoStock;
                 lblResultados.Text = $"Artículos con stock menor o igual a {stockMinimo}: {articulosBajoStock.Count}";
-                lblResultados.ForeColor = Color.Orange;
             }
             catch (Exception ex)
             {
@@ -112,7 +113,6 @@ namespace app
                 var articulosSinStock = neg.obtenerArticulosSinStock();
                 dgvArticulos.DataSource = articulosSinStock;
                 lblResultados.Text = $"Artículos sin stock: {articulosSinStock.Count}";
-                lblResultados.ForeColor = Color.Red;
             }
             catch (Exception ex)
             {
@@ -124,7 +124,6 @@ namespace app
         {
             cargarArticulos();
             lblResultados.Text = "Mostrando todos los artículos";
-            lblResultados.ForeColor = Color.Black;
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -165,14 +164,6 @@ namespace app
                 dgvArticulos.Columns["EstadoStock"].Width = 100;
                 dgvArticulos.Columns["EstadoStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-        }
-
-        private void cargarTiposOperacion()
-        {
-            cboTipoOperacion.Items.Add("Entrada");
-            cboTipoOperacion.Items.Add("Salida");
-            cboTipoOperacion.Items.Add("Ajuste");
-            cboTipoOperacion.SelectedIndex = 0;
         }
 
         private void limpiarCampos()

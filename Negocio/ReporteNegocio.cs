@@ -37,7 +37,6 @@ namespace Negocio
             DataTable tabla = new DataTable();
             try
             {
-                // Seleccionar columnas incluyendo Stock y EstadoStock
                 datos.setearConsulta(@"SELECT 
                     Codigo, 
                     Nombre, 
@@ -45,8 +44,7 @@ namespace Negocio
                     Marca, 
                     Categoria, 
                     Precio,
-                    Stock,
-                    EstadoStock
+                    Stock
                 FROM vw_ArticulosCompletos 
                 ORDER BY Nombre");
                 datos.ejecutarLectura();

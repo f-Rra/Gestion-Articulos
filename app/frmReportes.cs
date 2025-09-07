@@ -30,8 +30,6 @@ namespace app
         {
             try
             {
-                mostrarEstadisticasGenerales();
-                // Cargar inventario completo por defecto
                 btnInventarioCompleto_Click(sender, e);
             }
             catch (Exception ex)
@@ -40,34 +38,7 @@ namespace app
             }
         }
 
-        private void mostrarEstadisticasGenerales()
-        {
-            try
-            {
-                DataTable estadisticas = reporteNegocio.obtenerEstadisticasGenerales();
-                if (estadisticas.Rows.Count > 0)
-                {
-                    DataRow row = estadisticas.Rows[0];
-                    lblTotalArticulos.Text = $"Total Artículos: {row["TotalArticulos"]}";
-                    lblTotalCategorias.Text = $"Total Categorías: {row["TotalCategorias"]}";
-                    lblTotalMarcas.Text = $"Total Marcas: {row["TotalMarcas"]}";
-                    
-                    if (row["PrecioPromedio"] != DBNull.Value)
-                    {
-                        decimal precioPromedio = Convert.ToDecimal(row["PrecioPromedio"]);
-                        lblPrecioPromedio.Text = $"Precio Promedio: ${precioPromedio:F2}";
-                    }
-                    else
-                    {
-                        lblPrecioPromedio.Text = "Precio Promedio: $0.00";
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar estadísticas generales: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        
 
         private void btnInventarioCompleto_Click(object sender, EventArgs e)
         {
@@ -76,11 +47,7 @@ namespace app
                 DataTable inventario = reporteNegocio.obtenerInventarioCompleto();
                 dgvReportes.DataSource = inventario;
                 lblTituloReporte.Text = "Inventario Completo";
-                
-                // Configurar DataGridView
                 configurarDataGridView();
-                
-                // Cambiar color del botón activo
                 resetearColoresBotones();
                 btnInventarioCompleto.BackColor = Color.FromArgb(2, 103, 115);
             }
@@ -97,11 +64,7 @@ namespace app
                 DataTable estadisticasCategorias = reporteNegocio.obtenerInventarioPorCategoria();
                 dgvReportes.DataSource = estadisticasCategorias;
                 lblTituloReporte.Text = "Estadísticas por Categoría";
-                
-                // Configurar DataGridView
                 configurarDataGridView();
-                
-                // Cambiar color del botón activo
                 resetearColoresBotones();
                 btnEstadisticasCategorias.BackColor = Color.FromArgb(2, 103, 115);
             }
@@ -118,11 +81,7 @@ namespace app
                 DataTable articulosBajoStock = reporteNegocio.obtenerArticulosBajoStock(5);
                 dgvReportes.DataSource = articulosBajoStock;
                 lblTituloReporte.Text = "Artículos con Bajo Stock (≤ 5 unidades)";
-                
-                // Configurar DataGridView
                 configurarDataGridView();
-                
-                // Cambiar color del botón activo
                 resetearColoresBotones();
                 btnBajoStock.BackColor = Color.FromArgb(2, 103, 115);
             }
@@ -138,12 +97,8 @@ namespace app
             {
                 DataTable articulosSinStock = reporteNegocio.obtenerArticulosSinStock();
                 dgvReportes.DataSource = articulosSinStock;
-                lblTituloReporte.Text = "Artículos Sin Stock (0 unidades)";
-                
-                // Configurar DataGridView
+                lblTituloReporte.Text = "Artículos Sin Stock (0 unidades)";          
                 configurarDataGridView();
-                
-                // Cambiar color del botón activo
                 resetearColoresBotones();
                 btnSinStock.BackColor = Color.FromArgb(2, 103, 115);
             }
@@ -160,11 +115,7 @@ namespace app
                 DataTable stockCategorias = reporteNegocio.obtenerEstadisticasStockPorCategoria();
                 dgvReportes.DataSource = stockCategorias;
                 lblTituloReporte.Text = "Estadísticas de Stock por Categoría";
-                
-                // Configurar DataGridView
                 configurarDataGridView();
-                
-                // Cambiar color del botón activo
                 resetearColoresBotones();
                 btnStockCategorias.BackColor = Color.FromArgb(2, 103, 115);
             }
@@ -180,12 +131,8 @@ namespace app
             {
                 DataTable stockMarcas = reporteNegocio.obtenerEstadisticasStockPorMarca();
                 dgvReportes.DataSource = stockMarcas;
-                lblTituloReporte.Text = "Estadísticas de Stock por Marca";
-                
-                // Configurar DataGridView
+                lblTituloReporte.Text = "Estadísticas de Stock por Marca";          
                 configurarDataGridView();
-                
-                // Cambiar color del botón activo
                 resetearColoresBotones();
                 btnStockMarcas.BackColor = Color.FromArgb(2, 103, 115);
             }
@@ -202,11 +149,7 @@ namespace app
                 DataTable estadisticasMarcas = reporteNegocio.obtenerInventarioPorMarca();
                 dgvReportes.DataSource = estadisticasMarcas;
                 lblTituloReporte.Text = "Estadísticas por Marca";
-                
-                // Configurar DataGridView
                 configurarDataGridView();
-                
-                // Cambiar color del botón activo
                 resetearColoresBotones();
                 btnEstadisticasMarcas.BackColor = Color.FromArgb(2, 103, 115);
             }
@@ -233,16 +176,16 @@ namespace app
 
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    exportarAPDF(saveDialog.FileName);
+                    exportar(saveDialog.FileName);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al exportar PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al exportar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void exportarAPDF(string rutaArchivo)
+        private void exportar(string rutaArchivo)
         {
             try
             {
@@ -266,14 +209,7 @@ namespace app
                 
                 // Capturar DataGridView
                 dgvReportes.DrawToBitmap(bitmap, new Rectangle(10, 80, dgvReportes.Width, dgvReportes.Height));
-                
-                // Estadísticas
-                int yPos = dgvReportes.Height + 90;
-                g.DrawString(lblTotalArticulos.Text, fontNormal, Brushes.Black, 10, yPos);
-                g.DrawString(lblTotalCategorias.Text, fontNormal, Brushes.Black, 200, yPos);
-                g.DrawString(lblTotalMarcas.Text, fontNormal, Brushes.Black, 400, yPos);
-                g.DrawString(lblPrecioPromedio.Text, fontNormal, Brushes.Black, 10, yPos + 20);
-                
+                           
                 // Guardar
                 bitmap.Save(rutaImagen, ImageFormat.Png);
                 
@@ -303,7 +239,6 @@ namespace app
             dgvReportes.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 9.75F, FontStyle.Bold);
             dgvReportes.EnableHeadersVisualStyles = false;
 
-            // Formatear columnas de precio si existen
             foreach (DataGridViewColumn column in dgvReportes.Columns)
             {
                 if (column.Name.ToLower().Contains("precio") || column.Name.ToLower().Contains("valor"))
@@ -312,7 +247,6 @@ namespace app
                 }
             }
         }
-
 
         private void resetearColoresBotones()
         {

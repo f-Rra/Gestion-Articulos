@@ -55,89 +55,11 @@ namespace app
         {
             try
             {
-                // Crear controles dinámicos para entrada inline
-                TextBox txtNuevaMarca = new TextBox();
-                txtNuevaMarca.Location = new System.Drawing.Point(620, 200);
-                txtNuevaMarca.Size = new System.Drawing.Size(200, 23);
-                txtNuevaMarca.Font = new System.Drawing.Font("Verdana", 9.75F);
-                txtNuevaMarca.BackColor = System.Drawing.Color.FromArgb(242, 227, 213);
-                txtNuevaMarca.ForeColor = System.Drawing.Color.FromArgb(1, 46, 64);
-                txtNuevaMarca.Name = "txtNuevaMarca";
-
-                Label lblNuevaMarca = new Label();
-                lblNuevaMarca.Text = "Nueva Marca:";
-                lblNuevaMarca.Location = new System.Drawing.Point(620, 180);
-                lblNuevaMarca.Size = new System.Drawing.Size(150, 16);
-                lblNuevaMarca.Font = new System.Drawing.Font("Verdana", 9.75F);
-                lblNuevaMarca.ForeColor = System.Drawing.Color.FromArgb(242, 227, 213);
-                lblNuevaMarca.BackColor = System.Drawing.Color.Transparent;
-                lblNuevaMarca.Name = "lblNuevaMarca";
-
-                Button btnGuardar = new Button();
-                btnGuardar.Text = "Guardar";
-                btnGuardar.Location = new System.Drawing.Point(620, 235);
-                btnGuardar.Size = new System.Drawing.Size(90, 28);
-                btnGuardar.Font = new System.Drawing.Font("Verdana", 9.75F);
-                btnGuardar.BackColor = System.Drawing.Color.FromArgb(1, 46, 64);
-                btnGuardar.ForeColor = System.Drawing.Color.FromArgb(242, 227, 213);
-                btnGuardar.FlatStyle = FlatStyle.Flat;
-                btnGuardar.Name = "btnGuardar";
-
-                Button btnCancelarInline = new Button();
-                btnCancelarInline.Text = "Cancelar";
-                btnCancelarInline.Location = new System.Drawing.Point(720, 235);
-                btnCancelarInline.Size = new System.Drawing.Size(90, 28);
-                btnCancelarInline.Font = new System.Drawing.Font("Verdana", 9.75F);
-                btnCancelarInline.BackColor = System.Drawing.Color.FromArgb(2, 103, 115);
-                btnCancelarInline.ForeColor = System.Drawing.Color.FromArgb(242, 227, 213);
-                btnCancelarInline.FlatStyle = FlatStyle.Flat;
-                btnCancelarInline.Name = "btnCancelarInline";
-
-                // Agregar controles al formulario
-                this.Controls.Add(txtNuevaMarca);
-                this.Controls.Add(lblNuevaMarca);
-                this.Controls.Add(btnGuardar);
-                this.Controls.Add(btnCancelarInline);
-
-                // Eventos
-                btnGuardar.Click += (s, ev) => {
-                    try
-                    {
-                        if (!string.IsNullOrWhiteSpace(txtNuevaMarca.Text))
-                        {
-                            Marca nueva = new Marca();
-                            nueva.descripcion = txtNuevaMarca.Text.Trim();
-                            negocio.agregar(nueva);
-                            cargarMarcas();
-                            
-                            // Remover controles
-                            this.Controls.Remove(txtNuevaMarca);
-                            this.Controls.Remove(lblNuevaMarca);
-                            this.Controls.Remove(btnGuardar);
-                            this.Controls.Remove(btnCancelarInline);
-                            
-                            MessageBox.Show("Marca agregada correctamente", "Éxito");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ingrese una descripción para la marca", "Error");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                };
-
-                btnCancelarInline.Click += (s, ev) => {
-                    // Remover controles
-                    this.Controls.Remove(txtNuevaMarca);
-                    this.Controls.Remove(lblNuevaMarca);
-                    this.Controls.Remove(btnGuardar);
-                    this.Controls.Remove(btnCancelarInline);
-                };
-
-                txtNuevaMarca.Focus();
+                Marca nueva = new Marca();
+                nueva.descripcion = txtAgregar.Text.Trim();
+                negocio.agregar(nueva);
+                cargarMarcas();
+                MessageBox.Show("Marca agregada correctamente", "Éxito");
             }
             catch (Exception ex)
             {
