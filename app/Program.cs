@@ -26,10 +26,11 @@ namespace app
                 }
                 else
                 {
-                    // Vendedor: Solo artículos
-                    Application.Run(new frmArticulos());
+                    // Vendedor: Sistema de ventas
+                   Application.Run(new frmVentas(login.UsuarioLogueado.NombreUsuario));
                 }
             }
+
             // Si cancela login, la aplicación se cierra
         }
     }

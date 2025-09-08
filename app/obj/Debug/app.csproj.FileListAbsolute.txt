@@ -21,3 +21,4 @@ C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\app\obj\Debug\app.c
 C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\app\obj\Debug\app.csproj.CopyComplete
 C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\app\obj\Debug\app.exe
 C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\app\obj\Debug\app.pdb
+C:\Users\710\Desktop\TUP\Proyectos\Sistema-Gestion-Comercial\app\obj\Debug\app.frmVentas.resources

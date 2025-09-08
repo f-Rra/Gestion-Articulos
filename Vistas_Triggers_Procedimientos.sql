@@ -6,6 +6,12 @@
 USE SISTEMA_GESTION_COMERCIAL;
 GO
 
+-- Crear secuencia para números de venta
+CREATE SEQUENCE SecVentas
+    START WITH 1
+    INCREMENT BY 1;
+GO
+
 -- =====================================================
 -- VISTAS
 -- =====================================================
@@ -650,166 +656,6 @@ BEGIN
     ORDER BY Precio;
 END;
 GO
-
--- =====================================================
--- PROCEDIMIENTOS ALMACENADOS - VENTAS
--- =====================================================
-
--- 1. Buscar artículos disponibles para venta
-CREATE OR ALTER PROCEDURE SP_BuscarArticulosParaVenta
-    @Filtro VARCHAR(100) = ''
-AS
-BEGIN
-    SELECT 
-        a.Id,
-        a.Codigo,
-        a.Nombre,
-        a.Descripcion,
-        a.Precio,
-        a.Stock,
-        m.Descripcion AS Marca,
-        c.Descripcion AS Categoria,
-        CASE 
-            WHEN a.Stock > 0 THEN 'Disponible'
-            ELSE 'Sin Stock'
-        END AS EstadoStock
-    FROM ARTICULOS a
-    INNER JOIN MARCAS m ON a.IdMarca = m.Id
-    INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id
-    WHERE a.Estado = 1 
-      AND a.Stock > 0
-      AND (@Filtro = '' OR 
-           a.Codigo LIKE '%' + @Filtro + '%' OR 
-           a.Nombre LIKE '%' + @Filtro + '%' OR 
-           a.Descripcion LIKE '%' + @Filtro + '%')
-    ORDER BY a.Nombre;
-END;
-GO
-
--- 2. Registrar venta completa
-CREATE OR ALTER PROCEDURE SP_RegistrarVenta
-    @NumeroVenta VARCHAR(20),
-    @Vendedor VARCHAR(100),
-    @Cliente VARCHAR(200),
-    @Total DECIMAL(10,2),
-    @DetallesXml XML
-AS
-BEGIN
-    BEGIN TRY
-        BEGIN TRANSACTION;
-        
-        DECLARE @IdVenta INT;
-        
-        -- Insertar venta principal
-        INSERT INTO VENTAS (NumeroVenta, Vendedor, Cliente, Total)
-        VALUES (@NumeroVenta, @Vendedor, @Cliente, @Total);
-        
-        SET @IdVenta = SCOPE_IDENTITY();
-        
-        -- Insertar detalles de la venta
-        INSERT INTO DETALLE_VENTAS (IdVenta, IdArticulo, Cantidad, PrecioUnitario, Subtotal)
-        SELECT 
-            @IdVenta,
-            T.c.value('@IdArticulo', 'int'),
-            T.c.value('@Cantidad', 'int'),
-            T.c.value('@PrecioUnitario', 'decimal(10,2)'),
-            T.c.value('@Subtotal', 'decimal(10,2)')
-        FROM @DetallesXml.nodes('/Detalles/Detalle') T(c);
-        
-        -- Actualizar stock de artículos
-        UPDATE a 
-        SET Stock = Stock - d.Cantidad
-        FROM ARTICULOS a
-        INNER JOIN (
-            SELECT 
-                T.c.value('@IdArticulo', 'int') as IdArticulo,
-                T.c.value('@Cantidad', 'int') as Cantidad
-            FROM @DetallesXml.nodes('/Detalles/Detalle') T(c)
-        ) d ON a.Id = d.IdArticulo;
-        
-        -- Verificar que no haya stock negativo
-        IF EXISTS (SELECT 1 FROM ARTICULOS WHERE Stock < 0)
-        BEGIN
-            RAISERROR('Error: Stock insuficiente para completar la venta', 16, 1);
-            RETURN;
-        END
-        
-        COMMIT TRANSACTION;
-        
-        -- Retornar ID de la venta creada
-        SELECT @IdVenta AS IdVentaCreada;
-        
-    END TRY
-    BEGIN CATCH
-        ROLLBACK TRANSACTION;
-        RAISERROR('Error al registrar la venta: %s', 16, 1, ERROR_MESSAGE());
-    END CATCH
-END;
-GO
-
--- 3. Obtener ventas por vendedor 
-CREATE OR ALTER PROCEDURE SP_ObtenerVentasPorVendedor
-    @Vendedor VARCHAR(100)
-AS
-BEGIN
-    SELECT 
-        v.Id,
-        v.NumeroVenta,
-        v.Fecha,
-        v.Cliente,
-        v.Total,
-        v.Estado,
-        COUNT(d.Id) AS CantidadArticulos
-    FROM VENTAS v
-    LEFT JOIN DETALLE_VENTAS d ON v.Id = d.IdVenta
-    WHERE v.Vendedor = @Vendedor
-    GROUP BY v.Id, v.NumeroVenta, v.Fecha, v.Cliente, v.Total, v.Estado
-    ORDER BY v.Fecha DESC;
-END;
-GO
-
--- 4. Validar stock disponible 
-CREATE OR ALTER PROCEDURE SP_ValidarStockDisponible
-    @IdArticulo INT,
-    @CantidadSolicitada INT
-AS
-BEGIN
-    DECLARE @StockActual INT;
-    
-    SELECT @StockActual = Stock 
-    FROM ARTICULOS 
-    WHERE Id = @IdArticulo AND Estado = 1;
-    
-    SELECT 
-        CASE 
-            WHEN @StockActual IS NULL THEN 0
-            WHEN @StockActual >= @CantidadSolicitada THEN 1
-            ELSE 0
-        END AS StockSuficiente,
-        ISNULL(@StockActual, 0) AS StockActual;
-END;
-GO
-
--- 5. Obtener detalles de una venta específica 
-CREATE OR ALTER PROCEDURE SP_ObtenerDetallesVenta
-    @IdVenta INT
-AS
-BEGIN
-    SELECT 
-        d.Id,
-        d.IdArticulo,
-        a.Codigo,
-        a.Nombre,
-        d.Cantidad,
-        d.PrecioUnitario,
-        d.Subtotal
-    FROM DETALLE_VENTAS d
-    INNER JOIN ARTICULOS a ON d.IdArticulo = a.Id
-    WHERE d.IdVenta = @IdVenta
-    ORDER BY a.Nombre;
-END;
-GO
-
 -- =====================================================
 -- TRIGGERS
 -- =====================================================
@@ -871,38 +717,229 @@ END;
 GO
 
 -- =====================================================
--- TRIGGER PARA VENTAS
+-- PROCEDIMIENTOS PARA VENTAS
+-- =====================================================
+
+-- 1. Buscar artículos disponibles para venta 
+CREATE OR ALTER PROCEDURE SP_BuscarArticulosParaVenta
+    @Filtro VARCHAR(100) = ''
+AS
+BEGIN
+    SELECT 
+        a.Id,
+        a.Codigo,
+        a.Nombre,
+        a.Descripcion,
+        a.Precio,
+        a.Stock,
+        m.Descripcion AS Marca,
+        c.Descripcion AS Categoria,
+        CASE 
+            WHEN a.Stock > 0 THEN 'Disponible'
+            ELSE 'Sin Stock'
+        END AS EstadoStock
+    FROM ARTICULOS a
+    INNER JOIN MARCAS m ON a.IdMarca = m.Id
+    INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id
+    WHERE a.Estado = 1 
+      AND a.Stock > 0
+      AND (@Filtro = '' OR 
+           a.Codigo LIKE '%' + @Filtro + '%' OR 
+           a.Nombre LIKE '%' + @Filtro + '%' OR 
+           a.Descripcion LIKE '%' + @Filtro + '%')
+    ORDER BY a.Nombre;
+END;
+GO
+
+-- 2. Registrar venta principal
+CREATE OR ALTER PROCEDURE SP_RegistrarVenta
+    @NumeroVenta VARCHAR(20),
+    @Vendedor VARCHAR(100),
+    @Cliente VARCHAR(200),
+    @Total DECIMAL(10,2)
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        DECLARE @IdVenta INT;
+        
+        -- Insertar venta principal
+        INSERT INTO VENTAS (NumeroVenta, Vendedor, Cliente, Total)
+        VALUES (@NumeroVenta, @Vendedor, @Cliente, @Total);
+        
+        SET @IdVenta = SCOPE_IDENTITY();
+        
+        -- Devolver el ID como resultado
+        SELECT @IdVenta AS IdVenta;
+        
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END;
+GO
+
+-- 3. Registrar detalle de venta
+CREATE OR ALTER PROCEDURE SP_RegistrarDetalleVenta
+    @IdVenta INT,
+    @IdArticulo INT,
+    @Cantidad INT,
+    @PrecioUnitario DECIMAL(10,2),
+    @Subtotal DECIMAL(10,2)
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        -- Validar que la venta existe
+        IF NOT EXISTS (SELECT 1 FROM VENTAS WHERE Id = @IdVenta)
+        BEGIN
+            THROW 50000, 'La venta especificada no existe', 1;
+        END
+        
+        -- Validar stock suficiente
+        DECLARE @StockActual INT;
+        SELECT @StockActual = Stock FROM ARTICULOS WHERE Id = @IdArticulo AND Estado = 1;
+        
+        IF @StockActual IS NULL
+        BEGIN
+            THROW 50000, 'El artículo no existe o está inactivo', 1;
+        END
+        
+        IF @StockActual < @Cantidad
+        BEGIN
+            THROW 50000, 'Stock insuficiente para completar la venta', 1;
+        END
+        
+        -- Insertar detalle (el trigger se encarga de actualizar el stock)
+        INSERT INTO DETALLE_VENTAS (IdVenta, IdArticulo, Cantidad, PrecioUnitario, Subtotal)
+        VALUES (@IdVenta, @IdArticulo, @Cantidad, @PrecioUnitario, @Subtotal);
+        
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END;
+GO
+
+-- 3. Obtener ventas por vendedor
+
+CREATE OR ALTER PROCEDURE SP_ObtenerVentasPorVendedor
+    @Vendedor VARCHAR(100)
+AS
+BEGIN
+    SELECT 
+        v.Id,
+        v.NumeroVenta,
+        v.Fecha,
+        v.Cliente,
+        v.Total,
+        v.Estado,
+        COUNT(d.Id) AS CantidadArticulos
+    FROM VENTAS v
+    LEFT JOIN DETALLE_VENTAS d ON v.Id = d.IdVenta
+    WHERE v.Vendedor = @Vendedor
+    GROUP BY v.Id, v.NumeroVenta, v.Fecha, v.Cliente, v.Total, v.Estado
+    ORDER BY v.Fecha DESC;
+END;
+GO
+
+-- 4. Validar stock disponible
+CREATE OR ALTER PROCEDURE SP_ValidarStockDisponible
+    @IdArticulo INT,
+    @CantidadSolicitada INT
+AS
+BEGIN
+    DECLARE @StockActual INT;
+    
+    SELECT @StockActual = Stock 
+    FROM ARTICULOS 
+    WHERE Id = @IdArticulo AND Estado = 1;
+    
+    SELECT 
+        CASE 
+            WHEN @StockActual IS NULL THEN 0
+            WHEN @StockActual >= @CantidadSolicitada THEN 1
+            ELSE 0
+        END AS StockSuficiente,
+        ISNULL(@StockActual, 0) AS StockActual;
+END;
+GO
+
+-- 5. Obtener detalles de una venta específica
+CREATE OR ALTER PROCEDURE SP_ObtenerDetallesVenta
+    @IdVenta INT
+AS
+BEGIN
+    SELECT 
+        d.Id,
+        d.IdArticulo,
+        a.Codigo,
+        a.Nombre,
+        d.Cantidad,
+        d.PrecioUnitario,
+        d.Subtotal
+    FROM DETALLE_VENTAS d
+    INNER JOIN ARTICULOS a ON d.IdArticulo = a.Id
+    WHERE d.IdVenta = @IdVenta
+    ORDER BY a.Nombre;
+END;
+GO
+
+-- =====================================================
+--  TRIGGER PARA SISTEMA DE VENTAS
 -- =====================================================
 
 -- Trigger que se ejecuta automáticamente al insertar detalles de venta
--- Actualiza el stock y registra la operación
+-- Actualiza el stock automáticamente
 CREATE OR ALTER TRIGGER tr_ActualizarStockEnVenta
 ON DETALLE_VENTAS
 AFTER INSERT
 AS
 BEGIN
     SET NOCOUNT ON;
-    
+
     BEGIN TRY
+        -- Verificar stock suficiente antes de actualizar
+        IF EXISTS (
+            SELECT 1 
+            FROM inserted i
+            INNER JOIN ARTICULOS a ON i.IdArticulo = a.Id
+            WHERE a.Stock < i.Cantidad OR a.Estado = 0
+        )
+        BEGIN
+            RAISERROR('Stock insuficiente o artículo inactivo', 16, 1);
+            ROLLBACK TRANSACTION;
+            RETURN;
+        END
+
         -- Actualizar stock de artículos vendidos
-        UPDATE a 
+        UPDATE a
         SET Stock = Stock - i.Cantidad
         FROM ARTICULOS a
         INNER JOIN inserted i ON a.Id = i.IdArticulo
         WHERE a.Estado = 1;
-        
-        -- Verificar que no haya stock negativo
-        IF EXISTS (SELECT 1 FROM ARTICULOS WHERE Stock < 0 AND Estado = 1)
+
+        -- Verificar que no haya stock negativo después de la actualización
+        IF EXISTS (
+            SELECT 1 
+            FROM ARTICULOS a
+            INNER JOIN inserted i ON a.Id = i.IdArticulo
+            WHERE a.Stock < 0 AND a.Estado = 1
+        )
         BEGIN
-            RAISERROR('Error: Stock insuficiente detectado por trigger', 16, 1);
+            RAISERROR('Error: Stock negativo detectado', 16, 1);
             ROLLBACK TRANSACTION;
             RETURN;
         END
-        
-        
     END TRY
     BEGIN CATCH
-        RAISERROR('Error en trigger de actualización de stock: %s', 16, 1, ERROR_MESSAGE());
+        RAISERROR('Error en trigger de actualización de stock', 16, 1);
         ROLLBACK TRANSACTION;
     END CATCH
 END;
@@ -930,10 +967,8 @@ DESCRIPCIÓN DE TABLAS:
 CARACTERÍSTICAS IMPLEMENTADAS:
 - Baja lógica con campo Estado BIT
 - Gestión completa de STOCK con validaciones
-- Sistema de VENTAS completo (FASE 14)
 - Procedimientos almacenados para todas las operaciones CRUD
 - Procedimientos específicos para gestión de inventario
-- Procedimientos para sistema de ventas
 - Consultas de stock bajo y sin stock
 - Vistas para consultas complejas con estado de stock
 - Triggers para validaciones y control automático de stock
