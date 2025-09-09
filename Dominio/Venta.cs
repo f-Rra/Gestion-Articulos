@@ -69,7 +69,7 @@ namespace Dominio
         [DisplayName("Cantidad")]
         public int Cantidad { get; set; }
         
-        [DisplayName("Precio Unit.")]
+        [DisplayName("Precio")]
         public decimal PrecioUnitario { get; set; }
         
         [DisplayName("Subtotal")]
