@@ -28,6 +28,8 @@ namespace app
             calcularTotal();
             configurarDataGridViews();
             configurarCarritoEditable();
+            
+            // El label del vendedor fue eliminado
         }
 
         private void configurarDataGridViews()
@@ -40,10 +42,18 @@ namespace app
             if (dgvArticulos.Columns.Contains("EstadoStock"))
                 dgvArticulos.Columns["EstadoStock"].Visible = false;
             
-            // Formatear columna de precio en dgvArticulos
+            // Formatear y centrar columnas en dgvArticulos
             if (dgvArticulos.Columns.Contains("Precio"))
             {
                 dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "$ #,##0.00";
+                dgvArticulos.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            
+            // Centrar todas las columnas de dgvArticulos
+            foreach (DataGridViewColumn column in dgvArticulos.Columns)
+            {
+                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
 
@@ -61,14 +71,23 @@ namespace app
             if (dgvCarrito.Columns.Contains("StockDisponible"))
                 dgvCarrito.Columns["StockDisponible"].Visible = false;
             
-            // Formatear columnas de precio y subtotal en dgvCarrito
+            // Formatear y centrar columnas de precio y subtotal en dgvCarrito
             if (dgvCarrito.Columns.Contains("PrecioUnitario"))
             {
                 dgvCarrito.Columns["PrecioUnitario"].DefaultCellStyle.Format = "$ #,##0.00";
+                dgvCarrito.Columns["PrecioUnitario"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
             if (dgvCarrito.Columns.Contains("Subtotal"))
             {
                 dgvCarrito.Columns["Subtotal"].DefaultCellStyle.Format = "$ #,##0.00";
+                dgvCarrito.Columns["Subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            
+            // Centrar todas las columnas de dgvCarrito
+            foreach (DataGridViewColumn column in dgvCarrito.Columns)
+            {
+                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
 
@@ -309,5 +328,28 @@ namespace app
             }
         }
 
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+                "¿Está seguro que desea cerrar la sesión?", 
+                "Cerrar Sesión", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                // Mostrar el formulario de login nuevamente
+                frmLogin loginForm = new frmLogin();
+                loginForm.Show();
+                
+                // Cerrar el formulario actual
+                this.Close();
+            }
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
