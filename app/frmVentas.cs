@@ -29,12 +29,10 @@ namespace app
             configurarDataGridViews();
             configurarCarritoEditable();
             
-            // El label del vendedor fue eliminado
         }
 
         private void configurarDataGridViews()
         {
-            // Ocultar columnas en dgvArticulos
             if (dgvArticulos.Columns.Contains("Id"))
                 dgvArticulos.Columns["Id"].Visible = false;
             if (dgvArticulos.Columns.Contains("Descripcion"))
@@ -42,14 +40,12 @@ namespace app
             if (dgvArticulos.Columns.Contains("EstadoStock"))
                 dgvArticulos.Columns["EstadoStock"].Visible = false;
             
-            // Formatear y centrar columnas en dgvArticulos
             if (dgvArticulos.Columns.Contains("Precio"))
             {
                 dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "$ #,##0.00";
                 dgvArticulos.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
             
-            // Centrar todas las columnas de dgvArticulos
             foreach (DataGridViewColumn column in dgvArticulos.Columns)
             {
                 column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -59,7 +55,6 @@ namespace app
 
         private void configurarCarrito()
         {
-            // Ocultar columnas en dgvCarrito después de cargar datos
             if (dgvCarrito.Columns.Contains("Id"))
                 dgvCarrito.Columns["Id"].Visible = false;
             if (dgvCarrito.Columns.Contains("IdVenta"))
@@ -71,7 +66,6 @@ namespace app
             if (dgvCarrito.Columns.Contains("StockDisponible"))
                 dgvCarrito.Columns["StockDisponible"].Visible = false;
             
-            // Formatear y centrar columnas de precio y subtotal en dgvCarrito
             if (dgvCarrito.Columns.Contains("PrecioUnitario"))
             {
                 dgvCarrito.Columns["PrecioUnitario"].DefaultCellStyle.Format = "$ #,##0.00";
@@ -83,7 +77,6 @@ namespace app
                 dgvCarrito.Columns["Subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
             
-            // Centrar todas las columnas de dgvCarrito
             foreach (DataGridViewColumn column in dgvCarrito.Columns)
             {
                 column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -160,7 +153,6 @@ namespace app
             refrescarCarrito();
             calcularTotal();
             
-            // Hacer focus en la celda Cantidad del último artículo agregado
             if (dgvCarrito.Rows.Count > 0)
             {
                 int ultimaFila = dgvCarrito.Rows.Count - 1;
@@ -168,10 +160,6 @@ namespace app
                 
                 dgvCarrito.CurrentCell = dgvCarrito.Rows[ultimaFila].Cells[columnaCantidad];
                 dgvCarrito.BeginEdit(true);
-                
-                // Resaltar la celda con color
-                dgvCarrito.Rows[ultimaFila].Cells[columnaCantidad].Style.BackColor = Color.LightYellow;
-                dgvCarrito.Rows[ultimaFila].Cells[columnaCantidad].Style.SelectionBackColor = Color.Gold;
             }
         }
 
@@ -224,8 +212,6 @@ namespace app
             }
         }
 
-
-
         private void refrescarCarrito()
         {
             actualizarCarrito();
@@ -256,8 +242,7 @@ namespace app
                 dgvCarrito.Columns["Cantidad"].ReadOnly = false;
                 dgvCarrito.ReadOnly = false;
             }
-            
-            // Configurar evento para validar cambios en cantidad
+
             dgvCarrito.CellValidating += dgvCarrito_CellValidating;
             dgvCarrito.CellEndEdit += dgvCarrito_CellEndEdit;
         }
@@ -338,11 +323,8 @@ namespace app
 
             if (resultado == DialogResult.Yes)
             {
-                // Mostrar el formulario de login nuevamente
                 frmLogin loginForm = new frmLogin();
                 loginForm.Show();
-                
-                // Cerrar el formulario actual
                 this.Close();
             }
         }

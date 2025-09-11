@@ -98,7 +98,6 @@ namespace app
                 int stockMinimo = (int)nudStockMinimo.Value;
                 var articulosBajoStock = neg.obtenerArticulosBajoStock(stockMinimo);
                 dgvArticulos.DataSource = articulosBajoStock;
-                lblResultados.Text = $"Artículos con stock menor o igual a {stockMinimo}: {articulosBajoStock.Count}";
             }
             catch (Exception ex)
             {
@@ -112,7 +111,6 @@ namespace app
             {
                 var articulosSinStock = neg.obtenerArticulosSinStock();
                 dgvArticulos.DataSource = articulosSinStock;
-                lblResultados.Text = $"Artículos sin stock: {articulosSinStock.Count}";
             }
             catch (Exception ex)
             {
@@ -123,7 +121,6 @@ namespace app
         private void btnTodos_Click(object sender, EventArgs e)
         {
             cargarArticulos();
-            lblResultados.Text = "Mostrando todos los artículos";
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -152,7 +149,6 @@ namespace app
             dgvArticulos.Columns["UrlImagen"].Visible = false;
             dgvArticulos.Columns["Precio"].Visible = false;
 
-            // Configurar columnas visibles
             if (dgvArticulos.Columns["Stock"] != null)
             {
                 dgvArticulos.Columns["Stock"].Width = 80;

@@ -193,7 +193,6 @@ namespace app
         {
             try
             {
-                // Método ultra simple: solo guardar como imagen PNG
                 string rutaImagen = rutaArchivo.Replace(".pdf", ".png");
                 
                 // Crear bitmap con espacio extra para títulos
@@ -262,10 +261,6 @@ namespace app
             btnStockCategorias.BackColor = Color.FromArgb(1, 46, 64);
             btnStockMarcas.BackColor = Color.FromArgb(1, 46, 64);
         }
-
-        // =====================================================
-        // EVENTOS DE REPORTES DE VENTAS
-        // =====================================================
 
         private void btnVentasPorFecha_Click(object sender, EventArgs e)
         {
