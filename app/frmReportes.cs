@@ -30,6 +30,10 @@ namespace app
         {
             try
             {
+                // Configurar fechas por defecto (último mes)
+                dtpFechaInicio.Value = DateTime.Now.AddMonths(-1);
+                dtpFechaFin.Value = DateTime.Now;
+                
                 btnInventarioCompleto_Click(sender, e);
             }
             catch (Exception ex)
@@ -257,6 +261,95 @@ namespace app
             btnSinStock.BackColor = Color.FromArgb(1, 46, 64);
             btnStockCategorias.BackColor = Color.FromArgb(1, 46, 64);
             btnStockMarcas.BackColor = Color.FromArgb(1, 46, 64);
+        }
+
+        // =====================================================
+        // EVENTOS DE REPORTES DE VENTAS
+        // =====================================================
+
+        private void btnVentasPorFecha_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable ventasPorFecha = reporteNegocio.obtenerVentasPorFecha(dtpFechaInicio.Value, dtpFechaFin.Value);
+                dgvReportes.DataSource = ventasPorFecha;
+                lblTituloReporte.Text = $"Ventas del {dtpFechaInicio.Value:dd/MM/yyyy} al {dtpFechaFin.Value:dd/MM/yyyy}";
+                configurarDataGridView();
+                resetearColoresBotones();
+                btnVentasPorFecha.BackColor = Color.FromArgb(2, 103, 115);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar reporte de ventas por fecha: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnTopVendedores_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable topVendedores = reporteNegocio.obtenerTopVendedores(dtpFechaInicio.Value, dtpFechaFin.Value);
+                dgvReportes.DataSource = topVendedores;
+                lblTituloReporte.Text = $"Top Vendedores del {dtpFechaInicio.Value:dd/MM/yyyy} al {dtpFechaFin.Value:dd/MM/yyyy}";
+                configurarDataGridView();
+                resetearColoresBotones();
+                btnTopVendedores.BackColor = Color.FromArgb(2, 103, 115);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar reporte de top vendedores: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnArticulosMasVendidos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable articulosMasVendidos = reporteNegocio.obtenerArticulosMasVendidos(dtpFechaInicio.Value, dtpFechaFin.Value);
+                dgvReportes.DataSource = articulosMasVendidos;
+                lblTituloReporte.Text = $"Artículos Más Vendidos del {dtpFechaInicio.Value:dd/MM/yyyy} al {dtpFechaFin.Value:dd/MM/yyyy}";
+                configurarDataGridView();
+                resetearColoresBotones();
+                btnArticulosMasVendidos.BackColor = Color.FromArgb(2, 103, 115);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar reporte de artículos más vendidos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnResumenDiario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable resumenDiario = reporteNegocio.obtenerResumenVentasDiarias(dtpFechaInicio.Value, dtpFechaFin.Value);
+                dgvReportes.DataSource = resumenDiario;
+                lblTituloReporte.Text = $"Resumen Diario de Ventas del {dtpFechaInicio.Value:dd/MM/yyyy} al {dtpFechaFin.Value:dd/MM/yyyy}";
+                configurarDataGridView();
+                resetearColoresBotones();
+                btnResumenDiario.BackColor = Color.FromArgb(2, 103, 115);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar resumen diario de ventas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnVentasDetalladas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable ventasDetalladas = reporteNegocio.obtenerVentasDetalladas(dtpFechaInicio.Value, dtpFechaFin.Value);
+                dgvReportes.DataSource = ventasDetalladas;
+                lblTituloReporte.Text = $"Ventas Detalladas del {dtpFechaInicio.Value:dd/MM/yyyy} al {dtpFechaFin.Value:dd/MM/yyyy}";
+                configurarDataGridView();
+                resetearColoresBotones();
+                btnVentasDetalladas.BackColor = Color.FromArgb(2, 103, 115);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar reporte de ventas detalladas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

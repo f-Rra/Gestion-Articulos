@@ -336,5 +336,207 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        // =====================================================
+        // REPORTES DE VENTAS
+        // =====================================================
+
+        public DataTable obtenerVentasPorFecha(DateTime fechaInicio, DateTime fechaFin)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            DataTable tabla = new DataTable();
+            try
+            {
+                datos.setearConsulta(@"SELECT 
+                    v.Id,
+                    v.NumeroVenta,
+                    v.Fecha,
+                    v.Vendedor,
+                    v.Cliente,
+                    v.Total,
+                    v.Estado
+                FROM VENTAS v
+                WHERE v.Fecha >= @FechaInicio AND v.Fecha <= @FechaFin
+                ORDER BY v.Fecha DESC");
+                datos.setearParametro("@FechaInicio", fechaInicio);
+                datos.setearParametro("@FechaFin", fechaFin);
+                datos.ejecutarLectura();
+                tabla.Load(datos.Lector);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public DataTable obtenerVentasPorVendedor(string vendedor)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            DataTable tabla = new DataTable();
+            try
+            {
+                datos.setearConsulta("SP_ObtenerVentasPorVendedor");
+                datos.setearTipoComando(CommandType.StoredProcedure);
+                datos.setearParametro("@Vendedor", vendedor);
+                datos.ejecutarLectura();
+                tabla.Load(datos.Lector);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public DataTable obtenerResumenVentasDiarias(DateTime fechaInicio, DateTime fechaFin)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            DataTable tabla = new DataTable();
+            try
+            {
+                datos.setearConsulta(@"SELECT 
+                    CAST(v.Fecha AS DATE) as Fecha,
+                    COUNT(*) as CantidadVentas,
+                    SUM(v.Total) as TotalVentas,
+                    AVG(v.Total) as PromedioVenta,
+                    COUNT(DISTINCT v.Vendedor) as VendedoresActivos
+                FROM VENTAS v
+                WHERE v.Fecha >= @FechaInicio AND v.Fecha <= @FechaFin
+                GROUP BY CAST(v.Fecha AS DATE)
+                ORDER BY Fecha DESC");
+                datos.setearParametro("@FechaInicio", fechaInicio);
+                datos.setearParametro("@FechaFin", fechaFin);
+                datos.ejecutarLectura();
+                tabla.Load(datos.Lector);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public DataTable obtenerTopVendedores(DateTime fechaInicio, DateTime fechaFin)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            DataTable tabla = new DataTable();
+            try
+            {
+                datos.setearConsulta(@"SELECT 
+                    v.Vendedor,
+                    COUNT(*) as CantidadVentas,
+                    SUM(v.Total) as TotalVentas,
+                    AVG(v.Total) as PromedioVenta,
+                    MAX(v.Total) as VentaMaxima,
+                    MIN(v.Total) as VentaMinima
+                FROM VENTAS v
+                WHERE v.Fecha >= @FechaInicio AND v.Fecha <= @FechaFin
+                GROUP BY v.Vendedor
+                ORDER BY TotalVentas DESC");
+                datos.setearParametro("@FechaInicio", fechaInicio);
+                datos.setearParametro("@FechaFin", fechaFin);
+                datos.ejecutarLectura();
+                tabla.Load(datos.Lector);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public DataTable obtenerArticulosMasVendidos(DateTime fechaInicio, DateTime fechaFin)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            DataTable tabla = new DataTable();
+            try
+            {
+                datos.setearConsulta(@"SELECT 
+                    a.Codigo,
+                    a.Nombre,
+                    a.Descripcion,
+                    m.Descripcion as Marca,
+                    c.Descripcion as Categoria,
+                    SUM(dv.Cantidad) as CantidadVendida,
+                    SUM(dv.Subtotal) as TotalVentas,
+                    AVG(dv.PrecioUnitario) as PrecioPromedio
+                FROM DETALLE_VENTAS dv
+                INNER JOIN VENTAS v ON dv.IdVenta = v.Id
+                INNER JOIN ARTICULOS a ON dv.IdArticulo = a.Id
+                INNER JOIN MARCAS m ON a.IdMarca = m.Id
+                INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id
+                WHERE v.Fecha >= @FechaInicio AND v.Fecha <= @FechaFin
+                GROUP BY a.Id, a.Codigo, a.Nombre, a.Descripcion, m.Descripcion, c.Descripcion
+                ORDER BY CantidadVendida DESC");
+                datos.setearParametro("@FechaInicio", fechaInicio);
+                datos.setearParametro("@FechaFin", fechaFin);
+                datos.ejecutarLectura();
+                tabla.Load(datos.Lector);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public DataTable obtenerVentasDetalladas(DateTime fechaInicio, DateTime fechaFin)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            DataTable tabla = new DataTable();
+            try
+            {
+                datos.setearConsulta(@"SELECT 
+                    v.NumeroVenta,
+                    v.Fecha,
+                    v.Vendedor,
+                    v.Cliente,
+                    a.Codigo as CodigoArticulo,
+                    a.Nombre as NombreArticulo,
+                    dv.Cantidad,
+                    dv.PrecioUnitario,
+                    dv.Subtotal,
+                    v.Total as TotalVenta
+                FROM VENTAS v
+                INNER JOIN DETALLE_VENTAS dv ON v.Id = dv.IdVenta
+                INNER JOIN ARTICULOS a ON dv.IdArticulo = a.Id
+                WHERE v.Fecha >= @FechaInicio AND v.Fecha <= @FechaFin
+                ORDER BY v.Fecha DESC, v.NumeroVenta");
+                datos.setearParametro("@FechaInicio", fechaInicio);
+                datos.setearParametro("@FechaFin", fechaFin);
+                datos.ejecutarLectura();
+                tabla.Load(datos.Lector);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
